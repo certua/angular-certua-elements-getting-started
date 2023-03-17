@@ -2,6 +2,7 @@ import { NgIf } from '@angular/common';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 import { map, tap } from 'rxjs';
 
 export enum Step {
@@ -18,7 +19,7 @@ export enum Step {
   styleUrls: ['./home.component.scss'],
   standalone: true,
   providers: [],
-  imports: [NgIf, FormsModule],
+  imports: [NgIf, FormsModule, RouterModule],
 })
 export class HomeComponent {
   Step = Step;
@@ -31,7 +32,7 @@ export class HomeComponent {
   contextToken = '';
   apiUrl = '';
   apiConfig = '';
-  primaryColor = 'blue';
+  primaryColor = '#007fc6';
   secondaryColor = '';
 
   private http = inject(HttpClient);
@@ -88,6 +89,7 @@ export class HomeComponent {
             JSON.stringify({
               ownerId: this.userReference,
               contextToken: token,
+              dateCreated: new Date(),
             })
           )
         ),

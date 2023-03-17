@@ -1,16 +1,25 @@
 <div class="row" *ngIf="!showError">
-  <certua-ob-connect
-    [contentOverrides]="contentOverrides"
-    [daasContextToken]="contextTokenOptions"
-    [redirectionConfig]="redirectionConfig"
-  >
-    <span slot="button" class="ml-auto"></span>
-  </certua-ob-connect>
+  <h2>Connect Accounts</h2>
+  <p>
+    This component can be used to facilitate a user connecting their bank
+    account via Open Banking
+  </p>
+  <div class="row">
+    <div class="col-md-6">
+      <certua-ob-connect
+        [contentOverrides]="contentOverrides"
+        [daasContextToken]="contextTokenOptions"
+        [redirectionConfig]="redirectionConfig"
+      >
+        <span slot="button" class="ml-auto"></span>
+      </certua-ob-connect>
+    </div>
+  </div>
 </div>
 
 <div class="row" *ngIf="showError">
   <div class="col">
     <h3>You do not have a context token</h3>
-    <a routerLink="'/">Home</a>
+    <a [routerLink]="'/'">Home</a>
   </div>
 </div>

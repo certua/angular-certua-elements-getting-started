@@ -1,8 +1,14 @@
 <div class="row" *ngIf="!showError">
+  <h2>Manage connections</h2>
+  <p>
+    This component can be used to view connected accounts, refresh consent or
+    disconnect
+  </p>
   <certua-ob-manage-connections
     [contentOverrides]="contentOverrides"
     [daasContextToken]="contextTokenOptions"
     [showAddButton]="false"
+    [showTitle]="false"
   >
   </certua-ob-manage-connections>
 </div>
@@ -10,6 +16,6 @@
 <div class="row" *ngIf="showError">
   <div class="col">
     <h3>You do not have a context token</h3>
-    <a routerLink="'/'">Home</a>
+    <a [routerLink]="'/'">Home</a>
   </div>
 </div>

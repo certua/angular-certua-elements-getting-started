@@ -1,6 +1,7 @@
 import { RouterLink } from '@angular/router';
 import { JsonPipe, NgIf } from '@angular/common';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
+import { add, parse, parseISO } from 'date-fns';
 
 @Component({
   selector: 'app-connect',
@@ -45,9 +46,28 @@ export class ConnectComponent implements OnInit {
     if (!localStorage.getItem('apiConfig')) {
       this.showError = true;
     } else {
+      this.checkExpiry();
       this.contextTokenOptions = JSON.parse(
         localStorage.getItem('apiConfig') ?? ''
       );
+    }
+  }
+
+  checkExpiry() {
+    let token = JSON.parse(localStorage.getItem('apiConfig') ?? '');
+    let tokenCreation = parseISO(token.dateCreated);
+    if (add(tokenCreation, { minutes: 30 }) <= new Date()) {
+      this.showError = true;
+      localStorage.removeItem('apiConfig');
+    }
+
+    let root = document.documentElement;
+    if (!root.style.getPropertyValue('--primary')) {
+      let primary = localStorage.getItem('--primary');
+      root.style.setProperty('--primary', primary);
+
+      let secondary = localStorage.getItem('--secondary');
+      root.style.setProperty('--secondary', secondary);
     }
   }
 }

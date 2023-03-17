@@ -22,20 +22,25 @@ const routes: Routes = [
         component: HomeComponent,
       },
       {
-        path: 'connect',
-        component: ConnectComponent,
-      },
-      {
-        path: 'manage-connections',
-        component: ManageConnectionsComponent,
-      },
-      {
-        path: 'transactions',
-        component: TransactionsComponent,
-      },
-      {
-        path: 'cashflow',
-        component: CashflowComponent,
+        path: 'components',
+        children: [
+          {
+            path: 'connect',
+            component: ConnectComponent,
+          },
+          {
+            path: 'manage-connections',
+            component: ManageConnectionsComponent,
+          },
+          {
+            path: 'transactions',
+            component: TransactionsComponent,
+          },
+          {
+            path: 'cashflow',
+            component: CashflowComponent,
+          },
+        ],
       },
     ],
   },

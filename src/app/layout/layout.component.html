@@ -1,44 +1,59 @@
 <div class="container-fluid">
-  <div class="row">
+  <div class="row bg-grey border-bottom" id="header">
     <div class="col">
       <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <a class="navbar-brand" href="/">certua</a>
+        <a class="navbar-brand" href="/">
+          <div class="d-flex justify-items-center">
+            <img src="assets/certua.png" /></div
+        ></a>
         <div class="collapse navbar-collapse">
           <ul class="navbar-nav me-auto">
             <li class="nav-item">
-              <a [routerLink]="'/'" class="nav-link">Home</a>
+              <a
+                [routerLink]="'/home'"
+                routerLinkActive="text-primary"
+                [routerLinkActiveOptions]="{ exact: true }"
+                class="nav-link"
+                >Home</a
+              >
             </li>
             <li class="nav-item">
-              <a [routerLink]="'/connect'" class="nav-link">Components</a>
+              <a
+                [routerLink]="'/components'"
+                routerLinkActive="text-primary"
+                [routerLinkActiveOptions]="{ exact: false }"
+                class="nav-link"
+                >Components</a
+              >
             </li>
           </ul>
         </div>
       </nav>
     </div>
   </div>
-  <div class="row">
+  <div class="row" id="sidebar">
     <div class="col-md-3 border-end" *ngIf="showNavigation">
-      <div class="list-group">
+      <div class="list-group mt-4">
         <a
-          routerLink="/connect"
+          routerLink="/components/connect"
           class="list-group-item"
           routerLinkActive="active"
           >Connect</a
         >
         <a
-          routerLink="/manage-connections"
+          routerLink="/components/manage-connections"
           routerLinkActive="active"
           class="list-group-item"
           >Manage Connections</a
         >
         <a
-          routerLink="/transactions"
+          routerLink="/components/transactions"
           routerLinkActive="active"
           class="list-group-item"
           >Transactions</a
         >
         <a
-          routerLink="/cashflow"
+          routerLink="/components/cashflow"
           routerLinkActive="active"
           class="list-group-item"
           >Cashflow</a
@@ -46,6 +61,6 @@
       </div>
       <nav></nav>
     </div>
-    <div class="col"><router-outlet></router-outlet></div>
+    <div class="col mt-4"><router-outlet></router-outlet></div>
   </div>
 </div>
