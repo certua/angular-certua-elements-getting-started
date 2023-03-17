@@ -1,0 +1,130 @@
+<div class="row">
+  <div class="col-md-6 offset-md-3 text-center">
+    <div class="mt-4">
+      <img
+        width="200"
+        alt="Angular Logo"
+        src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg=="
+      />
+
+      <div class="ms-2">
+        <div class="greetings mb-2">
+          <h1>Let's go</h1>
+          <h5>
+            Welcome to Certua's Getting Started App with Open Banking Elements
+          </h5>
+        </div>
+      </div>
+    </div>
+
+    <div class="row" *ngIf="step == Step.AccessToken">
+      <div class="col">
+        <h3 class="mt-3">First, we need an access token</h3>
+        <div class="text-start">
+          <label for="username" class="form-label">Username</label>
+          <input
+            id="username"
+            type="text"
+            class="form-control"
+            [(ngModel)]="username"
+          />
+          <label for="password" class="label">Password</label>
+          <input
+            id="password"
+            type="password"
+            [(ngModel)]="password"
+            class="form-control"
+          />
+
+          <button class="btn btn-primary mt-2" (click)="getAccessToken()">
+            Get Token
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="row" *ngIf="step == Step.ContextToken">
+      <div class="col">
+        <h3>Now we can get a context token using that access token</h3>
+        <div class="text-start">
+          <label for="contextToken" class="form-label">Access Token</label>
+          <input
+            id="contextToken"
+            type="text"
+            class="form-control"
+            [(ngModel)]="accessToken"
+          />
+          <label for="userReference" class="form-label">User Reference</label>
+          <input
+            id="userReference"
+            type="text"
+            class="form-control"
+            [(ngModel)]="userReference"
+          />
+          <div class="mt-3">
+            <button
+              class="btn btn-outline-primary me-2"
+              (click)="back(Step.AccessToken)"
+            >
+              Back
+            </button>
+            <button class="btn btn-primary" (click)="getContextToken()">
+              Get Context Token
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row" *ngIf="step == Step.Styles">
+      <div class="col">
+        <h3>Now, choose some colours</h3>
+        <div class="text-start">
+          <label for="primary" class="form-label">Primary</label>
+          <input
+            id="primary"
+            type="text"
+            class="form-control"
+            [(ngModel)]="primaryColor"
+          />
+          <label for="secondary" class="label">Secondary</label>
+          <input
+            id="secondary"
+            type="text"
+            [(ngModel)]="secondaryColor"
+            class="form-control"
+          />
+          <div class="mt-3">
+            <button
+              class="btn btn-outline-primary me-2"
+              (click)="back(Step.ContextToken)"
+            >
+              Back
+            </button>
+            <button class="btn btn-primary mt-2" (click)="setStyles()">
+              Set styles
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row" *ngIf="step == Step.Success">
+      <div class="col">
+        <h3>Success you can now using Open banking elements</h3>
+
+        <button class="btn btn-link" (click)="reset()">
+          Go to the components
+        </button>
+      </div>
+    </div>
+    <div class="row" *ngIf="step == Step.Error">
+      <div class="col">
+        <h3>Something went wrong. Please try again</h3>
+        <button class="btn btn-primary mt-3" (click)="reset()">
+          Try again
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

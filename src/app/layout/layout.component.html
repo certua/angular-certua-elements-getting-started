@@ -1,0 +1,51 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col">
+      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <a class="navbar-brand" href="/">certua</a>
+        <div class="collapse navbar-collapse">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <a [routerLink]="'/'" class="nav-link">Home</a>
+            </li>
+            <li class="nav-item">
+              <a [routerLink]="'/connect'" class="nav-link">Components</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3 border-end" *ngIf="showNavigation">
+      <div class="list-group">
+        <a
+          routerLink="/connect"
+          class="list-group-item"
+          routerLinkActive="active"
+          >Connect</a
+        >
+        <a
+          routerLink="/manage-connections"
+          routerLinkActive="active"
+          class="list-group-item"
+          >Manage Connections</a
+        >
+        <a
+          routerLink="/transactions"
+          routerLinkActive="active"
+          class="list-group-item"
+          >Transactions</a
+        >
+        <a
+          routerLink="/cashflow"
+          routerLinkActive="active"
+          class="list-group-item"
+          >Cashflow</a
+        >
+      </div>
+      <nav></nav>
+    </div>
+    <div class="col"><router-outlet></router-outlet></div>
+  </div>
+</div>
