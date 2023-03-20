@@ -6,6 +6,7 @@ import { ConnectComponent } from './connect/connect.component';
 import { HomeComponent } from './home/home.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AccountSummaryComponent } from './account-summary/account-summary.component';
 
 const routes: Routes = [
   {
@@ -39,6 +40,10 @@ const routes: Routes = [
           {
             path: 'cashflow',
             component: CashflowComponent,
+          },
+          {
+            path: 'account-summary',
+            component: AccountSummaryComponent,
           },
         ],
       },

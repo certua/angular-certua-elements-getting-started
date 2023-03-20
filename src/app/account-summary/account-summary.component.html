@@ -1,0 +1,15 @@
+<div class="row" *ngIf="!showError">
+  <h2>Account summary list</h2>
+  <p>
+    This component can be used to show an overview of all connected accounts
+  </p>
+  <certua-ob-account-summary-list [daasContextToken]="contextTokenOptions">
+  </certua-ob-account-summary-list>
+</div>
+
+<div class="row" *ngIf="showError">
+  <div class="col">
+    <h3>You do not have a context token</h3>
+    <a [routerLink]="'/'">Home</a>
+  </div>
+</div>
