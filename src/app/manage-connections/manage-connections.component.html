@@ -12,7 +12,65 @@
   >
   </certua-ob-manage-connections>
 </div>
-
+<div>
+  <h4>Example code</h4>
+  <pre><code>
+    &lt;certua-ob-manage-connections 
+      [contentOverrides]="contentOverrides"
+      [contextData]="contextData"
+      [showTitle]="false"
+      [showAddButton]="false"&gt;
+    &lt;/certua-ob-manage-connections&gt;
+    </code>
+  </pre>
+  <table class="table">
+    <thead>
+      <th>Property Name</th>
+      <th>Mandatory</th>
+      <th>Description</th>
+    </thead>
+    <tbody>
+      <tr>
+        <td>contextData</td>
+        <td>Yes</td>
+        <td>
+          This is a JSON string which contains your context token and user
+          reference. <br /><code>
+            {{
+              '{"contextToken":"FF5D16AAE1ED74E4C8F0E8B6D9E2EB06","ownerId":"1","dateCreated":"2023-03-20T11:17:24.121Z"}'
+            }}
+          </code>
+        </td>
+      </tr>
+      <tr>
+        <td>contentOverrides</td>
+        <td>No</td>
+        <td>
+          This is a JSON string which contains any text overrides that you want
+          to pass to the information screens/modals<br /><code>
+            {{ contentOverrides | json }}
+          </code>
+        </td>
+      </tr>
+      <tr>
+        <td>showTitle</td>
+        <td>No</td>
+        <td>
+          This will show or hide the web components title (Open Banking
+          Connected Accounts)
+        </td>
+      </tr>
+      <tr>
+        <td>showAddButton</td>
+        <td>No</td>
+        <td>
+          This controls if the Add Account button is shown above the currently
+          connected accounts.
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 <div class="row" *ngIf="showError">
   <div class="col">
     <h3>You do not have a context token</h3>

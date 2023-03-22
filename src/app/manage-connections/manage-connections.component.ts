@@ -1,5 +1,5 @@
 import { RouterLink } from '@angular/router';
-import { NgIf } from '@angular/common';
+import { CommonModule, NgIf } from '@angular/common';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { add, parseISO } from 'date-fns';
 
@@ -8,7 +8,7 @@ import { add, parseISO } from 'date-fns';
   templateUrl: './manage-connections.component.html',
   styleUrls: ['./manage-connections.component.scss'],
   standalone: true,
-  imports: [NgIf, RouterLink],
+  imports: [NgIf, RouterLink, CommonModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class ManageConnectionsComponent implements OnInit {
