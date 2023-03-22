@@ -16,7 +16,60 @@
     </div>
   </div>
 </div>
-
+<div>
+  <h4>Example code</h4>
+  <pre><code>
+    &lt;certua-ob-connect 
+      [contentOverrides]="contentOverrides"
+      [redirectionConfig]="redirectionConfig"
+      [contextData]="contextData"&gt;
+    &lt;/certua-ob-connect&gt;
+    </code>
+  </pre>
+  <table class="table">
+    <thead>
+      <th>Property Name</th>
+      <th>Mandatory</th>
+      <th>Description</th>
+    </thead>
+    <tbody>
+      <tr>
+        <td>contextData</td>
+        <td>Yes</td>
+        <td>
+          This is a JSON string which contains your context token and user
+          reference. <br />
+          <pre><code>
+             {{ 
+              '{"contextToken":"FF5D16AAE1ED74E4C8F0E8B6D9E2EB06","ownerId":"1","dateCreated":"2023-03-20T11:17:24.121Z"}'}}
+          </code></pre>
+        </td>
+      </tr>
+      <tr>
+        <td>redirectionConfig</td>
+        <td>Yes</td>
+        <td>
+          This is a JSON string which contains the success or failure
+          redirection Urls, which are used after the connection to the bank.<br />
+          <pre><code
+            > {{ redirectionConfig | json }}</code
+          ></pre>
+        </td>
+      </tr>
+      <tr>
+        <td>contentOverrides</td>
+        <td>No</td>
+        <td>
+          This is a JSON string which contains any text overrides that you want
+          to pass to the information screens/modals<br />
+          <pre><code>
+             {{contentOverrides | json}}
+          </code></pre>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 <div class="row" *ngIf="showError">
   <div class="col">
     <h3>You do not have a context token</h3>
