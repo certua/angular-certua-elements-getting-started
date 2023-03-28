@@ -46,10 +46,11 @@ export class HomeComponent {
   }
 
   getAccessToken() {
-    const authUrl =
-      'https://iqdevauth.certua.io/oauth/token?grant_type=client_credentials';
+    // const authUrl =
+    //   'https://iqdevauth.certua.io/oauth/token?grant_type=client_credentials';
     //STAGING URL
-    //const authUrl = 'https://iqstgauth.certua.io/oauth/token?grant_type=client_credentials'
+    const authUrl =
+      'https://iqstgauth.certua.io/oauth/token?grant_type=client_credentials';
     const basicAuth = btoa(`${this.username}:${this.password}`);
     let httpHeaders = new HttpHeaders().set(
       'authorization',
@@ -68,8 +69,10 @@ export class HomeComponent {
   }
 
   getContextToken() {
-    const tokenUrl = 'https://iqdevdaas.certua.io/app/token';
+    // const tokenUrl = 'https://iqdevdaas.certua.io/app/token';
 
+    //STAGING URL
+    const tokenUrl = 'https://iqstgdaas.certua.io/app/token';
     let httpHeaders = new HttpHeaders().set(
       'authorization',
       `Bearer ${this.accessToken}`
