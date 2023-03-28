@@ -4,17 +4,15 @@
     This component can be used to facilitate a user connecting their bank
     account via Open Banking
   </p>
-  <div class="row">
-    <div class="col-md-6">
-      <certua-ob-connect
-        [contentOverrides]="contentOverrides"
-        [daasContextToken]="contextTokenOptions"
-        [redirectionConfig]="redirectionConfig"
-      >
-        <span slot="button" class="ml-auto"></span>
-      </certua-ob-connect>
-    </div>
-  </div>
+
+  <certua-ob-connect
+    [contentOverrides]="contentOverrides"
+    [contextData]="contextTokenOptions"
+    [redirectionConfig]="redirectionConfig"
+    [startingPhase]="'InstitutionSelection'"
+  >
+    <span slot="button" class="ml-auto"></span>
+  </certua-ob-connect>
 </div>
 <div>
   <h4>Example code</h4>
@@ -23,6 +21,7 @@
       [contentOverrides]="contentOverrides"
       [redirectionConfig]="redirectionConfig"
       [contextData]="contextData"&gt;
+      [startingPhase]="'InstitutionSelection'"
     &lt;/certua-ob-connect&gt;
     </code>
   </pre>
@@ -65,6 +64,15 @@
           <pre><code>
              {{contentOverrides | json}}
           </code></pre>
+        </td>
+      </tr>
+      <tr>
+        <td>startingPhase</td>
+        <td>No</td>
+        <td>
+          This is a string which controls the starting screen when connecting
+          accounts, this can be <code>AccountList</code> or
+          <code>InstitutionSelection</code>.
         </td>
       </tr>
     </tbody>
