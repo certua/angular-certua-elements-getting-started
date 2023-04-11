@@ -16,6 +16,7 @@ export class ConnectComponent implements OnInit {
   redirectionConfig = {
     successUrl: window.location.origin + '/connect?accountConnection=success',
     failureUrl: window.location.origin + '/connect?accountConnection=failure',
+    popup: false
   };
   contextTokenOptions = '';
 
