@@ -1,4 +1,7 @@
-<div class="row" *ngIf="!showError">
+<div
+  class="row"
+  *ngIf="!showError"
+>
   <h2>Cashflow</h2>
   <p>
     This component can be used to display a graph of a users income vs
@@ -13,7 +16,7 @@
 <div>
   <h4>Example code</h4>
   <pre><code>
-    &lt;certua-ob-cashflow 
+    &lt;certua-ob-cashflow
       [contextData]="contextData"&gt;
     &lt;/certua-ob-cashflow&gt;
     </code>
@@ -37,10 +40,22 @@
           </code>
         </td>
       </tr>
+      <tr>
+        <td>daasURL</td>
+        <td>No</td>
+        <td>
+          You can provide a full url to where you have deployed the daas
+          elements library. This can be used when it is not possible to use the
+          default cdn url hosted by Certua.
+        </td>
+      </tr>
     </tbody>
   </table>
 </div>
-<div class="row" *ngIf="showError">
+<div
+  class="row"
+  *ngIf="showError"
+>
   <div class="col">
     <h3>You do not have a context token</h3>
     <a [routerLink]="'/'">Home</a>

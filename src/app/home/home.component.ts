@@ -1,5 +1,5 @@
 import { NgIf } from '@angular/common';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
@@ -25,8 +25,9 @@ export class HomeComponent {
   Step = Step;
   step = Step.AccessToken;
 
-  username = '';
-  password = '';
+  username = 'daas_client';
+  password = 'user';
+  countryCode: 'UK' | 'AU' = 'UK';
   accessToken = '';
   userReference = '';
   contextToken = '';
@@ -49,16 +50,23 @@ export class HomeComponent {
     // const authUrl =
     //   'https://iqdevauth.certua.io/oauth/token?grant_type=client_credentials';
     //STAGING URL
-    const authUrl =
-      'https://iqstgauth.certua.io/oauth/token?grant_type=client_credentials';
+    const authUKUrl =
+      'https://identitydev.certua.io/realms/Certua/protocol/openid-connect/token';
+    const authAUUrl =
+      'https://identitydev-au.certua.io/realms/Certua/protocol/openid-connect/token';
+    // UK 'https://identitydev.certua.io/oauth/token?grant_type=client_credentials';
+    //STAGING URL
+    //const authUrl =
+    //  'https://iqstgauth.certua.io/oauth/token?grant_type=client_credentials';
+    const authUrl = this.countryCode === 'UK' ? authUKUrl : authAUUrl;
     const basicAuth = btoa(`${this.username}:${this.password}`);
-    let httpHeaders = new HttpHeaders().set(
-      'authorization',
-      `Basic ${basicAuth}`
-    );
+    const body = new HttpParams().set('grant_type', 'client_credentials');
+    let httpHeaders = new HttpHeaders()
+      .set('authorization', `Basic ${basicAuth}`)
+      .set('Content-Type', 'application/x-www-form-urlencoded');
 
     this.http
-      .post(authUrl, null, { headers: httpHeaders })
+      .post(authUrl, body, { headers: httpHeaders })
       .pipe(
         map((response: any) => {
           this.accessToken = response.access_token;
@@ -69,10 +77,13 @@ export class HomeComponent {
   }
 
   getContextToken() {
-    // const tokenUrl = 'https://iqdevdaas.certua.io/app/token';
+    const tokenAUUrl = 'https://apidev-au.certua.io/daas/app/token';
+    const tokenUKUrl = 'https://apidev.certua.io/daas/app/token';
 
-    //STAGING URL
-    const tokenUrl = 'https://iqstgdaas.certua.io/app/token';
+    //STG
+    //const tokenUrl = 'https://apistg.certua.io/daas/app/token';
+
+    const tokenUrl = this.countryCode === 'UK' ? tokenUKUrl : tokenAUUrl;
     let httpHeaders = new HttpHeaders().set(
       'authorization',
       `Bearer ${this.accessToken}`
@@ -80,19 +91,22 @@ export class HomeComponent {
 
     const body = {
       'client.integration.datasource.preference': ['OpenBanking', 'Yodlee'],
-      'client.integration.user.reference': this.userReference, // this is your reference for your client
+      'client.integration.user.reference': this.userReference, // this is your reference for your client,
+      'client.integration.user.sub-tenant.reference': '12499',
+      'client.integration.adviser.reference': '9163',
     };
     this.http
       .post(tokenUrl, body, { headers: httpHeaders })
       .pipe(
-        map((data: any) => (this.contextToken = data.context_token)),
-        tap((token) =>
+        tap((data: any) =>
           localStorage.setItem(
             'apiConfig',
             JSON.stringify({
               ownerId: this.userReference,
-              contextToken: token,
+              contextToken: data.context_token,
+              countryCode: this.countryCode,
               dateCreated: new Date(),
+              link_metadata: data.link_metadata,
             })
           )
         ),

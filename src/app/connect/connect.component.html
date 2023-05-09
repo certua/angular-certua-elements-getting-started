@@ -1,27 +1,32 @@
-<div class="row" *ngIf="!showError">
+<div
+  class="row"
+  *ngIf="!showError"
+>
   <h2>Connect Accounts</h2>
   <p>
-    This component can be used to facilitate a user connecting their bank
-    account via Open Banking
+    This component can be used to show the currently connected banks and to
+    allow then to connect new banks.
   </p>
-
-  <certua-ob-connect
-    [contentOverrides]="contentOverrides"
-    [contextData]="contextTokenOptions"
-    [redirectionConfig]="redirectionConfig"
-    [startingPhase]="'InstitutionSelection'"
-  >
-    <span slot="button" class="ml-auto"></span>
-  </certua-ob-connect>
+  <div class="row">
+    <div class="col-md-12">
+      <certua-ob-connect
+        [contentOverrides]="contentOverrides"
+        [contextData]="contextTokenOptions"
+      >
+        <span
+          slot="button"
+          class="ml-auto"
+        ></span>
+      </certua-ob-connect>
+    </div>
+  </div>
 </div>
-<div>
+<div class="mt-4">
   <h4>Example code</h4>
   <pre><code>
-    &lt;certua-ob-connect 
+    &lt;certua-ob-connect
       [contentOverrides]="contentOverrides"
-      [redirectionConfig]="redirectionConfig"
-      [contextData]="contextData"&gt;
-      [startingPhase]="'InstitutionSelection'"
+      [contextData]="contextData"
     &lt;/certua-ob-connect&gt;
     </code>
   </pre>
@@ -37,24 +42,11 @@
         <td>Yes</td>
         <td>
           This is a JSON string which contains your context token and user
-          reference. <br />
-          <pre><code>
-             {{ 
-              '{"contextToken":"FF5D16AAE1ED74E4C8F0E8B6D9E2EB06","ownerId":"1","dateCreated":"2023-03-20T11:17:24.121Z"}'}}
-          </code></pre>
-        </td>
-      </tr>
-      <tr>
-        <td>redirectionConfig</td>
-        <td>Yes</td>
-        <td>
-          This is a JSON string which contains the success or failure
-          redirection Urls, which are used after the connection to the bank.
-          Popup controls whether or not the bank url is shown in the same tab or
-          in a new tab, this defaults to false if not present<br />
-          <pre><code
-            > {{ redirectionConfig | json }}</code
-          ></pre>
+          reference. <br /><code>
+            {{
+              '{"contextToken":"FF5D16AAE1ED74E4C8F0E8B6D9E2EB06","ownerId":"1","dateCreated":"2023-03-20T11:17:24.121Z"}'
+            }}
+          </code>
         </td>
       </tr>
       <tr>
@@ -62,25 +54,27 @@
         <td>No</td>
         <td>
           This is a JSON string which contains any text overrides that you want
-          to pass to the information screens/modals<br />
-          <pre><code>
-             {{contentOverrides | json}}
-          </code></pre>
+          to pass to the information screens/modals<br /><code>
+            {{ contentOverrides | json }}
+          </code>
         </td>
       </tr>
       <tr>
-        <td>startingPhase</td>
+        <td>daasURL</td>
         <td>No</td>
         <td>
-          This is a string which controls the starting screen when connecting
-          accounts, this can be <code>AccountList</code> or
-          <code>InstitutionSelection</code>.
+          You can provide a full url to where you have deployed the daas
+          elements library. This can be used when it is not possible to use the
+          default cdn url hosted by Certua.
         </td>
       </tr>
     </tbody>
   </table>
 </div>
-<div class="row" *ngIf="showError">
+<div
+  class="row"
+  *ngIf="showError"
+>
   <div class="col">
     <h3>You do not have a context token</h3>
     <a [routerLink]="'/'">Home</a>

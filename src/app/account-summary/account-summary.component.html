@@ -1,4 +1,7 @@
-<div class="row" *ngIf="!showError">
+<div
+  class="row"
+  *ngIf="!showError"
+>
   <h2>Account summary list</h2>
   <p>
     This component can be used to show an overview of all connected accounts
@@ -9,7 +12,7 @@
 <div>
   <h4>Example code</h4>
   <pre><code>
-    &lt;certua-ob-account-summary-list 
+    &lt;certua-ob-account-summary-list
       [contextData]="contextData"&gt;
     &lt;/certua-ob-account-summary-list&gt;
     </code>
@@ -33,10 +36,22 @@
           </code>
         </td>
       </tr>
+      <tr>
+        <td>daasURL</td>
+        <td>No</td>
+        <td>
+          You can provide a full url to where you have deployed the daas
+          elements library. This can be used when it is not possible to use the
+          default cdn url hosted by Certua.
+        </td>
+      </tr>
     </tbody>
   </table>
 </div>
-<div class="row" *ngIf="showError">
+<div
+  class="row"
+  *ngIf="showError"
+>
   <div class="col">
     <h3>You do not have a context token</h3>
     <a [routerLink]="'/'">Home</a>
