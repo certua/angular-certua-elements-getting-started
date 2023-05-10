@@ -10,6 +10,8 @@
     [contextData]="contextTokenOptions"
     [redirectionConfig]="redirectionConfig"
     [startingPhase]="'InstitutionSelection'"
+    [daasUrl]="daasUrl"
+    *ngIf="loaded"
   >
     <span slot="button" class="ml-auto"></span>
   </certua-ob-connect>
@@ -22,6 +24,7 @@
       [redirectionConfig]="redirectionConfig"
       [contextData]="contextData"&gt;
       [startingPhase]="'InstitutionSelection'"
+      [daasUrl]="daasUrl"
     &lt;/certua-ob-connect&gt;
     </code>
   </pre>
@@ -75,6 +78,14 @@
           This is a string which controls the starting screen when connecting
           accounts, this can be <code>AccountList</code> or
           <code>InstitutionSelection</code>.
+        </td>
+      </tr>
+      <tr>
+        <td>daasUrl</td>
+        <td>No</td>
+        <td>
+          This only needs to be passed in if you wish to load the Daas Elements
+          from your own CDN rather than Certua's. Must be an absolute URL.
         </td>
       </tr>
     </tbody>

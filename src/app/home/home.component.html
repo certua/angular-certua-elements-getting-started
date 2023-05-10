@@ -108,13 +108,47 @@
         </div>
       </div>
     </div>
+    <div class="row" *ngIf="step == Step.DaasUrl">
+      <div class="col">
+        <h3>Do you need to use a custom Daas URL?</h3>
+        <p>
+          Some consumers need to load their own version of our DaaS components
+          from their own CDN, to do this enter the absolute URL to the script
+          file in the box below, otherwise choose 'Use Certua Defaults'
+        </p>
+        <button class="btn btn-secondary mt-2 ms-2" (click)="useDefaultUrl()">
+          No, use Certua Defaults
+        </button>
+        <div class="text-start">
+          <label for="daasUrl" class="form-label">Daas URL</label>
+          <input
+            id="daasUrl"
+            type="text"
+            class="form-control"
+            [(ngModel)]="daasUrl"
+          />
 
+          <button
+            class="btn btn-outline-primary mt-2"
+            (click)="back(Step.Styles)"
+          >
+            Back
+          </button>
+          <button class="btn btn-primary mt-2 ms-2" (click)="setUrl()">
+            Set URL
+          </button>
+        </div>
+      </div>
+    </div>
     <div class="row" *ngIf="step == Step.Success">
       <div class="col">
         <h3>Success you can now using Open banking elements</h3>
 
         <button class="btn btn-link" [routerLink]="'/components/connect'">
           Go to the components
+        </button>
+        <button class="btn btn-secondary mt-2 ms-2" (click)="startAgain()">
+          Start again
         </button>
       </div>
     </div>

@@ -16,8 +16,10 @@ export class ConnectComponent implements OnInit {
   redirectionConfig = {
     successUrl: window.location.origin + '/connect?accountConnection=success',
     failureUrl: window.location.origin + '/connect?accountConnection=failure',
-    popup: false
+    popup: false,
   };
+  loaded = false;
+  daasUrl = '';
   contextTokenOptions = '';
 
   contentOverrides = {
@@ -52,6 +54,10 @@ export class ConnectComponent implements OnInit {
         localStorage.getItem('apiConfig') ?? ''
       );
     }
+    if (localStorage.getItem('daasUrl')) {
+      this.daasUrl = localStorage.getItem('daasUrl') ?? '';
+    }
+    this.loaded = true;
   }
 
   checkExpiry() {
