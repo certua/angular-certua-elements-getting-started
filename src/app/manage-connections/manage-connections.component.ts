@@ -14,7 +14,8 @@ import { add, parseISO } from 'date-fns';
 export class ManageConnectionsComponent implements OnInit {
   showError = false;
   contextTokenOptions = '';
-
+  loaded = false;
+  daasUrl = '';
   contentOverrides = {
     'certua-ob-provider-permissions': {
       howWeAreUsingData: '<p>[Custom text about how you use data]</p>',
@@ -47,6 +48,10 @@ export class ManageConnectionsComponent implements OnInit {
         localStorage.getItem('apiConfig') ?? ''
       );
     }
+    if (localStorage.getItem('daasUrl')) {
+      this.daasUrl = localStorage.getItem('daasUrl') ?? '';
+    }
+    this.loaded = true;
   }
 
   checkExpiry() {

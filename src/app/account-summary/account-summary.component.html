@@ -6,13 +6,17 @@
   <p>
     This component can be used to show an overview of all connected accounts
   </p>
-  <certua-ob-account-summary-list [contextData]="contextTokenOptions">
+  <certua-ob-account-summary-list
+    [contextData]="contextTokenOptions"
+    [daasUrl]="daasUrl"
+  >
   </certua-ob-account-summary-list>
 </div>
 <div>
   <h4>Example code</h4>
   <pre><code>
-    &lt;certua-ob-account-summary-list
+    &lt;certua-ob-account-summary-list 
+    [daasUrl]="daasUrl"
       [contextData]="contextData"&gt;
     &lt;/certua-ob-account-summary-list&gt;
     </code>

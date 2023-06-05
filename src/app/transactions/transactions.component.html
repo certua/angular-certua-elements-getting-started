@@ -7,13 +7,15 @@
   <certua-ob-transactions
     [contextData]="contextTokenOptions"
     [showAddButton]="false"
+    [daasUrl]="daasUrl"
   >
   </certua-ob-transactions>
 </div>
 <div>
   <h4>Example code</h4>
   <pre><code>
-    &lt;certua-ob-transactions
+    &lt;certua-ob-transactions 
+    [daasUrl]="daasUrl"
       [contextData]="contextData"&gt;
     &lt;/certua-ob-transactions&gt;
     </code>

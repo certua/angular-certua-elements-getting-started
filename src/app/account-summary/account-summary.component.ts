@@ -14,7 +14,8 @@ import { add, parseISO } from 'date-fns';
 export class AccountSummaryComponent implements OnInit {
   showError = false;
   contextTokenOptions = '';
-
+  loaded = false;
+  daasUrl = '';
   ngOnInit() {
     if (!localStorage.getItem('apiConfig')) {
       this.showError = true;
@@ -24,6 +25,10 @@ export class AccountSummaryComponent implements OnInit {
         localStorage.getItem('apiConfig') ?? ''
       );
     }
+    if (localStorage.getItem('daasUrl')) {
+      this.daasUrl = localStorage.getItem('daasUrl') ?? '';
+    }
+    this.loaded = true;
   }
 
   checkExpiry() {

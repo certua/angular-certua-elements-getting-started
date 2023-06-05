@@ -9,6 +9,7 @@ export enum Step {
   AccessToken,
   ContextToken,
   Styles,
+  DaasUrl,
   Success,
   Error,
 }
@@ -35,6 +36,7 @@ export class HomeComponent {
   apiConfig = '';
   primaryColor = '#007fc6';
   secondaryColor = '';
+  daasUrl = '';
 
   private http = inject(HttpClient);
 
@@ -126,6 +128,24 @@ export class HomeComponent {
 
     localStorage.setItem('--primary', this.primaryColor);
     localStorage.setItem('--secondary', this.secondaryColor);
+    this.step = Step.DaasUrl;
+  }
+
+  setUrl() {
+    if (!this.daasUrl) {
+      this.useDefaultUrl();
+    } else {
+      localStorage.setItem('daasUrl', this.daasUrl);
+      this.step = Step.Success;
+    }
+  }
+  useDefaultUrl() {
+    localStorage.removeItem('daasUrl');
     this.step = Step.Success;
+  }
+
+  startAgain() {
+    localStorage.clear();
+    this.step = Step.AccessToken;
   }
 }
