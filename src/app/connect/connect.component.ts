@@ -2,12 +2,13 @@ import { RouterLink } from '@angular/router';
 import { JsonPipe, NgIf } from '@angular/common';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { add, parse, parseISO } from 'date-fns';
+import { CommonInputsComponent } from '../common-inputs/common-inputs.component';
 
 @Component({
   selector: 'app-connect',
   templateUrl: './connect.component.html',
   styleUrls: ['./connect.component.scss'],
-  imports: [NgIf, RouterLink, JsonPipe],
+  imports: [NgIf, RouterLink, JsonPipe, CommonInputsComponent],
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

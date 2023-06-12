@@ -24,17 +24,17 @@
       <th>Mandatory</th>
       <th>Description</th>
     </thead>
-    <tbody>
+    <tbody appCommonInputs>
       <tr>
-        <td>contextData</td>
-        <td>Yes</td>
+        <td>sortOptions</td>
+        <td>No</td>
         <td>
-          This is a JSON string which contains your context token and user
-          reference. <br /><code>
-            {{
-              '{"contextToken":"FF5D16AAE1ED74E4C8F0E8B6D9E2EB06","ownerId":"1","dateCreated":"2023-03-20T11:17:24.121Z"}'
-            }}
-          </code>
+          This is JSON which allows you to set the sortFieldName and sortOrder.
+          Currently limited to sortFieldName must be 'balance' and sortOrder
+          'asc' or 'desc'. If this is not passed then they are ordered by
+          Provider name
+          <br />
+          <code> {{ sortOptions | json }} </code>
         </td>
       </tr>
     </tbody>

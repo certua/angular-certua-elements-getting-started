@@ -4,17 +4,18 @@
     This component can be used to facilitate a user connecting their bank
     account via Open Banking
   </p>
-
-  <certua-ob-connect
-    [contentOverrides]="contentOverrides"
-    [contextData]="contextTokenOptions"
-    [redirectionConfig]="redirectionConfig"
-    [startingPhase]="'InstitutionSelection'"
-    [daasUrl]="daasUrl"
-    *ngIf="loaded"
-  >
-    <span slot="button" class="ml-auto"></span>
-  </certua-ob-connect>
+  <div class="row">
+    <div class="col-md-12">
+      <certua-ob-connect
+        [contentOverrides]="contentOverrides"
+        [contextData]="contextTokenOptions"
+        [redirectionConfig]="redirectionConfig"
+        [startingPhase]="'AccountList'"
+      >
+        <span slot="button" class="ml-auto"></span>
+      </certua-ob-connect>
+    </div>
+  </div>
 </div>
 <div>
   <h4>Example code</h4>
@@ -34,32 +35,7 @@
       <th>Mandatory</th>
       <th>Description</th>
     </thead>
-    <tbody>
-      <tr>
-        <td>contextData</td>
-        <td>Yes</td>
-        <td>
-          This is a JSON string which contains your context token and user
-          reference. <br />
-          <pre><code>
-             {{ 
-              '{"contextToken":"FF5D16AAE1ED74E4C8F0E8B6D9E2EB06","ownerId":"1","dateCreated":"2023-03-20T11:17:24.121Z"}'}}
-          </code></pre>
-        </td>
-      </tr>
-      <tr>
-        <td>redirectionConfig</td>
-        <td>Yes</td>
-        <td>
-          This is a JSON string which contains the success or failure
-          redirection Urls, which are used after the connection to the bank.
-          Popup controls whether or not the bank url is shown in the same tab or
-          in a new tab, this defaults to false if not present<br />
-          <pre><code
-            > {{ redirectionConfig | json }}</code
-          ></pre>
-        </td>
-      </tr>
+    <tbody appCommonInputs>
       <tr>
         <td>contentOverrides</td>
         <td>No</td>
@@ -69,23 +45,6 @@
           <pre><code>
              {{contentOverrides | json}}
           </code></pre>
-        </td>
-      </tr>
-      <tr>
-        <td>startingPhase</td>
-        <td>No</td>
-        <td>
-          This is a string which controls the starting screen when connecting
-          accounts, this can be <code>AccountList</code> or
-          <code>InstitutionSelection</code>.
-        </td>
-      </tr>
-      <tr>
-        <td>daasUrl</td>
-        <td>No</td>
-        <td>
-          This only needs to be passed in if you wish to load the Daas Elements
-          from your own CDN rather than Certua's. Must be an absolute URL.
         </td>
       </tr>
     </tbody>
