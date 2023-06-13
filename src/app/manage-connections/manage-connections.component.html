@@ -12,6 +12,7 @@
     [contextData]="contextTokenOptions"
     [showAddButton]="false"
     [showTitle]="false"
+    [daasUrl]="daasUrl"
   >
   </certua-ob-manage-connections>
 </div>
@@ -22,7 +23,9 @@
       [contentOverrides]="contentOverrides"
       [contextData]="contextData"
       [showTitle]="false"
+      [daasUrl]="daasUrl"
       [showAddButton]="false"&gt;
+
     &lt;/certua-ob-manage-connections&gt;
     </code>
   </pre>
@@ -32,19 +35,7 @@
       <th>Mandatory</th>
       <th>Description</th>
     </thead>
-    <tbody>
-      <tr>
-        <td>contextData</td>
-        <td>Yes</td>
-        <td>
-          This is a JSON string which contains your context token and user
-          reference. <br /><code>
-            {{
-              '{"contextToken":"FF5D16AAE1ED74E4C8F0E8B6D9E2EB06","ownerId":"1","dateCreated":"2023-03-20T11:17:24.121Z"}'
-            }}
-          </code>
-        </td>
-      </tr>
+    <tbody appCommonInputs>
       <tr>
         <td>contentOverrides</td>
         <td>No</td>

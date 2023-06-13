@@ -2,11 +2,12 @@ import { RouterLink } from '@angular/router';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { CommonModule, NgIf } from '@angular/common';
 import { add, parseISO } from 'date-fns';
+import { CommonInputsComponent } from '../common-inputs/common-inputs.component';
 
 @Component({
   selector: 'app-transactions',
   standalone: true,
-  imports: [CommonModule, NgIf, RouterLink],
+  imports: [CommonModule, NgIf, RouterLink, CommonInputsComponent],
   templateUrl: './transactions.component.html',
   styleUrls: ['./transactions.component.scss'],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -14,6 +15,8 @@ import { add, parseISO } from 'date-fns';
 export class TransactionsComponent implements OnInit {
   showError = false;
   contextTokenOptions: any;
+  loaded = false;
+  daasUrl = '';
   ngOnInit() {
     if (!localStorage.getItem('apiConfig')) {
       this.showError = true;
@@ -23,6 +26,10 @@ export class TransactionsComponent implements OnInit {
         localStorage.getItem('apiConfig') ?? ''
       );
     }
+    if (localStorage.getItem('daasUrl')) {
+      this.daasUrl = localStorage.getItem('daasUrl') ?? '';
+    }
+    this.loaded = true;
   }
 
   checkExpiry() {

@@ -2,12 +2,13 @@ import { RouterLink } from '@angular/router';
 import { JsonPipe, NgIf } from '@angular/common';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { add, parse, parseISO } from 'date-fns';
+import { CommonInputsComponent } from '../common-inputs/common-inputs.component';
 
 @Component({
   selector: 'app-connect',
   templateUrl: './connect.component.html',
   styleUrls: ['./connect.component.scss'],
-  imports: [NgIf, RouterLink, JsonPipe],
+  imports: [NgIf, RouterLink, JsonPipe, CommonInputsComponent],
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
@@ -16,8 +17,10 @@ export class ConnectComponent implements OnInit {
   redirectionConfig = {
     successUrl: window.location.origin + '/connect?accountConnection=success',
     failureUrl: window.location.origin + '/connect?accountConnection=failure',
-    popup: false
+    popup: false,
   };
+  loaded = false;
+  daasUrl = '';
   contextTokenOptions = '';
 
   contentOverrides = {
@@ -52,6 +55,10 @@ export class ConnectComponent implements OnInit {
         localStorage.getItem('apiConfig') ?? ''
       );
     }
+    if (localStorage.getItem('daasUrl')) {
+      this.daasUrl = localStorage.getItem('daasUrl') ?? '';
+    }
+    this.loaded = true;
   }
 
   checkExpiry() {

@@ -1,20 +1,26 @@
 import { RouterLink } from '@angular/router';
-import { NgIf } from '@angular/common';
+import { JsonPipe, NgIf } from '@angular/common';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { add, parseISO } from 'date-fns';
+import { CommonInputsComponent } from '../common-inputs/common-inputs.component';
 
 @Component({
   selector: 'app-account-summary',
   templateUrl: './account-summary.component.html',
   styleUrls: ['./account-summary.component.scss'],
   standalone: true,
-  imports: [NgIf, RouterLink],
+  imports: [NgIf, RouterLink, CommonInputsComponent, JsonPipe],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AccountSummaryComponent implements OnInit {
   showError = false;
   contextTokenOptions = '';
-
+  sortOptions = {
+    sortFieldName: 'balance',
+    sortOrder: 'asc',
+  };
+  loaded = false;
+  daasUrl = '';
   ngOnInit() {
     if (!localStorage.getItem('apiConfig')) {
       this.showError = true;
@@ -24,6 +30,10 @@ export class AccountSummaryComponent implements OnInit {
         localStorage.getItem('apiConfig') ?? ''
       );
     }
+    if (localStorage.getItem('daasUrl')) {
+      this.daasUrl = localStorage.getItem('daasUrl') ?? '';
+    }
+    this.loaded = true;
   }
 
   checkExpiry() {

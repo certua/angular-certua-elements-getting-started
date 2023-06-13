@@ -2,19 +2,21 @@ import { RouterLink } from '@angular/router';
 import { CommonModule, NgIf } from '@angular/common';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { add, parseISO } from 'date-fns';
+import { CommonInputsComponent } from '../common-inputs/common-inputs.component';
 
 @Component({
   selector: 'app-manage-connections',
   templateUrl: './manage-connections.component.html',
   styleUrls: ['./manage-connections.component.scss'],
   standalone: true,
-  imports: [NgIf, RouterLink, CommonModule],
+  imports: [NgIf, RouterLink, CommonModule, CommonInputsComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class ManageConnectionsComponent implements OnInit {
   showError = false;
   contextTokenOptions = '';
-
+  loaded = false;
+  daasUrl = '';
   contentOverrides = {
     'certua-ob-provider-permissions': {
       howWeAreUsingData: '<p>[Custom text about how you use data]</p>',
@@ -47,6 +49,10 @@ export class ManageConnectionsComponent implements OnInit {
         localStorage.getItem('apiConfig') ?? ''
       );
     }
+    if (localStorage.getItem('daasUrl')) {
+      this.daasUrl = localStorage.getItem('daasUrl') ?? '';
+    }
+    this.loaded = true;
   }
 
   checkExpiry() {

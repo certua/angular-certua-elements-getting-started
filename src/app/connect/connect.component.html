@@ -15,10 +15,7 @@
         [redirectionConfig]="redirectionConfig"
         [startingPhase]="'AccountList'"
       >
-        <span
-          slot="button"
-          class="ml-auto"
-        ></span>
+        <span slot="button" class="ml-auto"></span>
       </certua-ob-connect>
     </div>
   </div>
@@ -28,8 +25,10 @@
   <pre><code>
     &lt;certua-ob-connect
       [contentOverrides]="contentOverrides"
-      [contextData]="contextData"
-       [redirectionConfig]="redirectionConfig"
+      [redirectionConfig]="redirectionConfig"
+      [contextData]="contextData"&gt;
+      [startingPhase]="'InstitutionSelection'"
+      [daasUrl]="daasUrl"
     &lt;/certua-ob-connect&gt;
     </code>
   </pre>
@@ -39,19 +38,7 @@
       <th>Mandatory</th>
       <th>Description</th>
     </thead>
-    <tbody>
-      <tr>
-        <td>contextData</td>
-        <td>Yes</td>
-        <td>
-          This is a JSON string which contains your context token and user
-          reference. <br /><code>
-            {{
-              '{"contextToken":"FF5D16AAE1ED74E4C8F0E8B6D9E2EB06","ownerId":"1","dateCreated":"2023-03-20T11:17:24.121Z"}'
-            }}
-          </code>
-        </td>
-      </tr>
+    <tbody appCommonInputs>
       <tr>
         <td>contentOverrides</td>
         <td>No</td>
@@ -60,15 +47,6 @@
           to pass to the information screens/modals<br /><code>
             {{ contentOverrides | json }}
           </code>
-        </td>
-      </tr>
-      <tr>
-        <td>daasURL</td>
-        <td>No</td>
-        <td>
-          You can provide a full url to where you have deployed the daas
-          elements library. This can be used when it is not possible to use the
-          default cdn url hosted by Certua.
         </td>
       </tr>
     </tbody>
