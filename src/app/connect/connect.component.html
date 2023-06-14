@@ -1,10 +1,16 @@
-<div class="row" *ngIf="showError">
+<div
+  class="row"
+  *ngIf="showError"
+>
   <div class="col">
     <h3>You do not have a context token</h3>
     <a [routerLink]="'/'">Home</a>
   </div>
 </div>
-<div class="row" *ngIf="!showError">
+<div
+  class="row"
+  *ngIf="!showError"
+>
   <h2>Connect Accounts</h2>
   <p>
     This component can be used to show the currently connected banks and to
@@ -16,9 +22,12 @@
         [contentOverrides]="contentOverrides"
         [contextData]="contextTokenOptions"
         [redirectionConfig]="redirectionConfig"
-        [startingPhase]="'AccountList'"
+        [startingPhase]="'InstitutionSelection'"
       >
-        <span slot="button" class="ml-auto"></span>
+        <span
+          slot="button"
+          class="ml-auto"
+        ></span>
       </certua-ob-connect>
     </div>
   </div>
