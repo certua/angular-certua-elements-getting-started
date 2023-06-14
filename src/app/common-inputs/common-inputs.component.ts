@@ -4,7 +4,7 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { add, parseISO } from 'date-fns';
 
 @Component({
-  selector: '[appCommonInputs]',
+  selector: 'app-common-inputs',
   templateUrl: './common-inputs.component.html',
   styleUrls: ['./common-inputs.component.scss'],
   standalone: true,

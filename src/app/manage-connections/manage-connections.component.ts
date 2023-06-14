@@ -15,6 +15,13 @@ import { CommonInputsComponent } from '../common-inputs/common-inputs.component'
 export class ManageConnectionsComponent implements OnInit {
   showError = false;
   contextTokenOptions = '';
+  redirectionConfig = {
+    successUrl:
+      window.location.origin + '/manage-connections?accountConnection=success',
+    failureUrl:
+      window.location.origin + '/manage-connections?accountConnection=failure',
+    popup: false,
+  };
   loaded = false;
   daasUrl = '';
   contentOverrides = {

@@ -1,7 +1,10 @@
-<div
-  class="row"
-  *ngIf="!showError"
->
+<div class="row" *ngIf="showError">
+  <div class="col">
+    <h3>You do not have a context token</h3>
+    <a [routerLink]="'/'">Home</a>
+  </div>
+</div>
+<div class="row" *ngIf="!showError">
   <h2>Connect Accounts</h2>
   <p>
     This component can be used to show the currently connected banks and to
@@ -32,16 +35,19 @@
     &lt;/certua-ob-connect&gt;
     </code>
   </pre>
+  <h4>Component specific inputs</h4>
   <table class="table">
     <thead>
       <th>Property Name</th>
       <th>Mandatory</th>
+      <th>Region</th>
       <th>Description</th>
     </thead>
-    <tbody appCommonInputs>
+    <tbody>
       <tr>
         <td>contentOverrides</td>
         <td>No</td>
+        <td>UK Only</td>
         <td>
           This is a JSON string which contains any text overrides that you want
           to pass to the information screens/modals<br /><code>
@@ -49,15 +55,29 @@
           </code>
         </td>
       </tr>
+      <tr>
+        <td>startingPhase</td>
+        <td>No</td>
+        <td>All</td>
+        <td>
+          This is a string which controls the starting screen when connecting
+          accounts, this can be <code>AccountList</code> or
+          <code>InstitutionSelection</code>.
+        </td>
+      </tr>
+      <tr>
+        <td>redirectionConfig</td>
+        <td>Yes</td>
+        <td>All</td>
+        <td>
+          This is a JSON string which contains the success or failure
+          redirection Urls, which are used after the connection to the bank.
+          Popup controls whether or not the bank url is shown in the same tab or
+          in a new tab, this defaults to false if not present<br /><code>{{
+            redirectionConfig | json
+          }}</code>
+        </td>
+      </tr>
     </tbody>
   </table>
-</div>
-<div
-  class="row"
-  *ngIf="showError"
->
-  <div class="col">
-    <h3>You do not have a context token</h3>
-    <a [routerLink]="'/'">Home</a>
-  </div>
 </div>
