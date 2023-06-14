@@ -91,12 +91,14 @@ export class HomeComponent {
       `Bearer ${this.accessToken}`
     );
 
-    const body = {
+    let body = {
       'client.integration.datasource.preference': ['OpenBanking', 'Yodlee'],
       'client.integration.user.reference': this.userReference, // this is your reference for your client,
-      'client.integration.user.sub-tenant.reference': '12499',
-      'client.integration.adviser.reference': '9163',
-    };
+    } as any;
+    if (this.countryCode == 'AU') {
+      body['client.integration.sub-tenant.reference'] = '12499';
+      body['client.integration.adviser.reference'] = '9163';
+    }
     this.http
       .post(tokenUrl, body, { headers: httpHeaders })
       .pipe(

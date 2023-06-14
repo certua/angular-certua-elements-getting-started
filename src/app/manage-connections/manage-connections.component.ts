@@ -2,18 +2,26 @@ import { RouterLink } from '@angular/router';
 import { CommonModule, NgIf } from '@angular/common';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { add, parseISO } from 'date-fns';
+import { CommonInputsComponent } from '../common-inputs/common-inputs.component';
 
 @Component({
   selector: 'app-manage-connections',
   templateUrl: './manage-connections.component.html',
   styleUrls: ['./manage-connections.component.scss'],
   standalone: true,
-  imports: [NgIf, RouterLink, CommonModule],
+  imports: [NgIf, RouterLink, CommonModule, CommonInputsComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class ManageConnectionsComponent implements OnInit {
   showError = false;
   contextTokenOptions = '';
+  redirectionConfig = {
+    successUrl:
+      window.location.origin + '/manage-connections?accountConnection=success',
+    failureUrl:
+      window.location.origin + '/manage-connections?accountConnection=failure',
+    popup: false,
+  };
   loaded = false;
   daasUrl = '';
   contentOverrides = {

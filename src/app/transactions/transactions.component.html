@@ -1,7 +1,10 @@
-<div
-  class="row"
-  *ngIf="!showError"
->
+<div class="row" *ngIf="showError">
+  <div class="col">
+    <h3>You do not have a context token</h3>
+    <a [routerLink]="'/'">Home</a>
+  </div>
+</div>
+<div class="row" *ngIf="!showError">
   <h2>Transactions</h2>
   <p>This component can be used to list and search a users transactions</p>
   <certua-ob-transactions
@@ -20,43 +23,14 @@
     &lt;/certua-ob-transactions&gt;
     </code>
   </pre>
+  <h4>Component specific inputs</h4>
   <table class="table">
     <thead>
       <th>Property Name</th>
       <th>Mandatory</th>
+      <th>Region</th>
       <th>Description</th>
     </thead>
-    <tbody>
-      <tr>
-        <td>contextData</td>
-        <td>Yes</td>
-        <td>
-          This is a JSON string which contains your context token and user
-          reference. <br /><code>
-            {{
-              '{"contextToken":"FF5D16AAE1ED74E4C8F0E8B6D9E2EB06","ownerId":"1","dateCreated":"2023-03-20T11:17:24.121Z"}'
-            }}
-          </code>
-        </td>
-      </tr>
-      <tr>
-        <td>daasURL</td>
-        <td>No</td>
-        <td>
-          You can provide a full url to where you have deployed the daas
-          elements library. This can be used when it is not possible to use the
-          default cdn url hosted by Certua.
-        </td>
-      </tr>
-    </tbody>
+    <tbody></tbody>
   </table>
-</div>
-<div
-  class="row"
-  *ngIf="showError"
->
-  <div class="col">
-    <h3>You do not have a context token</h3>
-    <a [routerLink]="'/'">Home</a>
-  </div>
 </div>
