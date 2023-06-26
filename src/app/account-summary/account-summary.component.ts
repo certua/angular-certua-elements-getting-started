@@ -1,6 +1,12 @@
 import { RouterLink } from '@angular/router';
 import { JsonPipe, NgIf } from '@angular/common';
-import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
+import {
+  Component,
+  CUSTOM_ELEMENTS_SCHEMA,
+  inject,
+  NgZone,
+  OnInit,
+} from '@angular/core';
 import { add, parseISO } from 'date-fns';
 import { CommonInputsComponent } from '../common-inputs/common-inputs.component';
 
@@ -13,6 +19,7 @@ import { CommonInputsComponent } from '../common-inputs/common-inputs.component'
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AccountSummaryComponent implements OnInit {
+  ngZone = inject(NgZone);
   showError = false;
   contextTokenOptions = '';
   sortOptions = {
@@ -34,6 +41,7 @@ export class AccountSummaryComponent implements OnInit {
       this.daasUrl = localStorage.getItem('daasUrl') ?? '';
     }
     this.loaded = true;
+    this.listenForEvents();
   }
 
   checkExpiry() {
@@ -52,5 +60,14 @@ export class AccountSummaryComponent implements OnInit {
       let secondary = localStorage.getItem('--secondary');
       root.style.setProperty('--secondary', secondary);
     }
+  }
+
+  accountSummaryEvent: any;
+  //listen for any events emitted by the component
+  listenForEvents() {
+    window.addEventListener('account-summary', (event: any) => {
+      this.accountSummaryEvent = event.detail;
+      console.log('event', event);
+    });
   }
 }

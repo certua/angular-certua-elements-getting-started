@@ -1,10 +1,16 @@
-<div class="row" *ngIf="showError">
+<div
+  class="row"
+  *ngIf="showError"
+>
   <div class="col">
     <h3>You do not have a context token</h3>
     <a [routerLink]="'/'">Home</a>
   </div>
 </div>
-<div class="row" *ngIf="!showError">
+<div
+  class="row"
+  *ngIf="!showError"
+>
   <h2>Account summary list</h2>
   <p>
     This component can be used to show an overview of all connected accounts
@@ -18,8 +24,8 @@
 <div>
   <h4>Example code</h4>
   <pre><code>
-    &lt;certua-ob-account-summary-list 
-    [daasUrl]="daasUrl"
+    &lt;certua-ob-account-summary-list
+      [daasUrl]="daasUrl"
       [contextData]="contextData"&gt;
     &lt;/certua-ob-account-summary-list&gt;
     </code>
@@ -50,4 +56,12 @@
   </table>
   <h4>Common inputs</h4>
   <app-common-inputs></app-common-inputs>
+  <h4>Event bus messages</h4>
+  <p>
+    This component emits the total value of the account balances grouped by
+    currency with the event type of <code>account-summary-balances</code>
+  </p>
+  <pre><code>
+   {{this.accountSummaryEvent |json}}
+    </code></pre>
 </div>
