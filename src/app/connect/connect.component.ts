@@ -15,8 +15,10 @@ import { CommonInputsComponent } from '../common-inputs/common-inputs.component'
 export class ConnectComponent implements OnInit {
   showError = false;
   redirectionConfig = {
-    successUrl: window.location.origin + '/connect?accountConnection=success',
-    failureUrl: window.location.origin + '/connect?accountConnection=failure',
+    successUrl:
+      window.location.origin + '/components/connect?accountConnection=success',
+    failureUrl:
+      window.location.origin + '/components/connect?accountConnection=failure',
     popup: false,
   };
   loaded = false;
