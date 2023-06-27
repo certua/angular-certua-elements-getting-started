@@ -36,7 +36,9 @@
     </div>
 
     <app-ob-setup *ngIf="elementType === 'open-banking'"></app-ob-setup>
-    <p *ngIf="elementType === 'insurance'">Coming soon</p>
+    <app-insurance-setup
+      *ngIf="elementType === 'insurance'"
+    ></app-insurance-setup>
 
     <div
       class="btn btn-link"

@@ -1,6 +1,11 @@
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { JsonPipe, NgIf } from '@angular/common';
-import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
+import {
+  Component,
+  CUSTOM_ELEMENTS_SCHEMA,
+  inject,
+  OnInit,
+} from '@angular/core';
 import { add, parse, parseISO } from 'date-fns';
 import { CommonInputsComponent } from '../common-inputs/common-inputs.component';
 
@@ -13,6 +18,7 @@ import { CommonInputsComponent } from '../common-inputs/common-inputs.component'
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class ConnectComponent implements OnInit {
+  router = inject(Router);
   showError = false;
   redirectionConfig = {
     successUrl:
@@ -49,6 +55,10 @@ export class ConnectComponent implements OnInit {
   };
 
   ngOnInit() {
+    if (localStorage.getItem('elementType') !== 'open-banking') {
+      this.router.navigate(['/components/quote-and-buy']);
+    }
+
     if (!localStorage.getItem('apiConfig')) {
       this.showError = true;
     } else {

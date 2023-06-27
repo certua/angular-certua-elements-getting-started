@@ -33,7 +33,8 @@
   </div>
   <div class="row" id="sidebar">
     <div class="col-md-3 border-end" *ngIf="showNavigation">
-      <div class="list-group mt-4">
+      <div class="list-group mt-4" *ngIf="elementType == 'open-banking'">
+        <p>Open Banking Components</p>
         <a
           routerLink="/components/connect"
           class="list-group-item"
@@ -63,6 +64,15 @@
           routerLinkActive="active"
           class="list-group-item"
           >Cashflow</a
+        >
+      </div>
+      <div class="list-group mt-4" *ngIf="elementType == 'insurance'">
+        <p>Insurance Components</p>
+        <a
+          routerLink="/components/quote-and-buy"
+          class="list-group-item"
+          routerLinkActive="active"
+          >Quote and Buy</a
         >
       </div>
       <nav></nav>

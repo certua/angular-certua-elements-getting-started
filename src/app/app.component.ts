@@ -12,10 +12,15 @@ import { environment } from 'src/environments/environment';
 })
 export class AppComponent implements OnInit {
   openBankingUrl = environment.openBanking.elementsURL + '/main.js';
+
+  quoteAndBuyUrl = environment.insurance.quoteAndBuyURL + '/main.js';
+  insuranceElementsUrl = environment.insurance.elementsURL + '/main.js';
   title = 'get-started-open-baning-angular';
 
   ngOnInit() {
     this.loadScript(this.openBankingUrl, null);
+    this.loadScript(this.quoteAndBuyUrl, null);
+    this.loadScript(this.insuranceElementsUrl, null);
   }
 
   private async loadScript(url: string, onload: any) {

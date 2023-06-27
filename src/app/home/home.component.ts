@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { map, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { InsuranceSetupComponent } from '../insurance/insurance-setup/insurance-setup.component';
 import { ObSetupComponent } from '../open-banking/ob-setup/ob-setup.component';
 
 @Component({
@@ -13,7 +14,13 @@ import { ObSetupComponent } from '../open-banking/ob-setup/ob-setup.component';
   styleUrls: ['./home.component.scss'],
   standalone: true,
   providers: [],
-  imports: [NgIf, FormsModule, RouterModule, ObSetupComponent],
+  imports: [
+    NgIf,
+    FormsModule,
+    RouterModule,
+    ObSetupComponent,
+    InsuranceSetupComponent,
+  ],
 })
 export class HomeComponent implements OnInit {
   elementType: string = '';

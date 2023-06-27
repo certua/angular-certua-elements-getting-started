@@ -1,0 +1,37 @@
+<div class="row" *ngIf="showError">
+  <div class="col">
+    <h3>There is an issue with the site configuration</h3>
+    <a routerLink="/">Home</a>
+  </div>
+</div>
+<div class="row" *ngIf="!showError">
+  <h2>Quote and buy</h2>
+  <p>This component displays a Quote and buy Journey</p>
+  <mf-insurance-journey
+    [config]="config"
+    [accesstoken]="accessToken"
+    *ngIf="!!loaded"
+  ></mf-insurance-journey>
+</div>
+<div>
+  <h4>Example code</h4>
+  <pre><code>
+    &lt;mf-insurance-journey 
+      [config]="config"
+      [accesstoken]="accessToken"
+    &lt;/mf-insurance-journey &gt;
+    </code>
+  </pre>
+  <h4>Component specific inputs</h4>
+  <table class="table">
+    <thead>
+      <th>Property Name</th>
+      <th>Mandatory</th>
+
+      <th>Description</th>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <app-insurance-common-inputs></app-insurance-common-inputs>
+</div>

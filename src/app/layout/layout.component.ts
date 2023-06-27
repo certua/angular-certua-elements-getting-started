@@ -21,7 +21,7 @@ import { filter, map, tap } from 'rxjs';
 })
 export class LayoutComponent implements OnInit {
   showNavigation = false;
-
+  elementType: string = '';
   private activatedRoute = inject(ActivatedRoute);
   private router = inject(Router);
   ngOnInit() {
@@ -31,6 +31,9 @@ export class LayoutComponent implements OnInit {
         tap((event: any) => {
           let homeurl = event['url'].includes('home') || event['url'] === '/';
           this.showNavigation = !homeurl;
+
+          let type: string = localStorage.getItem('elementType') ?? '';
+          this.elementType = type;
         })
       )
       .subscribe();

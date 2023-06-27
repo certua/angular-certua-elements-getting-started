@@ -1,0 +1,48 @@
+<div class="row">
+  <div class="col-md-6 offset-md-3 text-center">
+    <h3>Insurance Elements</h3>
+    <!-- Start INS Setup Steps -->
+
+    <div class="row" *ngIf="step == Step.ReferrerCode">
+      <div class="col">
+        <h3>Firstly, we need your site code</h3>
+        <div class="text-start">
+          <label for="referrerId" class="form-label">Site Code</label>
+          <input
+            id="referrerId"
+            type="text"
+            class="form-control"
+            [(ngModel)]="referrerCode"
+          />
+
+          <button class="btn btn-primary mt-2" (click)="setReferrer()">
+            Set site code
+          </button>
+          <button class="btn btn-secondary mt-2 ms-2" (click)="setReferrer('')">
+            Use demo site
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="row" *ngIf="step == Step.Success">
+      <div class="col">
+        <h3>Success you can now start using Insurance elements</h3>
+        <button class="btn btn-link" (click)="goToComponents()">
+          Go to components
+        </button>
+        <button class="btn btn-secondary mt-2 ms-2" (click)="startAgain()">
+          Start again
+        </button>
+      </div>
+    </div>
+    <div class="row" *ngIf="step == Step.Error">
+      <div class="col">
+        <h3>Something went wrong. Please try again</h3>
+        <button class="btn btn-primary mt-3" (click)="reset()">
+          Try again
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
