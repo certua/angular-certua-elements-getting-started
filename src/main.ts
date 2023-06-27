@@ -7,9 +7,8 @@ import { BrowserModule, bootstrapApplication } from '@angular/platform-browser';
 import { provideHttpClient } from '@angular/common/http';
 import { environment } from './environments/environment';
 declare var __webpack_public_path__: string;
-if (environment.environmentName !== 'local') {
-  __webpack_public_path__ = 'angular';
-}
+
+__webpack_public_path__ = 'angular';
 
 bootstrapApplication(AppComponent, {
   providers: [
