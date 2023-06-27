@@ -1,23 +1,22 @@
 $primary: #007fc6;
 $secondary: #5c636a;
 $theme-colors: (
-  "primary": $primary,
-  "secondary": $secondary,
-  "danger": #ff4136,
-  "grey": #f4f5f7,
+  'primary': $primary,
+  'secondary': $secondary,
+  'danger': #ff4136,
+  'grey': #f4f5f7,
 ) !default;
 
-@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;800&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;800&display=swap');
 /* You can add global styles to this file, and also import other style files */
-@import "bootstrap/dist/css/bootstrap.min.css";
-@import "bootstrap";
+@import 'bootstrap/dist/css/bootstrap';
 
 .btn-primary {
   color: white !important;
 }
 
 body {
-  font-family: "Nunito Sans";
+  font-family: 'Nunito Sans';
   font-weight: 400;
   font-size: 16px;
 }
