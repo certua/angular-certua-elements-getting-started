@@ -79,7 +79,7 @@ orbs:
   node: circleci/node@5.1.0
 version: 2.1
 workflows:
-  getting-started-vue:
+  getting-started-angular:
     jobs:
       - build:
           filters:
