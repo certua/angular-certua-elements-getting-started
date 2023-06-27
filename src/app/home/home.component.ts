@@ -4,6 +4,7 @@ import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { map, tap } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 export enum Step {
   AccessToken,
@@ -49,17 +50,9 @@ export class HomeComponent {
   }
 
   getAccessToken() {
-    // const authUrl =
-    //   'https://iqdevauth.certua.io/oauth/token?grant_type=client_credentials';
-    //STAGING URL
-    const authUKUrl =
-      'https://identitydev.certua.io/realms/Certua/protocol/openid-connect/token';
-    const authAUUrl =
-      'https://identitydev-au.certua.io/realms/Certua/protocol/openid-connect/token';
-    // UK 'https://identitydev.certua.io/oauth/token?grant_type=client_credentials';
-    //STAGING URL
-    //const authUrl =
-    //  'https://iqstgauth.certua.io/oauth/token?grant_type=client_credentials';
+    const authUKUrl = environment.openBanking.UK.authURL;
+    const authAUUrl = environment.openBanking.AU.authURL;
+
     const authUrl = this.countryCode === 'UK' ? authUKUrl : authAUUrl;
     const basicAuth = btoa(`${this.username}:${this.password}`);
     const body = new HttpParams().set('grant_type', 'client_credentials');
@@ -79,11 +72,8 @@ export class HomeComponent {
   }
 
   getContextToken() {
-    const tokenAUUrl = 'https://apidev-au.certua.io/daas/app/token';
-    const tokenUKUrl = 'https://apidev.certua.io/daas/app/token';
-
-    //STG
-    //const tokenUrl = 'https://apistg.certua.io/daas/app/token';
+    const tokenAUUrl = environment.openBanking.AU.apiURL;
+    const tokenUKUrl = environment.openBanking.UK.apiURL;
 
     const tokenUrl = this.countryCode === 'UK' ? tokenUKUrl : tokenAUUrl;
     let httpHeaders = new HttpHeaders().set(
