@@ -39,20 +39,5 @@
     <app-insurance-setup
       *ngIf="elementType === 'insurance'"
     ></app-insurance-setup>
-
-    <div
-      class="btn btn-link"
-      *ngIf="elementType == 'insurance'"
-      (click)="setType('open-banking')"
-    >
-      Switch to Open Banking Elements
-    </div>
-    <div
-      class="btn btn-link"
-      *ngIf="elementType == 'open-banking'"
-      (click)="setType('insurance')"
-    >
-      Switch to Insurance Elements
-    </div>
   </div>
 </div>

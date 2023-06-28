@@ -1,17 +1,11 @@
 <div class="container-fluid">
-  <div
-    class="row bg-grey border-bottom"
-    id="header"
-  >
+  <div class="row bg-grey border-bottom" id="header">
     <div class="col px-0">
       <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-          <a
-            class="navbar-brand"
-            href="/"
-          >
+          <a class="navbar-brand" href="/">
             <div class="d-flex justify-items-center">
-              <img src="assets/certua.png" /></div
+              <img (click)="removeType()" src="assets/certua.png" /></div
           ></a>
           <button
             class="navbar-toggler"
@@ -24,10 +18,7 @@
           >
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div
-            class="collapse navbar-collapse"
-            id="navbarSupportedContent"
-          >
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto">
               <li class="nav-item">
                 <a
@@ -53,18 +44,9 @@
       </nav>
     </div>
   </div>
-  <div
-    class="row"
-    id="sidebar"
-  >
-    <div
-      class="col-md-3 border-end"
-      *ngIf="showNavigation"
-    >
-      <div
-        class="list-group mt-4"
-        *ngIf="elementType == 'open-banking'"
-      >
+  <div class="row" id="sidebar">
+    <div class="col-md-3 border-end" *ngIf="showNavigation">
+      <div class="list-group mt-4" *ngIf="elementType == 'open-banking'">
         <p>Open Banking Components</p>
         <a
           routerLink="/components/connect"
@@ -97,10 +79,7 @@
           >Cashflow</a
         >
       </div>
-      <div
-        class="list-group mt-4"
-        *ngIf="elementType == 'insurance'"
-      >
+      <div class="list-group mt-4" *ngIf="elementType == 'insurance'">
         <p>Insurance Components</p>
         <a
           routerLink="/components/quote-and-buy"

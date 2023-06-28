@@ -39,5 +39,12 @@ export class LayoutComponent implements OnInit {
       .subscribe();
     const home = location.pathname.includes('home');
     this.showNavigation = !home;
+    let type: string = localStorage.getItem('elementType') ?? '';
+    this.elementType = type;
+  }
+
+  removeType() {
+    this.elementType = '';
+    localStorage.removeItem('elementType');
   }
 }
