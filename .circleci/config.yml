@@ -90,6 +90,8 @@ workflows:
                 - staging
                 - master
       - deploy:
+          context:
+            - Gettingstarted
           filters:
             branches:
               only:
