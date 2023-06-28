@@ -28,7 +28,9 @@ export class QuoteAndBuyComponent implements OnInit {
   loaded = false;
 
   ngOnInit() {
-    if (localStorage.getItem('elementType') !== 'insurance') {
+    if (!localStorage.getItem('elementType')) {
+      this.router.navigate(['/home']);
+    } else if (localStorage.getItem('elementType') == 'open-banking') {
       this.router.navigate(['/components/connect']);
     }
 

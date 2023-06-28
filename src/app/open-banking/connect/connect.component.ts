@@ -64,7 +64,9 @@ export class ConnectComponent implements OnInit {
   };
 
   ngOnInit() {
-    if (localStorage.getItem('elementType') !== 'open-banking') {
+    if (!localStorage.getItem('elementType')) {
+      this.router.navigate(['/home']);
+    } else if (localStorage.getItem('elementType') == 'insurance') {
       this.router.navigate(['/components/quote-and-buy']);
     }
 
