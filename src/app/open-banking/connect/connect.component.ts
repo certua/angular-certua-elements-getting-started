@@ -29,9 +29,11 @@ export class ConnectComponent implements OnInit {
   showError = false;
   redirectionConfig = {
     successUrl:
-      window.location.origin + '/components/connect?accountConnection=success',
+      window.location.origin +
+      '/angular/components/connect?accountConnection=success',
     failureUrl:
-      window.location.origin + '/components/connect?accountConnection=failure',
+      window.location.origin +
+      '/angular/components/connect?accountConnection=failure',
     popup: false,
   };
   loaded = false;
