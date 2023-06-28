@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "get-started-open-baning-angular": {
+    "get-started-open-banking-angular": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -79,7 +79,6 @@
               "optimization": false,
               "extractLicenses": false,
               "sourceMap": true,
-              "namedChunks": true,
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
@@ -90,10 +89,8 @@
             "local": {
               "buildOptimizer": false,
               "optimization": false,
-              "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
-              "namedChunks": true,
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
@@ -122,10 +119,13 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "get-started-open-baning-angular:build:production"
+              "browserTarget": "get-started-open-banking-angular:build:production"
             },
             "development": {
-              "browserTarget": "get-started-open-baning-angular:build:development"
+              "browserTarget": "get-started-open-banking-angular:build:development"
+            },
+            "local": {
+              "browserTarget": "get-started-open-banking-angular:build:local"
             }
           },
           "defaultConfiguration": "development"
@@ -133,7 +133,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "get-started-open-baning-angular:build"
+            "browserTarget": "get-started-open-banking-angular:build"
           }
         },
         "test": {

@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
 
   quoteAndBuyUrl = environment.insurance.quoteAndBuyURL + '/main.js';
   insuranceElementsUrl = environment.insurance.elementsURL + '/main.js';
-  title = 'get-started-open-baning-angular';
+  title = 'get-started-open-banking-angular';
 
   ngOnInit() {
     this.loadScript(this.openBankingUrl, null);

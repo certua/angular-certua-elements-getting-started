@@ -1,9 +1,10 @@
 {
-  "name": "get-started-open-baning-angular",
+  "name": "get-started-open-banking-angular",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "start:local": "ng serve --configuration local",
     "build": "ng build",
     "build:stg": "ng build --configuration stg",
     "build:dev": "ng build --configuration development",
