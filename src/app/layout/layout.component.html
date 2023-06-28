@@ -1,32 +1,54 @@
 <div class="container-fluid">
-  <div class="row bg-grey border-bottom" id="header">
+  <div
+    class="row bg-grey border-bottom"
+    id="header"
+  >
     <div class="col">
       <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <a class="navbar-brand" href="/">
-          <div class="d-flex justify-items-center">
-            <img src="assets/certua.png" /></div
-        ></a>
-        <div class="collapse navbar-collapse">
-          <ul class="navbar-nav me-auto">
-            <li class="nav-item">
-              <a
-                [routerLink]="'/home'"
-                routerLinkActive="text-primary"
-                [routerLinkActiveOptions]="{ exact: true }"
-                class="nav-link"
-                >Home</a
-              >
-            </li>
-            <li class="nav-item">
-              <a
-                [routerLink]="'/components'"
-                routerLinkActive="text-primary"
-                [routerLinkActiveOptions]="{ exact: false }"
-                class="nav-link"
-                >Components</a
-              >
-            </li>
-          </ul>
+        <div class="container-fluid">
+          <a
+            class="navbar-brand"
+            href="/"
+          >
+            <div class="d-flex justify-items-center">
+              <img src="assets/certua.png" /></div
+          ></a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div
+            class="collapse navbar-collapse"
+            id="navbarSupportedContent"
+          >
+            <ul class="navbar-nav me-auto">
+              <li class="nav-item">
+                <a
+                  [routerLink]="'/home'"
+                  routerLinkActive="text-primary"
+                  [routerLinkActiveOptions]="{ exact: true }"
+                  class="nav-link"
+                  >Home</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  [routerLink]="'/components'"
+                  routerLinkActive="text-primary"
+                  [routerLinkActiveOptions]="{ exact: false }"
+                  class="nav-link"
+                  >Components</a
+                >
+              </li>
+            </ul>
+          </div>
         </div>
       </nav>
     </div>

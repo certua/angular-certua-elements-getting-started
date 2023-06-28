@@ -1,10 +1,9 @@
-<div class="row" *ngIf="showError">
-  <div class="col">
-    <h3>You do not have a context token</h3>
-    <a [routerLink]="'/'">Home</a>
-  </div>
-</div>
-<div class="row" *ngIf="!showError">
+<app-no-token-error *ngIf="showError"></app-no-token-error>
+
+<div
+  class="row"
+  *ngIf="!showError"
+>
   <h2>Transactions</h2>
   <p>This component can be used to list and search a users transactions</p>
   <certua-ob-transactions
@@ -17,7 +16,7 @@
 <div>
   <h4>Example code</h4>
   <pre><code>
-    &lt;certua-ob-transactions 
+    &lt;certua-ob-transactions
     [daasUrl]="daasUrl"
       [contextData]="contextData"&gt;
     &lt;/certua-ob-transactions&gt;

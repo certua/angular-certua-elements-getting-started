@@ -9,13 +9,20 @@ import {
 } from '@angular/core';
 import { add, parseISO } from 'date-fns';
 import { CommonInputsComponent } from '../common-inputs/common-inputs.component';
+import { NoTokenErrorComponent } from '../no-token-error/no-token-error.component';
 
 @Component({
   selector: 'app-account-summary',
   templateUrl: './account-summary.component.html',
   styleUrls: ['./account-summary.component.scss'],
   standalone: true,
-  imports: [NgIf, RouterLink, CommonInputsComponent, JsonPipe],
+  imports: [
+    NgIf,
+    RouterLink,
+    CommonInputsComponent,
+    JsonPipe,
+    NoTokenErrorComponent,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AccountSummaryComponent implements OnInit {

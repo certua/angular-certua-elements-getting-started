@@ -1,12 +1,5 @@
-<div
-  class="row"
-  *ngIf="showError"
->
-  <div class="col">
-    <h3>You do not have a context token</h3>
-    <a [routerLink]="'/'">Home</a>
-  </div>
-</div>
+<app-no-token-error *ngIf="showError"></app-no-token-error>
+
 <div
   class="row"
   *ngIf="!showError"

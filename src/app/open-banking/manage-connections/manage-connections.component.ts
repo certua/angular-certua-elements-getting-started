@@ -3,13 +3,20 @@ import { CommonModule, NgIf } from '@angular/common';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { add, parseISO } from 'date-fns';
 import { CommonInputsComponent } from '../common-inputs/common-inputs.component';
+import { NoTokenErrorComponent } from '../no-token-error/no-token-error.component';
 
 @Component({
   selector: 'app-manage-connections',
   templateUrl: './manage-connections.component.html',
   styleUrls: ['./manage-connections.component.scss'],
   standalone: true,
-  imports: [NgIf, RouterLink, CommonModule, CommonInputsComponent],
+  imports: [
+    NgIf,
+    RouterLink,
+    CommonModule,
+    CommonInputsComponent,
+    NoTokenErrorComponent,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class ManageConnectionsComponent implements OnInit {

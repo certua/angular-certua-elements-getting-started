@@ -8,12 +8,19 @@ import {
 } from '@angular/core';
 import { add, parse, parseISO } from 'date-fns';
 import { CommonInputsComponent } from '../common-inputs/common-inputs.component';
+import { NoTokenErrorComponent } from '../no-token-error/no-token-error.component';
 
 @Component({
   selector: 'app-connect',
   templateUrl: './connect.component.html',
   styleUrls: ['./connect.component.scss'],
-  imports: [NgIf, RouterLink, JsonPipe, CommonInputsComponent],
+  imports: [
+    NgIf,
+    RouterLink,
+    JsonPipe,
+    CommonInputsComponent,
+    NoTokenErrorComponent,
+  ],
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
