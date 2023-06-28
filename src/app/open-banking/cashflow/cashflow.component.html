@@ -1,9 +1,6 @@
 <app-no-token-error *ngIf="showError"></app-no-token-error>
 
-<div
-  class="row"
-  *ngIf="!showError"
->
+<div class="row" *ngIf="!showError">
   <h2>Cashflow</h2>
   <p>
     This component can be used to display a graph of a users income vs
@@ -26,22 +23,21 @@
     </code>
   </pre>
   <h4>Component specific inputs</h4>
-  <table class="table">
-    <thead>
-      <th>Property Name</th>
-      <th>Mandatory</th>
-      <th>Region</th>
-      <th>Description</th>
-    </thead>
-    <tbody></tbody>
-  </table>
-</div>
-<div
-  class="row"
-  *ngIf="showError"
->
-  <div class="col">
-    <h3>You do not have a context token</h3>
-    <a [routerLink]="'/'">Home</a>
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <th>Property Name</th>
+        <th>Mandatory</th>
+        <th>Region</th>
+        <th>Description</th>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+  <div class="row" *ngIf="showError">
+    <div class="col">
+      <h3>You do not have a context token</h3>
+      <a [routerLink]="'/'">Home</a>
+    </div>
   </div>
 </div>

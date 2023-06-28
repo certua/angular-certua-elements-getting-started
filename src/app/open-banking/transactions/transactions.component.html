@@ -1,9 +1,6 @@
 <app-no-token-error *ngIf="showError"></app-no-token-error>
 
-<div
-  class="row"
-  *ngIf="!showError"
->
+<div class="row" *ngIf="!showError">
   <h2>Transactions</h2>
   <p>This component can be used to list and search a users transactions</p>
   <certua-ob-transactions
@@ -23,13 +20,15 @@
     </code>
   </pre>
   <h4>Component specific inputs</h4>
-  <table class="table">
-    <thead>
-      <th>Property Name</th>
-      <th>Mandatory</th>
-      <th>Region</th>
-      <th>Description</th>
-    </thead>
-    <tbody></tbody>
-  </table>
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <th>Property Name</th>
+        <th>Mandatory</th>
+        <th>Region</th>
+        <th>Description</th>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
 </div>
