@@ -11,11 +11,18 @@ import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SelectMultipleControlValueAccessor } from '@angular/forms';
 import { filter, map, tap } from 'rxjs';
+import { CommonInputsComponent } from '../open-banking/common-inputs/common-inputs.component';
 
 @Component({
   selector: 'app-layout',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, RouterLink, RouterLinkActive],
+  imports: [
+    CommonModule,
+    RouterOutlet,
+    RouterLink,
+    RouterLinkActive,
+    CommonInputsComponent,
+  ],
   templateUrl: './layout.component.html',
   styleUrls: ['./layout.component.scss'],
 })

@@ -1,9 +1,6 @@
 <app-no-token-error *ngIf="showError"></app-no-token-error>
 
-<div
-  class="row"
-  *ngIf="!showError"
->
+<div class="row" *ngIf="!showError">
   <h2>Account summary list</h2>
   <p>
     This component can be used to show an overview of all connected accounts
@@ -23,32 +20,7 @@
     &lt;/certua-ob-account-summary-list&gt;
     </code>
   </pre>
-  <h4>Component specific inputs</h4>
-  <table class="table">
-    <thead>
-      <th>Property Name</th>
-      <th>Mandatory</th>
-      <th>Region</th>
-      <th>Description</th>
-    </thead>
-    <tbody>
-      <tr>
-        <td>sortOptions</td>
-        <td>No</td>
-        <td>All</td>
-        <td>
-          This is JSON which allows you to set the sortFieldName and sortOrder.
-          Currently limited to sortFieldName must be 'balance' and sortOrder
-          'asc' or 'desc'. If this is not passed then they are ordered by
-          Provider name
-          <br />
-          <code> {{ sortOptions | json }} </code>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-  <h4>Common inputs</h4>
-  <app-common-inputs></app-common-inputs>
+
   <h4>Event bus messages</h4>
   <p>
     This component emits the total value of the account balances grouped by
@@ -57,4 +29,30 @@
   <pre><code>
    {{this.accountSummaryEvent |json}}
     </code></pre>
+  <h4>Component specific inputs</h4>
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <th>Property Name</th>
+        <th>Mandatory</th>
+        <th>Region</th>
+        <th>Description</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>sortOptions</td>
+          <td>No</td>
+          <td>All</td>
+          <td>
+            This is JSON which allows you to set the sortFieldName and
+            sortOrder. Currently limited to sortFieldName must be 'balance' and
+            sortOrder 'asc' or 'desc'. If this is not passed then they are
+            ordered by Provider name
+            <br />
+            <code> {{ sortOptions | json }} </code>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
