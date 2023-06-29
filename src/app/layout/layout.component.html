@@ -46,46 +46,55 @@
   </div>
   <div class="row" id="sidebar">
     <div class="col-md-3 border-end" *ngIf="showNavigation">
-      <div class="list-group mt-4" *ngIf="elementType == 'open-banking'">
-        <p>Open Banking Components</p>
-        <a
-          routerLink="/components/connect"
+      <app-tab-arrows #tabArrows class="d-md-none"></app-tab-arrows>
+      <div
+        class="list-group mt-4 d-flex flex-md-column flex-row overflow-auto mx-1"
+        id="items"
+        *ngIf="elementType == 'open-banking'"
+      >
+        <span
+          (click)="selectItem(0, '/components/connect')"
           class="list-group-item"
-          routerLinkActive="active"
-          >Connect</a
+          [class.active]="selectedIndex == 0"
+          >Connect</span
         >
-        <a
-          routerLink="/components/manage-connections"
-          routerLinkActive="active"
+        <span
+          (click)="selectItem(1, '/components/manage-connections')"
           class="list-group-item"
-          >Manage Connections</a
+          [class.active]="selectedIndex == 1"
+          >Manage Connections</span
         >
-        <a
-          routerLink="/components/account-summary"
-          routerLinkActive="active"
+        <span
+          (click)="selectItem(2, '/components/account-summary')"
           class="list-group-item"
+          [class.active]="selectedIndex == 2"
           >Account Summary
-        </a>
-        <a
-          routerLink="/components/transactions"
-          routerLinkActive="active"
+        </span>
+        <span
+          (click)="selectItem(3, '/components/transactions')"
           class="list-group-item"
-          >Transactions</a
+          [class.active]="selectedIndex == 3"
+          >Transactions</span
         >
-        <a
-          routerLink="/components/cashflow"
-          routerLinkActive="active"
+        <span
+          (click)="selectItem(4, '/components/cashflow')"
           class="list-group-item"
-          >Cashflow</a
+          [class.active]="selectedIndex == 4"
+        >
+          Cashflow</span
         >
       </div>
-      <div class="list-group mt-4" *ngIf="elementType == 'insurance'">
-        <p>Insurance Components</p>
-        <a
-          routerLink="/components/quote-and-buy"
+      <div
+        class="list-group mt-4 d-flex flex-md-column flex-row overflow-auto mx-1"
+        id="items"
+        *ngIf="elementType == 'insurance'"
+      >
+        <span
+          (click)="selectItem(0, '/components/quote-and-buy')"
           class="list-group-item"
-          routerLinkActive="active"
-          >Quote and Buy</a
+          [class.active]="selectedIndex == 0"
+        >
+          Quote and Buy</span
         >
       </div>
       <nav></nav>
