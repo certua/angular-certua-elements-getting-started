@@ -67,7 +67,7 @@ jobs:
           command: |
             echo "clearing language choice homepage"
             aws s3 rm s3://${BUCKET}/index.html --recursive 
-            echo "S3 copy up index html choice page
+            echo "S3 copy up index html choice page"
             aws s3 cp language-choice-homepage s3://${BUCKET} --recursive --acl public-read
             echo "clearing ${BUCKET}"
             aws s3 rm s3://${BUCKET}/angular --recursive 
