@@ -18,7 +18,7 @@
           "builder": "@angular-devkit/build-angular:browser-esbuild",
           "options": {
             "baseHref": "/angular/",
-            "outputPath": "dist",
+            "outputPath": "dist/angular-certua-elements-getting-started",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": ["zone.js"],

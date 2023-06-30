@@ -68,11 +68,11 @@ jobs:
             echo "clearing language choice homepage"
             aws s3 rm s3://${BUCKET}/index.html --recursive 
             echo "S3 copy up index html choice page"
-            aws s3 cp language-choice-homepage s3://${BUCKET} --recursive --acl public-read
+            aws s3 cp dist/assets/index.html s3://${BUCKET} --recursive --acl public-read
             echo "clearing ${BUCKET}"
             aws s3 rm s3://${BUCKET}/angular --recursive 
             echo "S3 copy up all other files to getting started angular folder"
-            aws s3 cp dist s3://${BUCKET}/angular --recursive --acl public-read
+            aws s3 cp dist/angular-certua-elements-getting-started s3://${BUCKET}/angular --recursive --acl public-read
             echo "CloudFront update cache - getting started angular - ${BUCKET}"
             aws configure set preview.cloudfront true
             aws cloudfront create-invalidation --distribution-id ${DISTRIBUTION_ID} --paths '/*'
