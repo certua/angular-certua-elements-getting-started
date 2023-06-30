@@ -11,18 +11,25 @@ import { environment } from 'src/environments/environment';
   imports: [NgSwitch, NgSwitchDefault, NgSwitchCase, RouterOutlet, RouterLink],
 })
 export class AppComponent implements OnInit {
+  title = 'get-started-open-banking-angular';
+  elementType: string = '';
   openBankingUrl = environment.openBanking.elementsURL + '/main.js';
 
   quoteAndBuyUrl = environment.insurance.quoteAndBuyURL + '/main.js';
   insuranceElementsUrl = environment.insurance.elementsURL + '/main.js';
-  title = 'get-started-open-banking-angular';
-
   ngOnInit() {
-    this.loadScript(this.openBankingUrl, null);
-    this.loadScript(this.quoteAndBuyUrl, null);
-    this.loadScript(this.insuranceElementsUrl, null);
-  }
+    let type = localStorage.getItem('elementType');
+    if (!!type) {
+      this.elementType = type;
 
+      if (type == 'open-banking') {
+        this.loadScript(this.openBankingUrl, null);
+      } else {
+        this.loadScript(this.quoteAndBuyUrl, null);
+        this.loadScript(this.insuranceElementsUrl, null);
+      }
+    }
+  }
   private async loadScript(url: string, onload: any) {
     const componentJS = document.createElement('script');
     componentJS.async = true;

@@ -24,7 +24,10 @@ import { ObSetupComponent } from '../open-banking/ob-setup/ob-setup.component';
 })
 export class HomeComponent implements OnInit {
   elementType: string = '';
+  openBankingUrl = environment.openBanking.elementsURL + '/main.js';
 
+  quoteAndBuyUrl = environment.insurance.quoteAndBuyURL + '/main.js';
+  insuranceElementsUrl = environment.insurance.elementsURL + '/main.js';
   ngOnInit() {
     let type = localStorage.getItem('elementType');
     if (!!type) {
@@ -34,5 +37,22 @@ export class HomeComponent implements OnInit {
   setType(type: string) {
     localStorage.setItem('elementType', type);
     this.elementType = type;
+    if (type == 'open-banking') {
+      this.loadScript(this.openBankingUrl, null);
+    } else {
+      this.loadScript(this.quoteAndBuyUrl, null);
+      this.loadScript(this.insuranceElementsUrl, null);
+    }
+  }
+
+  private async loadScript(url: string, onload: any) {
+    const componentJS = document.createElement('script');
+    componentJS.async = true;
+    componentJS.defer = true;
+    componentJS.src = url;
+    componentJS.type = 'module';
+    //componentJS.src = url + `?v=${this._initialCacheDate.toString()}`;
+    componentJS.onload = onload;
+    document.head.appendChild(componentJS);
   }
 }
