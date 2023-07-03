@@ -52,6 +52,9 @@ export class InsuranceSetupComponent {
     );
   }
 
+  setDefaultReferrer() {
+    this.setReferrer(environment.insurance.demoSiteCode);
+  }
   startAgain() {
     localStorage.clear();
     this.router.navigate(['/components/connect']);
