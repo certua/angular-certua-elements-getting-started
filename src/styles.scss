@@ -43,3 +43,35 @@ code {
   z-index: 999;
   background-color: white;
 }
+.element-box {
+  height: 150px;
+}
+
+.font-weight-bold {
+  font-weight: 700;
+  color: #000;
+}
+
+i {
+  color: #007fc6 !important;
+}
+
+.subtitle {
+  font-size: 24px !important;
+}
+
+.circle-icon {
+  background: #e5f6ff;
+
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+  text-align: center;
+  margin: 5px 0 0 0;
+  display: flex;
+  padding: 3px;
+  height: 60px;
+  width: 60px;
+  margin-left: auto;
+  margin-right: auto;
+}
