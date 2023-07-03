@@ -68,7 +68,6 @@ jobs:
             echo "clearing language choice homepage"
             aws s3 rm s3://${BUCKET}/index.html --recursive 
             echo "S3 copy up index html choice page"
-            aws s3 cp dist/angular-certua-elements-getting-started/assets/index.html s3://${BUCKET} --recursive --acl public-read
             echo "clearing ${BUCKET}"
             aws s3 rm s3://${BUCKET}/angular --recursive 
             echo "S3 copy up all other files to getting started angular folder"
