@@ -8,6 +8,9 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AccountSummaryComponent } from './open-banking/account-summary/account-summary.component';
 import { QuoteAndBuyComponent } from './insurance/quote-and-buy/quote-and-buy.component';
+import { FnolComponent } from './insurance/fnol/fnol.component';
+import { ClaimsComponent } from './insurance/claims/claims.component';
+import { QuickQuoteComponent } from './insurance/quick-quote/quick-quote.component';
 
 const routes: Routes = [
   {
@@ -54,6 +57,18 @@ const routes: Routes = [
           {
             path: 'quote-and-buy',
             component: QuoteAndBuyComponent,
+          },
+          {
+            path: 'fnol',
+            component: FnolComponent,
+          },
+          {
+            path: 'claims',
+            component: ClaimsComponent,
+          },
+          {
+            path: 'quick-quote',
+            component: QuickQuoteComponent,
           },
         ],
       },

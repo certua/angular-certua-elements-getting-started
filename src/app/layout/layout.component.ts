@@ -90,7 +90,8 @@ export class LayoutComponent implements OnInit {
         this.selectedIndex = 2;
         break;
       }
-      case 'transactions': {
+      case 'transactions':
+      case 'quick-quote': {
         this.selectedIndex = 3;
         break;
       }
