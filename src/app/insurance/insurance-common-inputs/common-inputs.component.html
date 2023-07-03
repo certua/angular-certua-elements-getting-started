@@ -7,7 +7,7 @@
       <th>Description</th>
     </thead>
     <tbody>
-      <tr>
+      <tr *ngIf="quoteAndBuy">
         <td>config</td>
         <td>Yes</td>
 
@@ -16,11 +16,17 @@
           and buy journey integration<br /><code>{{ config | json }}}</code>
         </td>
       </tr>
-      <tr>
+      <tr *ngIf="quoteAndBuy">
         <td>accesstoken</td>
         <td>Yes</td>
 
         <td>Pass null if no access token available or for anonymous journey</td>
+      </tr>
+      <tr *ngIf="!quoteAndBuy">
+        <td>referrerSiteCode</td>
+        <td>Yes</td>
+
+        <td>This is a string containing the Guid of your referrerSiteCode</td>
       </tr>
     </tbody>
   </table>
