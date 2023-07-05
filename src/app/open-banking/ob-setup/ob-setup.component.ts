@@ -83,11 +83,11 @@ export class ObSetupComponent {
 
     let body = {
       'client.integration.datasource.preference': ['OpenBanking', 'Yodlee'],
-      'client.integration.user.reference': this.userReference, // this is your reference for your client,
+      'client.integration.user.reference': this.userReference, // this is your reference for your client (end user),
     } as any;
     if (this.countryCode == 'AU') {
-      body['client.integration.sub-tenant.reference'] = '12499';
-      body['client.integration.adviser.reference'] = '9163';
+      body['client.integration.sub-tenant.reference'] = '12499'; // this is your sub-tenant reference
+      body['client.integration.adviser.reference'] = '9163'; // this is the adviser reference for the sub-tenant
     }
     this.http
       .post(tokenUrl, body, { headers: httpHeaders })

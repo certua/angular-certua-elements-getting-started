@@ -121,6 +121,12 @@
             "production": {
               "browserTarget": "get-started-open-banking-angular:build:production"
             },
+            "stg": {
+              "browserTarget": "get-started-open-banking-angular:build:stg"
+            },
+            "qa": {
+              "browserTarget": "get-started-open-banking-angular:build:qa"
+            },
             "development": {
               "browserTarget": "get-started-open-banking-angular:build:development"
             },
