@@ -1,16 +1,15 @@
 #header {
-  height: 5vh;
   font-size: 15px;
   font-weight: 700;
 }
 
 #sidebar {
-  height: 95vh;
   font-size: 14px;
   .list-group-item {
     border: none !important;
     border-radius: 2px !important;
     font-weight: 700 !important;
+    white-space: nowrap !important;
 
     &.active {
       background: #007fc626 !important;

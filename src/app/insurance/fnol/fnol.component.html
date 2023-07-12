@@ -1,0 +1,38 @@
+<div class="row" *ngIf="showError">
+  <div class="col">
+    <h3>There is an issue with the site configuration</h3>
+    <a routerLink="/">Home</a>
+  </div>
+</div>
+<div class="row" *ngIf="!showError">
+  <h2>First Notification of Loss (FNOL)</h2>
+  <p>This component displays a FNOL Form</p>
+  <certua-insurance-fnol
+    [referrerSiteCode]="config?.referrerId"
+    *ngIf="!!loaded"
+  ></certua-insurance-fnol>
+</div>
+<div>
+  <h4>Example code</h4>
+  <pre><code>
+    &lt;certua-insurance-fnol
+    [referrerSiteCode]="config?.referrerId"
+    
+    &lt;/certua-insurance-fnol &gt;
+    </code>
+  </pre>
+  <h4>Component specific inputs</h4>
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <th>Property Name</th>
+        <th>Mandatory</th>
+
+        <th>Description</th>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <app-insurance-common-inputs></app-insurance-common-inputs>
+</div>
