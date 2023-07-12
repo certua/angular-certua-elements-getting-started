@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;800&display=swap");
+/* You can add global styles to this file, and also import other style files */
 $primary: #007fc6;
 $secondary: #5c636a;
 $theme-colors: (
@@ -10,7 +12,6 @@ $theme-colors: (
 @import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;800&display=swap");
 /* You can add global styles to this file, and also import other style files */
 @import "bootstrap/dist/css/bootstrap.min.css";
-@import "bootstrap";
 
 .btn-primary {
   color: white !important;
@@ -26,4 +27,51 @@ h2 {
 }
 code {
   color: #d63384 !important;
+}
+.pointer {
+  cursor: pointer;
+}
+#arrow-left {
+  position: absolute;
+  left: 0;
+  z-index: 999;
+  background-color: white;
+}
+#arrow-right {
+  position: absolute;
+  right: 0;
+  z-index: 999;
+  background-color: white;
+}
+.element-box {
+  height: 150px;
+}
+
+.font-weight-bold {
+  font-weight: 700;
+  color: #000;
+}
+
+i {
+  color: #007fc6 !important;
+}
+
+.subtitle {
+  font-size: 24px !important;
+}
+
+.circle-icon {
+  background: #e5f6ff;
+
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+  text-align: center;
+  margin: 5px 0 0 0;
+  display: flex;
+  padding: 3px;
+  height: 60px;
+  width: 60px;
+  margin-left: auto;
+  margin-right: auto;
 }

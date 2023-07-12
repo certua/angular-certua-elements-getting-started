@@ -1,18 +1,12 @@
 import { NgIf } from '@angular/common';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Component, inject } from '@angular/core';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { map, tap } from 'rxjs';
-
-export enum Step {
-  AccessToken,
-  ContextToken,
-  Styles,
-  DaasUrl,
-  Success,
-  Error,
-}
+import { environment } from 'src/environments/environment';
+import { InsuranceSetupComponent } from '../insurance/insurance-setup/insurance-setup.component';
+import { ObSetupComponent } from '../open-banking/ob-setup/ob-setup.component';
 
 @Component({
   selector: 'app-home',
@@ -20,118 +14,45 @@ export enum Step {
   styleUrls: ['./home.component.scss'],
   standalone: true,
   providers: [],
-  imports: [NgIf, FormsModule, RouterModule],
+  imports: [
+    NgIf,
+    FormsModule,
+    RouterModule,
+    ObSetupComponent,
+    InsuranceSetupComponent,
+  ],
 })
-export class HomeComponent {
-  Step = Step;
-  step = Step.AccessToken;
+export class HomeComponent implements OnInit {
+  elementType: string = '';
+  openBankingUrl = environment.openBanking.elementsURL + '/main.js';
 
-  username = '';
-  password = '';
-  accessToken = '';
-  userReference = '';
-  contextToken = '';
-  apiUrl = '';
-  apiConfig = '';
-  primaryColor = '#007fc6';
-  secondaryColor = '';
-  daasUrl = '';
-
-  private http = inject(HttpClient);
-
-  reset() {
-    this.step = Step.AccessToken;
-  }
-
-  back(chosenStep: Step) {
-    this.step = chosenStep;
-  }
-
-  getAccessToken() {
-    // const authUrl =
-    //   'https://iqdevauth.certua.io/oauth/token?grant_type=client_credentials';
-    //STAGING URL
-    const authUrl =
-      'https://iqstgauth.certua.io/oauth/token?grant_type=client_credentials';
-    const basicAuth = btoa(`${this.username}:${this.password}`);
-    let httpHeaders = new HttpHeaders().set(
-      'authorization',
-      `Basic ${basicAuth}`
-    );
-
-    this.http
-      .post(authUrl, null, { headers: httpHeaders })
-      .pipe(
-        map((response: any) => {
-          this.accessToken = response.access_token;
-          this.step = Step.ContextToken;
-        })
-      )
-      .subscribe();
-  }
-
-  getContextToken() {
-    // const tokenUrl = 'https://iqdevdaas.certua.io/app/token';
-
-    //STAGING URL
-    const tokenUrl = 'https://iqstgdaas.certua.io/app/token';
-    let httpHeaders = new HttpHeaders().set(
-      'authorization',
-      `Bearer ${this.accessToken}`
-    );
-
-    const body = {
-      'client.integration.datasource.preference': ['OpenBanking', 'Yodlee'],
-      'client.integration.user.reference': this.userReference, // this is your reference for your client
-    };
-    this.http
-      .post(tokenUrl, body, { headers: httpHeaders })
-      .pipe(
-        map((data: any) => (this.contextToken = data.context_token)),
-        tap((token) =>
-          localStorage.setItem(
-            'apiConfig',
-            JSON.stringify({
-              ownerId: this.userReference,
-              contextToken: token,
-              dateCreated: new Date(),
-            })
-          )
-        ),
-        tap(
-          (_) => (this.apiConfig = <string>localStorage.getItem('apiConfig'))
-        ),
-        tap((_) => (this.step = Step.Styles))
-      )
-      .subscribe();
-  }
-
-  setStyles() {
-    let root = document.documentElement;
-
-    root.style.setProperty('--primary', this.primaryColor);
-    root.style.setProperty('--secondary', this.secondaryColor);
-
-    localStorage.setItem('--primary', this.primaryColor);
-    localStorage.setItem('--secondary', this.secondaryColor);
-    this.step = Step.DaasUrl;
-  }
-
-  setUrl() {
-    if (!this.daasUrl) {
-      this.useDefaultUrl();
-    } else {
-      localStorage.setItem('daasUrl', this.daasUrl);
-      this.step = Step.Success;
+  quoteAndBuyUrl = environment.insurance.quoteAndBuyURL + '/main.js';
+  insuranceElementsUrl = environment.insurance.elementsURL + '/main.js';
+  ngOnInit() {
+    let type = localStorage.getItem('elementType');
+    if (!!type) {
+      this.elementType = type;
     }
   }
-  useDefaultUrl() {
-    localStorage.removeItem('daasUrl');
-    this.step = Step.Success;
+  setType(type: string) {
+    localStorage.setItem('elementType', type);
+    this.elementType = type;
+    if (type == 'open-banking') {
+      this.loadScript(this.openBankingUrl, null);
+    } else {
+      this.loadScript(this.quoteAndBuyUrl, null);
+      this.loadScript(this.insuranceElementsUrl, null);
+    }
   }
 
-  startAgain() {
-    localStorage.clear();
-    this.step = Step.AccessToken;
+  private async loadScript(url: string, onload: any) {
+    const componentJS = document.createElement('script');
+    componentJS.async = true;
+    componentJS.defer = true;
+    componentJS.src = url;
+    componentJS.type = 'module';
+    //componentJS.src = url + `?v=${this._initialCacheDate.toString()}`;
+    componentJS.onload = onload;
+    document.head.appendChild(componentJS);
   }
 }

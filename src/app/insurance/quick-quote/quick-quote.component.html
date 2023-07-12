@@ -1,0 +1,41 @@
+<div class="row" *ngIf="showError">
+  <div class="col">
+    <h3>There is an issue with the site configuration</h3>
+    <a routerLink="/">Home</a>
+  </div>
+</div>
+<div class="row" *ngIf="!showError">
+  <h2>Quick Quote</h2>
+  <p>This component displays questions to generate a Quick Quote</p>
+  <certua-insurance-quick-quote
+    [referrerSiteCode]="config?.referrerId"
+    (quickQuote)="updateQuote($event)"
+    *ngIf="!!loaded"
+  ></certua-insurance-quick-quote>
+</div>
+<h4>Output event - Quick quote</h4>
+<pre> <code>{{ quickQuoteJson | json }}</code></pre>
+<div>
+  <h4>Example code</h4>
+  <pre><code>
+    &lt;certua-insurance-quick-quote
+    [referrerSiteCode]="config?.referrerId"
+    (quickQuote)="updateQuote($event)"
+    &lt;/certua-insurance-quick-quote &gt;
+    </code>
+  </pre>
+  <h4>Component specific inputs</h4>
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <th>Property Name</th>
+        <th>Mandatory</th>
+
+        <th>Description</th>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <app-insurance-common-inputs></app-insurance-common-inputs>
+</div>

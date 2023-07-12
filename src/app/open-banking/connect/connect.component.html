@@ -1,0 +1,81 @@
+<app-no-token-error *ngIf="showError"></app-no-token-error>
+
+<div class="row" *ngIf="!showError">
+  <h2>Connect Accounts</h2>
+  <p>
+    This component can be used to show the currently connected banks and to
+    allow then to connect new banks.
+  </p>
+  <div class="row">
+    <div class="col-md-12">
+      <certua-ob-connect
+        [contentOverrides]="contentOverrides"
+        [contextData]="contextTokenOptions"
+        [redirectionConfig]="redirectionConfig"
+        [startingPhase]="'InstitutionSelection'"
+      >
+        <span slot="button" class="ml-auto"></span>
+      </certua-ob-connect>
+    </div>
+  </div>
+</div>
+<div class="mt-4">
+  <h4>Example code</h4>
+  <pre><code>
+    &lt;certua-ob-connect
+      [contentOverrides]="contentOverrides"
+      [redirectionConfig]="redirectionConfig"
+      [contextData]="contextData"&gt;
+      [startingPhase]="'InstitutionSelection'"
+      [daasUrl]="daasUrl"
+    &lt;/certua-ob-connect&gt;
+    </code>
+  </pre>
+  <h4>Component specific inputs</h4>
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <th>Property Name</th>
+        <th>Mandatory</th>
+        <th>Region</th>
+        <th>Description</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>contentOverrides</td>
+          <td>No</td>
+          <td>UK Only</td>
+          <td>
+            This is a JSON string which contains any text overrides that you
+            want to pass to the information screens/modals<br /><code>
+              {{ contentOverrides | json }}
+            </code>
+          </td>
+        </tr>
+        <tr>
+          <td>startingPhase</td>
+          <td>No</td>
+          <td>All</td>
+          <td>
+            This is a string which controls the starting screen when connecting
+            accounts, this can be <code>AccountList</code> or
+            <code>InstitutionSelection</code>.
+          </td>
+        </tr>
+        <tr>
+          <td>redirectionConfig</td>
+          <td>Yes</td>
+          <td>All</td>
+          <td>
+            This is a JSON string which contains the success or failure
+            redirection Urls, which are used after the connection to the bank.
+            Popup controls whether or not the bank url is shown in the same tab
+            or in a new tab, this defaults to false if not present<br /><code>{{
+              redirectionConfig | json
+            }}</code>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

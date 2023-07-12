@@ -1,0 +1,35 @@
+@import 'bootstrap/scss/_functions';
+@import 'bootstrap/scss/_variables';
+@import 'bootstrap/scss/mixins';
+.circle {
+  border-radius: 100%;
+  width: 44px;
+  height: 44px;
+  @include media-breakpoint-up(md) {
+    width: 65px;
+    height: 65px;
+  }
+
+  text-align: center;
+  i {
+    line-height: 44px;
+    @include media-breakpoint-up(md) {
+      line-height: 65px;
+    }
+  }
+}
+
+.fa-2x {
+  font-size: 1.5em !important;
+  @include media-breakpoint-up(md) {
+    font-size: 2em !important;
+  }
+}
+
+.header-box {
+  height: 150px;
+}
+
+.out-of-box-image {
+  margin-top: -35px;
+}
