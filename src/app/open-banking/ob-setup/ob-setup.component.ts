@@ -32,6 +32,8 @@ export class ObSetupComponent {
   countryCode: 'UK' | 'AU' = 'UK';
   accessToken = '';
   userReference = '';
+  adviserReference = '';
+  subtenantReference = '';
   contextToken = '';
   apiUrl = '';
   apiConfig = '';
@@ -83,18 +85,11 @@ export class ObSetupComponent {
 
     let body = {
       'client.integration.datasource.preference': ['OpenBanking', 'Yodlee'],
-      'client.integration.sub-tenant.reference':
-        environment.openBanking.UK.subTenantReference,
+      'client.integration.sub-tenant.reference': this.subtenantReference, // this is your sub-tenant reference
+      'client.integration.adviser.reference': this.adviserReference, // this is the adviser reference for the sub-tenant
       'client.integration.user.reference': this.userReference, // this is your reference for your client (end user),
-      'client.integration.adviser.reference':
-        environment.openBanking.UK.adviserReference, // this is the adviser reference for the sub-tenant
     } as any;
-    if (this.countryCode == 'AU') {
-      (body['client.integration.sub-tenant.reference'] =
-        environment.openBanking.AU.subTenantReference), // this is your sub-tenant reference
-        (body['client.integration.adviser.reference'] =
-          environment.openBanking.AU.adviserReference); // this is the adviser reference for the sub-tenant
-    }
+
     this.http
       .post(tokenUrl, body, { headers: httpHeaders })
       .pipe(

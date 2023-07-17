@@ -72,8 +72,30 @@
             [(ngModel)]="accessToken"
           />
           <label
+            for="contextToken"
+            class="form-label mt-2"
+            >Sub-tenant reference</label
+          >
+          <input
+            id="contextToken"
+            type="text"
+            class="form-control"
+            [(ngModel)]="subtenantReference"
+          />
+          <label
+            for="contextToken"
+            class="form-label mt-2"
+            >Adviser reference</label
+          >
+          <input
+            id="contextToken"
+            type="text"
+            class="form-control"
+            [(ngModel)]="adviserReference"
+          />
+          <label
             for="userReference"
-            class="form-label"
+            class="form-label mt-2"
             >User Reference</label
           >
           <input
