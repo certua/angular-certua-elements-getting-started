@@ -1,10 +1,11 @@
-import { Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { JsonPipe, NgIf } from '@angular/common';
 import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
   Inject,
   inject,
+  Input,
   NgZone,
   OnInit,
 } from '@angular/core';
@@ -13,20 +14,23 @@ import { InjectSetupWrapper } from '@angular/core/testing';
 import { InsuranceCommonInputsComponent } from '../insurance-common-inputs/common-inputs.component';
 
 @Component({
-  selector: 'app-fnol',
-  templateUrl: './fnol.component.html',
-  styleUrls: ['./fnol.component.scss'],
+  selector: 'app-view-policy-v2',
+  templateUrl: './view-policy-v2.component.html',
+  styleUrls: ['./view-policy-v2.component.scss'],
   standalone: true,
   imports: [NgIf, RouterLink, JsonPipe, InsuranceCommonInputsComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class FnolComponent implements OnInit {
+export class ViewPolicyV2Component implements OnInit {
   accessToken: any;
   config: any;
   showError = false;
   router = inject(Router);
+  route = inject(ActivatedRoute);
   loaded = false;
-  prefill: any;
+  clientId: string = '';
+  organisationId: string = '';
+
   makeAClaimJson = {
     address: {
       addressLine1: '9 Anchor House',
@@ -40,6 +44,12 @@ export class FnolComponent implements OnInit {
     },
     insuredFullName: 'Chuck Allen',
     policyNumber: 'CER_TestPolicy-600-P005258',
+  };
+
+  goToQuoteAndBuyJson = {
+    quote: 'e.quote',
+    policyId: 'e.policyId',
+    restartJourney: 'e.restartJourney',
   };
 
   ngOnInit() {
@@ -56,9 +66,23 @@ export class FnolComponent implements OnInit {
     }
 
     this.accessToken = localStorage.getItem('certua-accessToken');
-
-    console.log('state', window.history.state);
-    this.prefill = window.history.state.data;
+    let loggedInUser = localStorage.getItem('certua-loggedInUser') ?? '';
+    if (!!loggedInUser) {
+      this.clientId = JSON.parse(loggedInUser).clientId;
+      this.organisationId = JSON.parse(loggedInUser).organisationId;
+    }
     this.loaded = true;
+  }
+
+  goToQuoteAndBuy(value: any) {
+    console.log('goToQuoteAndBuy event', value);
+    this.router.navigate(['/components/quote-and-buy'], { state: { value } });
+  }
+
+  goToMakeAClaim(value: any) {
+    console.log('makeAClaim event', value);
+    this.router.navigate(['/components/fnol'], {
+      state: { data: value.detail },
+    });
   }
 }

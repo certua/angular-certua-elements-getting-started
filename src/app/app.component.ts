@@ -17,6 +17,7 @@ export class AppComponent implements OnInit {
 
   quoteAndBuyUrl = environment.insurance.quoteAndBuyURL + '/main.js';
   insuranceElementsUrl = environment.insurance.elementsURL + '/main.js';
+  onboardingUrl = environment.onboarding.onboardingURL + '/main.js';
   ngOnInit() {
     let type = localStorage.getItem('elementType');
     if (!!type) {
@@ -27,6 +28,7 @@ export class AppComponent implements OnInit {
       } else {
         this.loadScript(this.quoteAndBuyUrl, null);
         this.loadScript(this.insuranceElementsUrl, null);
+        this.loadScript(this.onboardingUrl, null);
       }
     }
   }

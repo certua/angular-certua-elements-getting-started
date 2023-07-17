@@ -1,3 +1,6 @@
+import { QuoteListComponent } from './insurance/quote-list/quote-list.component';
+import { LoginComponent } from './onboarding/login/login.component';
+import { ViewPolicyComponent } from './insurance/view-policy/view-policy.component';
 import { LayoutComponent } from './layout/layout.component';
 import { CashflowComponent } from './open-banking/cashflow/cashflow.component';
 import { TransactionsComponent } from './open-banking/transactions/transactions.component';
@@ -11,8 +14,10 @@ import { QuoteAndBuyComponent } from './insurance/quote-and-buy/quote-and-buy.co
 import { FnolComponent } from './insurance/fnol/fnol.component';
 import { ClaimsComponent } from './insurance/claims/claims.component';
 import { QuickQuoteComponent } from './insurance/quick-quote/quick-quote.component';
+import { PoliciesListComponent } from './insurance/policies-list/policies-list.component';
+import { ViewPolicyV2Component } from './insurance/view-policy-v2/view-policy-v2.component';
 
-const routes: Routes = [
+export const routes: Routes = [
   {
     component: LayoutComponent,
     path: '',
@@ -70,14 +75,37 @@ const routes: Routes = [
             path: 'quick-quote',
             component: QuickQuoteComponent,
           },
+          {
+            path: 'login',
+            component: LoginComponent,
+          },
+          {
+            path: 'quotes-list',
+            component: QuoteListComponent,
+          },
+          {
+            path: 'policies-list',
+            component: PoliciesListComponent,
+          },
+          {
+            path: 'view-policy',
+            children: [
+              {
+                path: '',
+                component: ViewPolicyComponent,
+              },
+              {
+                path: ':id',
+                component: ViewPolicyComponent,
+              },
+            ],
+          },
+          {
+            path: 'manage-policy',
+            component: ViewPolicyV2Component,
+          },
         ],
       },
     ],
   },
 ];
-
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
-})
-export class AppRoutingModule {}

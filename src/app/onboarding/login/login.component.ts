@@ -1,46 +1,33 @@
-import { Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { JsonPipe, NgIf } from '@angular/common';
 import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
   Inject,
   inject,
+  Input,
   NgZone,
   OnInit,
 } from '@angular/core';
 import { add, parseISO } from 'date-fns';
 import { InjectSetupWrapper } from '@angular/core/testing';
-import { InsuranceCommonInputsComponent } from '../insurance-common-inputs/common-inputs.component';
 
 @Component({
-  selector: 'app-fnol',
-  templateUrl: './fnol.component.html',
-  styleUrls: ['./fnol.component.scss'],
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss'],
   standalone: true,
-  imports: [NgIf, RouterLink, JsonPipe, InsuranceCommonInputsComponent],
+  imports: [NgIf, RouterLink, JsonPipe],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class FnolComponent implements OnInit {
+export class LoginComponent implements OnInit {
   accessToken: any;
   config: any;
   showError = false;
   router = inject(Router);
+  route = inject(ActivatedRoute);
   loaded = false;
-  prefill: any;
-  makeAClaimJson = {
-    address: {
-      addressLine1: '9 Anchor House',
-      addressLine2: 'Anchor Quay',
-      addressLine3: '',
-      city: 'Norwich',
-      country: 'UK',
-      county: 'Norfolk',
-      postCode: 'NR3 3XP',
-      type: 'Correspondence',
-    },
-    insuredFullName: 'Chuck Allen',
-    policyNumber: 'CER_TestPolicy-600-P005258',
-  };
+  loginSuccess = false;
 
   ngOnInit() {
     if (!localStorage.getItem('elementType')) {
@@ -57,8 +44,19 @@ export class FnolComponent implements OnInit {
 
     this.accessToken = localStorage.getItem('certua-accessToken');
 
-    console.log('state', window.history.state);
-    this.prefill = window.history.state.data;
     this.loaded = true;
+  }
+
+  setLoginSuccess(value: any) {
+    this.loginSuccess = value.detail;
+  }
+
+  setLoginFailure(value: any) {
+    this.loginSuccess = !value.detail;
+  }
+
+  logOut() {
+    localStorage.removeItem('certua-accessToken');
+    this.loginSuccess = false;
   }
 }

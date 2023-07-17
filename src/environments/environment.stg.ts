@@ -20,5 +20,9 @@ export const environment = {
       'https://cdn.certua.io/ux-micro-frontends/insurance-elements/stg/v1.0.2-pre',
     demoSiteCode: '08db6c19-8664-4f14-817a-e8f2b28fca36',
   },
+  onboarding: {
+    onboardingURL:
+      'https://cdn.certua.io/ux-micro-frontends/onboarding/stg/v3.1.13-pre',
+  },
   environmentName: 'stg',
 };

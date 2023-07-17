@@ -17,5 +17,8 @@ export const environment = {
     elementsURL: 'http://localhost:4207',
     demoSiteCode: '08db6c19-8664-4f14-817a-e8f2b28fca36',
   },
+  onboarding: {
+    onboardingURL: 'http://localhost:4201',
+  },
   environmentName: 'local',
 };

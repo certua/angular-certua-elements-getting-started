@@ -13,34 +13,21 @@ import { InjectSetupWrapper } from '@angular/core/testing';
 import { InsuranceCommonInputsComponent } from '../insurance-common-inputs/common-inputs.component';
 
 @Component({
-  selector: 'app-fnol',
-  templateUrl: './fnol.component.html',
-  styleUrls: ['./fnol.component.scss'],
+  selector: 'app-quote-list',
+  templateUrl: './quote-list.component.html',
+  styleUrls: ['./quote-list.component.scss'],
   standalone: true,
   imports: [NgIf, RouterLink, JsonPipe, InsuranceCommonInputsComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class FnolComponent implements OnInit {
+export class QuoteListComponent implements OnInit {
   accessToken: any;
   config: any;
   showError = false;
   router = inject(Router);
   loaded = false;
-  prefill: any;
-  makeAClaimJson = {
-    address: {
-      addressLine1: '9 Anchor House',
-      addressLine2: 'Anchor Quay',
-      addressLine3: '',
-      city: 'Norwich',
-      country: 'UK',
-      county: 'Norfolk',
-      postCode: 'NR3 3XP',
-      type: 'Correspondence',
-    },
-    insuredFullName: 'Chuck Allen',
-    policyNumber: 'CER_TestPolicy-600-P005258',
-  };
+  clientId = '';
+  organisationId = '';
 
   ngOnInit() {
     if (!localStorage.getItem('elementType')) {
@@ -57,8 +44,12 @@ export class FnolComponent implements OnInit {
 
     this.accessToken = localStorage.getItem('certua-accessToken');
 
-    console.log('state', window.history.state);
-    this.prefill = window.history.state.data;
+    let loggedInUser = localStorage.getItem('certua-loggedInUser') ?? '';
+    if (!!loggedInUser) {
+      this.clientId = JSON.parse(loggedInUser).clientId;
+      this.organisationId = JSON.parse(loggedInUser).organisationId;
+    }
+
     this.loaded = true;
   }
 }
