@@ -52,8 +52,12 @@ export class InsuranceSetupComponent {
     );
   }
 
-  setDefaultReferrer() {
-    this.setReferrer(environment.insurance.demoSiteCode);
+  setDefaultReferrer(sidebar = false) {
+    if (sidebar) {
+      this.setReferrer(environment.insurance.demoSidebarCode);
+    } else {
+      this.setReferrer(environment.insurance.demoSiteCode);
+    }
   }
   startAgain() {
     localStorage.clear();
