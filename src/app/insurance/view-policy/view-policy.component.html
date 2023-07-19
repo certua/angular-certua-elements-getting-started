@@ -16,7 +16,7 @@
       Go to policies list
     </div>
   </div>
-  <ae-insurance-confirmation
+  <certua-insurance-policy-confirmation
     *ngIf="loaded && !!policyId"
     [config]="config"
     [accesstoken]="accessToken"
@@ -26,12 +26,12 @@
     (makeAClaim)="goToMakeAClaim($event)"
     (goToQuoteAndBuy)="goToQuoteAndBuy($event)"
   >
-  </ae-insurance-confirmation>
+  </certua-insurance-policy-confirmation>
 </div>
 <div>
   <h4>Example code</h4>
   <pre><code>
-    &lt;ae-insurance-confirmation
+    &lt;certua-insurance-policy-confirmation
     *ngIf="loaded && !!policyId"
      [config]="config"
      [accesstoken]="accessToken"
@@ -40,7 +40,7 @@
      (backToCovers)="goToMyPolicies()"
      (makeAClaim)="goToMakeAClaim($event)"
      (goToQuoteAndBuy)="goToQuoteAndBuy($event)"
-    &lt;/ae-insurance-confirmation &gt;
+    &lt;/certua-insurance-policy-confirmation &gt;
     </code>
   </pre>
   <h4>Output events</h4>
