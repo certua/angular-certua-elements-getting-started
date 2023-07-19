@@ -26,4 +26,5 @@ export const environment = {
       'https://cdn.certua.io/ux-micro-frontends/onboarding/prod/{version}',
   },
   environmentName: 'prod',
+  uxAPIUrl: 'https://api.getbrisk.com/api',
 };

@@ -17,3 +17,11 @@
     }
   }
 }
+#full-header {
+  width: 100%;
+  background-color: #fff;
+  position: -webkit-sticky;
+  position: fixed;
+  top: 0;
+  z-index: 500;
+}

@@ -26,4 +26,5 @@ export const environment = {
       'https://cdn.certua.io/ux-micro-frontends/onboarding/qa/current',
   },
   environmentName: 'qa',
+  uxAPIUrl: 'https://api.qa.getbrisk.com/api',
 };

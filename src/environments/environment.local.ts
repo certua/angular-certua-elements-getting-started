@@ -22,4 +22,5 @@ export const environment = {
     onboardingURL: 'http://localhost:4201',
   },
   environmentName: 'local',
+  uxAPIUrl: 'http://localhost:32213/api',
 };

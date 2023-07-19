@@ -1,6 +1,6 @@
 import { NgIf } from '@angular/common';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { map, tap } from 'rxjs';
@@ -19,11 +19,19 @@ export enum Step {
   providers: [],
   imports: [NgIf, FormsModule, ReactiveFormsModule, RouterModule],
 })
-export class InsuranceSetupComponent {
+export class InsuranceSetupComponent implements OnInit {
   Step = Step;
   referrerCode = '';
   router = inject(Router);
   step = Step.ReferrerCode;
+  httpClient = inject(HttpClient);
+
+  ngOnInit() {
+    let config = localStorage.getItem('insuranceConfig');
+    if (!!config) {
+      this.step = Step.Success;
+    }
+  }
 
   reset() {
     this.step = Step.ReferrerCode;
@@ -34,7 +42,7 @@ export class InsuranceSetupComponent {
   }
 
   goToComponents() {
-    this.router.navigate(['/components/quote-and-buy']);
+    this.router.navigate(['/components/claims']);
   }
 
   setReferrer(value?: string) {
@@ -42,6 +50,10 @@ export class InsuranceSetupComponent {
     if (!!value) {
       this.referrerCode = value;
     }
+    localStorage.clear();
+    sessionStorage.clear();
+
+    localStorage.setItem('elementType', 'insurance');
 
     localStorage.setItem(
       'insuranceConfig',
@@ -50,6 +62,13 @@ export class InsuranceSetupComponent {
         basePath: 'angular/components/quote-and-buy',
       })
     );
+
+    this.httpClient
+      .get(environment.uxAPIUrl + '/dfp/is-sidebar/' + this.referrerCode)
+      .subscribe((data) => {
+        console.log('data', data);
+        localStorage.setItem('certua-sidebar', data.toString());
+      });
   }
 
   setDefaultReferrer(sidebar = false) {
@@ -61,6 +80,8 @@ export class InsuranceSetupComponent {
   }
   startAgain() {
     localStorage.clear();
-    this.router.navigate(['/components/connect']);
+    sessionStorage.clear();
+    window.location.reload();
+    this.step = Step.ReferrerCode;
   }
 }

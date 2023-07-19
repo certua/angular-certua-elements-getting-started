@@ -26,4 +26,5 @@ export const environment = {
       'https://cdn.certua.io/ux-micro-frontends/onboarding/stg/v3.1.13-pre',
   },
   environmentName: 'stg',
+  uxAPIUrl: 'https://api.stg.getbrisk.com/api',
 };

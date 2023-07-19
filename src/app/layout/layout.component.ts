@@ -36,11 +36,11 @@ export class LayoutComponent implements OnInit {
   selectedIndex = 0;
   @ViewChild('tabArrows')
   tabArrows!: TabArrowsComponent;
-
+  fullScreen = false;
   ngOnInit() {
     this.router.events
       .pipe(
-        filter((event: any) => event instanceof NavigationStart),
+        filter((event: any) => event instanceof NavigationEnd),
         tap((event: any) => {
           let homeurl = event['url'].includes('home') || event['url'] === '/';
 
@@ -60,6 +60,10 @@ export class LayoutComponent implements OnInit {
     this.elementType = type;
     let page = location.pathname.replace('/angular/components/', '');
     this.checkSelected(page);
+  }
+
+  backToGettingStarted() {
+    this.router.navigate(['components/claims']);
   }
   selectItem(i: number, route: string) {
     this.tabArrows.selectItem(i);
@@ -122,6 +126,15 @@ export class LayoutComponent implements OnInit {
     }
     if (page.includes('view-policy')) {
       this.selectedIndex = 7;
+    }
+
+    if (
+      page.includes('quote-and-buy') &&
+      localStorage.getItem('certua-sidebar') == 'true'
+    ) {
+      this.fullScreen = true;
+    } else {
+      this.fullScreen = false;
     }
   }
 }
