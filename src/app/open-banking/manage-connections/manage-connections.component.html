@@ -13,6 +13,7 @@
     [showTitle]="false"
     [redirectionConfig]="redirectionConfig"
     [daasUrl]="daasUrl"
+    [editAccountName]="true"
   >
   </certua-ob-manage-connections>
 </div>
@@ -26,7 +27,7 @@
       [daasUrl]="daasUrl"
       [redirectionConfig]="redirectionConfig"
       [showAddButton]="false"
-      [editAccountName]="false"&gt;
+      [editAccountName]="true"&gt;
 
     &lt;/certua-ob-manage-connections&gt;
     </code>
@@ -76,7 +77,7 @@
           <td>All</td>
           <td>
             This controls if the Rename Account button is shown when managing
-            connected accounts.
+            connected accounts. Defaults to true unless set to false
           </td>
         </tr>
         <tr>
