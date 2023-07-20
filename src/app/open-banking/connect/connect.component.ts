@@ -41,6 +41,17 @@ export class ConnectComponent implements OnInit {
   contextTokenOptions = '';
 
   contentOverrides = {
+    'certua-ob-consent': {
+      termsAndConditionsText: `Custom
+      <a
+        target="_blank"
+        rel="noopener noreferrer"
+        href=""
+        class="pe-auto color-inherit"
+        >Terms and Conditions</a
+      >
+      text`,
+    },
     'certua-ob-provider-permissions': {
       howWeAreUsingData: '<p>[Custom text about how you use data]</p>',
     },
