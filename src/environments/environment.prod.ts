@@ -4,11 +4,15 @@ export const environment = {
       authURL:
         'https://identity.certua.io/realms/Certua/protocol/openid-connect/token',
       apiURL: 'https://api.certua.io/daas/app/token',
+      subTenantReference: '',
+      adviserReference: '',
     },
     AU: {
       authURL:
         'https://identity-au.certua.io/realms/Certua/protocol/openid-connect/token',
       apiURL: 'https://api-au.certua.io/daas/app/token',
+      subTenantReference: '',
+      adviserReference: '',
     },
     elementsURL:
       'https://cdn.certua.io/ux-micro-frontends/open-banking-elements/prod/{version}',
