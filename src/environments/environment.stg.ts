@@ -11,7 +11,7 @@ export const environment = {
       apiURL: 'https://apistg-au.certua.io/daas/app/token',
     },
     elementsURL:
-      'https://cdn.certua.io/ux-micro-frontends/open-banking-elements/stg/v1.0.6-pre',
+      'https://cdn.certua.io/ux-micro-frontends/open-banking-elements/stg/v1.0.8-pre',
   },
   insurance: {
     quoteAndBuyURL:
