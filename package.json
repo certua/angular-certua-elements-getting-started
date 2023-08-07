@@ -1,6 +1,6 @@
 {
   "name": "get-started-open-banking-angular",
-  "version": "0.0.0",
+  "version": "1.0.3",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -10,7 +10,8 @@
     "build:dev": "ng build --configuration development",
     "build:qa": "ng build --configuration qa",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "release": "standard-version"
   },
   "private": true,
   "dependencies": {

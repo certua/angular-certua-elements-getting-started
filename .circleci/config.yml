@@ -27,7 +27,7 @@ jobs:
             elif [ "${CIRCLE_BRANCH}" == "qa" ]; then
               echo "building qa"
               yarn build:qa
-            elif [ "${CIRCLE_BRANCH}" == "Staging" ]; then
+            elif [ "${CIRCLE_BRANCH}" == "staging" ]; then
               echo "building staging"
               yarn build:stg 
             else
@@ -58,7 +58,7 @@ jobs:
             elif [ "${CIRCLE_BRANCH}" == "qa" ]; then
               echo 'export BUCKET="${QA_S3_BUCKET}"' >> $BASH_ENV
               echo 'export DISTRIBUTION_ID="${QA_DISTRIBUTION_ID}"' >> $BASH_ENV
-            elif [ "${CIRCLE_BRANCH}" == "Staging" ]; then
+            elif [ "${CIRCLE_BRANCH}" == "staging" ]; then
               echo 'export BUCKET="${STAGING_S3_BUCKET}"' >> $BASH_ENV
               echo 'export DISTRIBUTION_ID="${STAGING_DISTRIBUTION_ID}"' >> $BASH_ENV
             fi
