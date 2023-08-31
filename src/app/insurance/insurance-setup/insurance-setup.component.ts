@@ -42,7 +42,7 @@ export class InsuranceSetupComponent implements OnInit {
   }
 
   goToComponents() {
-    this.router.navigate(['/components/claims']);
+    this.router.navigate(['/components/overview']);
   }
 
   setReferrer(value?: string) {

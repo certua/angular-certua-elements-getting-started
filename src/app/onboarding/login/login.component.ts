@@ -9,8 +9,6 @@ import {
   NgZone,
   OnInit,
 } from '@angular/core';
-import { add, parseISO } from 'date-fns';
-import { InjectSetupWrapper } from '@angular/core/testing';
 
 @Component({
   selector: 'app-login',
@@ -42,21 +40,10 @@ export class LoginComponent implements OnInit {
       this.config = configJson;
     }
 
-    this.accessToken = localStorage.getItem('certua-accessToken');
-
     this.loaded = true;
   }
 
   setLoginSuccess(value: any) {
     this.loginSuccess = value.detail;
-  }
-
-  setLoginFailure(value: any) {
-    this.loginSuccess = !value.detail;
-  }
-
-  logOut() {
-    localStorage.removeItem('certua-accessToken');
-    this.loginSuccess = false;
   }
 }

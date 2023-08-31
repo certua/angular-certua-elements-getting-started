@@ -11,6 +11,7 @@ import {
 import { add, parseISO } from 'date-fns';
 import { InjectSetupWrapper } from '@angular/core/testing';
 import { InsuranceCommonInputsComponent } from '../insurance-common-inputs/common-inputs.component';
+import { OAuthService } from 'angular-oauth2-oidc';
 
 @Component({
   selector: 'app-policies-list',
@@ -28,6 +29,7 @@ export class PoliciesListComponent implements OnInit {
   loaded = false;
   clientId = '';
   organisationId = '';
+  private oauthService = inject(OAuthService);
 
   ngOnInit() {
     if (!localStorage.getItem('elementType')) {
@@ -42,7 +44,7 @@ export class PoliciesListComponent implements OnInit {
       this.config = JSON.parse(configJson);
     }
 
-    this.accessToken = localStorage.getItem('certua-accessToken');
+    this.accessToken = this.oauthService.getAccessToken();
 
     let loggedInUser = localStorage.getItem('certua-loggedInUser') ?? '';
     if (!!loggedInUser) {
