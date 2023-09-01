@@ -1,6 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
-import { NgSwitch, NgSwitchDefault, NgSwitchCase } from '@angular/common';
+import {
+  NgSwitch,
+  NgSwitchDefault,
+  NgSwitchCase,
+  ViewportScroller,
+} from '@angular/common';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -18,7 +23,9 @@ export class AppComponent implements OnInit {
   quoteAndBuyUrl = environment.insurance.quoteAndBuyURL + '/main.js';
   insuranceElementsUrl = environment.insurance.elementsURL + '/main.js';
   onboardingUrl = environment.onboarding.onboardingURL + '/main.js';
+  vps = inject(ViewportScroller);
   ngOnInit() {
+    this.vps.setOffset([0, 100]);
     let type = localStorage.getItem('elementType');
     if (!!type) {
       this.elementType = type;
