@@ -22,6 +22,15 @@
             <ul class="navbar-nav me-auto">
               <li class="nav-item">
                 <a
+                  *ngIf="elementType == 'open-banking'"
+                  [routerLink]="'/home'"
+                  routerLinkActive="text-primary"
+                  [routerLinkActiveOptions]="{ exact: false }"
+                  class="nav-link"
+                  >Home</a
+                >
+                <a
+                  *ngIf="elementType == 'insurance'"
                   [routerLink]="'/overview-insurance'"
                   routerLinkActive="text-primary"
                   [routerLinkActiveOptions]="{ exact: false }"
