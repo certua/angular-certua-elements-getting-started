@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
     let configJson = localStorage.getItem('insuranceConfig');
 
     if (!!configJson) {
-      this.config = configJson;
+      this.config = JSON.parse(configJson);
     }
 
     this.loaded = true;
