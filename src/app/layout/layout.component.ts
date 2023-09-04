@@ -13,7 +13,11 @@ import { SelectMultipleControlValueAccessor } from '@angular/forms';
 import { filter, map, tap } from 'rxjs';
 import { CommonInputsComponent } from '../open-banking/common-inputs/common-inputs.component';
 import { TabArrowsComponent } from '../tab-arrows/tab-arrows.component';
-
+export enum SiteSection {
+  Home,
+  Overview,
+  Components,
+}
 @Component({
   selector: 'app-layout',
   standalone: true,
@@ -37,12 +41,36 @@ export class LayoutComponent implements OnInit {
   @ViewChild('tabArrows')
   tabArrows!: TabArrowsComponent;
   fullScreen = false;
+  SiteSection = SiteSection;
+
+  section = SiteSection.Home;
   ngOnInit() {
+    window.addEventListener('selected-index', (event: any) => {
+      this.selectedIndex = event.detail.index;
+    });
+
     this.router.events
       .pipe(
-        filter((event: any) => event instanceof NavigationEnd),
+        filter(
+          (event: any) =>
+            event instanceof NavigationEnd ||
+            event.routerEvent instanceof NavigationEnd
+        ),
         tap((event: any) => {
+          if (!event['url']) {
+            event = event.routerEvent;
+          }
           let homeurl = event['url'].includes('home') || event['url'] === '/';
+          if (homeurl) {
+            this.section = SiteSection.Home;
+          } else {
+            if (event['url'].includes('components')) {
+              this.section = SiteSection.Components;
+            }
+            if (event['url'].includes('overview')) {
+              this.section = SiteSection.Overview;
+            }
+          }
 
           this.showNavigation = !homeurl;
 
@@ -65,11 +93,16 @@ export class LayoutComponent implements OnInit {
   backToGettingStarted() {
     this.router.navigate(['components/claims']);
   }
-  selectItem(i: number, route: string) {
+  selectItem(i: number, route: string, section?: string) {
     this.tabArrows.selectItem(i);
 
     this.selectedIndex = i;
-    this.router.navigate([route]);
+
+    if (!section) {
+      this.router.navigate([route]);
+    } else {
+      this.router.navigate([route], { fragment: section });
+    }
   }
   removeType() {
     this.elementType = '';
@@ -80,7 +113,8 @@ export class LayoutComponent implements OnInit {
     console.log('route', page);
     switch (page) {
       case 'connect':
-      case 'overview': {
+      case 'quote-and-buy':
+      case 'insurance-overview': {
         this.selectedIndex = 0;
         break;
       }

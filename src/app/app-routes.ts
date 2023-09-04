@@ -1,3 +1,4 @@
+import { InsuranceOverviewComponent } from './insurance/insurance-overview/insurance-overview.component';
 import { QuoteListComponent } from './insurance/quote-list/quote-list.component';
 import { LoginComponent } from './onboarding/login/login.component';
 import { ViewPolicyComponent } from './insurance/view-policy/view-policy.component';
@@ -31,6 +32,11 @@ export const routes: Routes = [
       {
         path: 'home',
         component: HomeComponent,
+      },
+
+      {
+        path: 'overview-insurance',
+        component: InsuranceOverviewComponent,
       },
       {
         path: 'components',

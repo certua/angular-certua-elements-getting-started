@@ -35,11 +35,20 @@
             <ul class="navbar-nav me-auto">
               <li class="nav-item">
                 <a
+                  *ngIf="elementType == 'open-banking'"
                   [routerLink]="'/home'"
                   routerLinkActive="text-primary"
-                  [routerLinkActiveOptions]="{ exact: true }"
+                  [routerLinkActiveOptions]="{ exact: false }"
                   class="nav-link"
                   >Home</a
+                >
+                <a
+                  *ngIf="elementType == 'insurance'"
+                  [routerLink]="'/overview-insurance'"
+                  routerLinkActive="text-primary"
+                  [routerLinkActiveOptions]="{ exact: false }"
+                  class="nav-link"
+                  >Overview</a
                 >
               </li>
               <li
@@ -60,23 +69,15 @@
       </nav>
     </div>
   </div>
-  <div
-    class="row"
-    id="sidebar"
-    *ngIf="!fullScreen"
-  >
-    <div
-      class="col-md-3 border-end"
-      *ngIf="showNavigation"
-    >
-      <app-tab-arrows
-        #tabArrows
-        class="d-md-none"
-      ></app-tab-arrows>
+  <div class="row" id="sidebar" *ngIf="!fullScreen">
+    <div class="col-md-3 border-end" id="side" *ngIf="showNavigation">
+      <app-tab-arrows #tabArrows class="d-md-none"></app-tab-arrows>
       <div
         class="list-group mt-4 d-flex flex-md-column flex-row overflow-auto mx-1 pointer"
         id="items"
-        *ngIf="elementType == 'open-banking'"
+        *ngIf="
+          section == SiteSection.Components && elementType == 'open-banking'
+        "
       >
         <span
           (click)="selectItem(0, '/components/connect')"
@@ -113,7 +114,7 @@
       <div
         class="list-group mt-4 d-flex flex-md-column flex-row overflow-auto mx-1 pointer"
         id="items"
-        *ngIf="elementType == 'insurance'"
+        *ngIf="section == SiteSection.Components && elementType == 'insurance'"
       >
         <span
           (click)="selectItem(0, '/components/overview')"
@@ -182,9 +183,86 @@
           >View Policy (v2)</span
         >
       </div>
+      <div
+        class="list-group mt-4 d-flex flex-md-column flex-row overflow-auto mx-1 pointer"
+        id="items"
+        *ngIf="section == SiteSection.Overview && elementType == 'insurance'"
+      >
+        <span
+          (click)="selectItem(0, '/overview-insurance', 'getting-started')"
+          class="list-group-item"
+          [class.active]="selectedIndex == 0"
+        >
+          Getting started</span
+        >
+        <span
+          (click)="selectItem(1, '/overview-insurance', 'site-code')"
+          class="list-group-item"
+          [class.active]="selectedIndex == 1"
+        >
+          Site Code</span
+        >
+        <span
+          (click)="selectItem(2, '/overview-insurance', 'theming')"
+          class="list-group-item"
+          [class.active]="selectedIndex == 2"
+        >
+          Theming</span
+        >
+        <span
+          (click)="selectItem(3, '/overview-insurance', 'product-content')"
+          class="list-group-item"
+          [class.active]="selectedIndex == 3"
+        >
+          Content</span
+        >
+        <span
+          [class.active]="selectedIndex == 4"
+          (click)="selectItem(4, '/overview-insurance', 'security')"
+          class="list-group-item pointer"
+          >Security</span
+        >
+        <span
+          [class.active]="selectedIndex == 5"
+          (click)="selectItem(5, '/overview-insurance', 'client-libraries')"
+          class="list-group-item pointer"
+          >Client Libraries</span
+        >
+
+        <span
+          [class.active]="selectedIndex == 6"
+          (click)="selectItem(6, '/overview-insurance', 'using-components')"
+          class="list-group-item pointer"
+          >Using components</span
+        >
+        <!--   <span
+          [class.active]="selectedIndex == 5"
+          (click)="selectItem(5, '/components/quotes-list')"
+          class="list-group-item pointer"
+          >Quotes List</span
+        >
+        <span
+          [class.active]="selectedIndex == 6"
+          (click)="selectItem(6, '/components/policies-list')"
+          class="list-group-item pointer"
+          >Policies List</span
+        >
+        <span
+          [class.active]="selectedIndex == 7"
+          (click)="selectItem(7, '/components/view-policy')"
+          class="list-group-item pointer"
+          >View Policy</span
+        >
+        <span
+          [class.active]="selectedIndex == 8"
+          (click)="selectItem(8, '/components/manage-policy')"
+          class="list-group-item pointer"
+          >View Policy (v2)</span
+        > -->
+      </div>
       <nav></nav>
     </div>
-    <div class="col mt-4">
+    <div class="col mt-4" id="content">
       <router-outlet></router-outlet>
       <app-common-inputs
         *ngIf="showNavigation && elementType == 'open-banking'"

@@ -3,15 +3,29 @@ import { AppComponent } from './app/app.component';
 
 import { BrowserModule, bootstrapApplication } from '@angular/platform-browser';
 import { provideHttpClient } from '@angular/common/http';
-import { provideRouter, withComponentInputBinding } from '@angular/router';
+import { environment } from './environments/environment';
+import {
+  provideRouter,
+  RouterModule,
+  withComponentInputBinding,
+  withHashLocation,
+  withInMemoryScrolling,
+  withRouterConfig,
+} from '@angular/router';
 import { routes } from './app/app-routes';
 import { provideOAuthClient } from 'angular-oauth2-oidc';
 import { NgIdleModule } from '@ng-idle/core';
 
 bootstrapApplication(AppComponent, {
   providers: [
+    provideRouter(
+      routes,
+      withComponentInputBinding(),
+      withInMemoryScrolling({
+        anchorScrolling: 'enabled',
+      })
+    ),
     importProvidersFrom(BrowserModule, NgIdleModule.forRoot()),
-    provideRouter(routes, withComponentInputBinding()),
     provideHttpClient(),
     provideOAuthClient(),
   ],
