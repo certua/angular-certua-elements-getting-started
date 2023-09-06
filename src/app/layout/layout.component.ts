@@ -114,7 +114,8 @@ export class LayoutComponent implements OnInit {
     switch (page) {
       case 'connect':
       case 'quote-and-buy':
-      case 'insurance-overview': {
+      case 'insurance-overview':
+      case 'component-overview': {
         this.selectedIndex = 0;
         break;
       }
