@@ -2,10 +2,10 @@ import { NgIf } from '@angular/common';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Component, inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { map, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { InsuranceSetupComponent } from '../insurance/insurance-setup/insurance-setup.component';
+
 import { ObSetupComponent } from '../open-banking/ob-setup/ob-setup.component';
 
 @Component({
@@ -14,13 +14,7 @@ import { ObSetupComponent } from '../open-banking/ob-setup/ob-setup.component';
   styleUrls: ['./home.component.scss'],
   standalone: true,
   providers: [],
-  imports: [
-    NgIf,
-    FormsModule,
-    RouterModule,
-    ObSetupComponent,
-    InsuranceSetupComponent,
-  ],
+  imports: [NgIf, FormsModule, RouterModule, ObSetupComponent],
 })
 export class HomeComponent implements OnInit {
   elementType: string = '';
@@ -28,10 +22,15 @@ export class HomeComponent implements OnInit {
 
   quoteAndBuyUrl = environment.insurance.quoteAndBuyURL + '/main.js';
   insuranceElementsUrl = environment.insurance.elementsURL + '/main.js';
+  router = inject(Router);
   ngOnInit() {
     let type = localStorage.getItem('elementType');
     if (!!type) {
       this.elementType = type;
+
+      if (this.elementType == 'insurance') {
+        this.router.navigate(['overview-insurance']);
+      }
     }
   }
   setType(type: string) {
@@ -42,6 +41,7 @@ export class HomeComponent implements OnInit {
     } else {
       this.loadScript(this.quoteAndBuyUrl, null);
       this.loadScript(this.insuranceElementsUrl, null);
+      this.router.navigate(['overview-insurance']);
     }
   }
 
