@@ -77,8 +77,13 @@
     </div>
   </div>
   <div *ngIf="referrerSet">
-    <div class="alert alert-success w-50">
-      You are currently using {{ referrerName }} site code
+    <div
+      class="d-flex alert alert-success w-50 justify-content-between align-items-center"
+    >
+      <span
+        >You are currently using <strong>{{ referrerName }}</strong> site
+        code</span
+      >
 
       <div class="btn btn-secondary" (click)="reset()">Choose new site</div>
     </div>
