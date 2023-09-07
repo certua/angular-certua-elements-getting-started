@@ -13,16 +13,11 @@ import {
   withRouterConfig,
 } from '@angular/router';
 import { routes } from './app/app-routes';
+import { provideOAuthClient } from 'angular-oauth2-oidc';
+import { NgIdleModule } from '@ng-idle/core';
 
 bootstrapApplication(AppComponent, {
   providers: [
-    importProvidersFrom(
-      BrowserModule
-      // RouterModule.forRoot(routes, {
-      //   scrollOffset: [0, 100],
-      //   anchorScrolling: 'enabled',
-      // })
-    ),
     provideRouter(
       routes,
       withComponentInputBinding(),
@@ -30,6 +25,8 @@ bootstrapApplication(AppComponent, {
         anchorScrolling: 'enabled',
       })
     ),
+    importProvidersFrom(BrowserModule, NgIdleModule.forRoot()),
     provideHttpClient(),
+    provideOAuthClient(),
   ],
 }).catch((err) => console.error(err));

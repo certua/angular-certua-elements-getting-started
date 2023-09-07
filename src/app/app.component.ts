@@ -7,6 +7,9 @@ import {
   ViewportScroller,
 } from '@angular/common';
 import { environment } from 'src/environments/environment';
+import { OAuthService, OAuthSuccessEvent } from 'angular-oauth2-oidc';
+import { filter } from 'rxjs';
+import { DEFAULT_INTERRUPTSOURCES, Idle } from '@ng-idle/core';
 
 @Component({
   selector: 'app-root',
@@ -17,6 +20,9 @@ import { environment } from 'src/environments/environment';
 })
 export class AppComponent implements OnInit {
   title = 'get-started-open-banking-angular';
+  private oauthService = inject(OAuthService);
+  private idle = inject(Idle);
+  private loggingOut = false;
   elementType: string = '';
   openBankingUrl = environment.openBanking.elementsURL + '/main.js';
 
@@ -35,9 +41,9 @@ export class AppComponent implements OnInit {
       } else {
         this.loadScript(this.quoteAndBuyUrl, null);
         this.loadScript(this.insuranceElementsUrl, null);
-        this.loadScript(this.onboardingUrl, null);
       }
     }
+    //this.setupSecurity();
   }
   private async loadScript(url: string, onload: any) {
     const componentJS = document.createElement('script');

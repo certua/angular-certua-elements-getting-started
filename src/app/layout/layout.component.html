@@ -1,11 +1,21 @@
 <div class="container-fluid">
-  <div class="row bg-grey border-bottom" id="header" *ngIf="!fullScreen">
+  <div
+    class="row bg-grey border-bottom"
+    id="header"
+    *ngIf="!fullScreen"
+  >
     <div class="col px-0">
       <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-          <a class="navbar-brand" href="/">
+          <a
+            class="navbar-brand"
+            href="/"
+          >
             <div class="d-flex justify-items-center">
-              <img (click)="removeType()" src="assets/certua.png" /></div
+              <img
+                (click)="removeType()"
+                src="assets/certua.png"
+              /></div
           ></a>
           <button
             class="navbar-toggler"
@@ -18,7 +28,10 @@
           >
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <div
+            class="collapse navbar-collapse"
+            id="navbarSupportedContent"
+          >
             <ul class="navbar-nav me-auto">
               <li class="nav-item">
                 <a
@@ -38,7 +51,10 @@
                   >Overview</a
                 >
               </li>
-              <li class="nav-item" *ngIf="!!elementType">
+              <li
+                class="nav-item"
+                *ngIf="!!elementType"
+              >
                 <a
                   [routerLink]="'/components'"
                   routerLinkActive="text-primary"
@@ -101,60 +117,67 @@
         *ngIf="section == SiteSection.Components && elementType == 'insurance'"
       >
         <span
-          (click)="selectItem(0, '/components/quote-and-buy')"
+          (click)="selectItem(0, '/components/overview')"
           class="list-group-item"
           [class.active]="selectedIndex == 0"
+        >
+          Overview</span
+        >
+        <span
+          (click)="selectItem(0, '/components/quote-and-buy')"
+          class="list-group-item"
+          [class.active]="selectedIndex == 1"
         >
           Quote and Buy</span
         >
         <span
           (click)="selectItem(1, '/components/claims')"
           class="list-group-item"
-          [class.active]="selectedIndex == 1"
+          [class.active]="selectedIndex == 2"
         >
           Claims</span
         >
         <span
           (click)="selectItem(2, '/components/fnol')"
           class="list-group-item"
-          [class.active]="selectedIndex == 2"
+          [class.active]="selectedIndex == 3"
         >
           Fnol</span
         >
         <span
           (click)="selectItem(3, '/components/quick-quote')"
           class="list-group-item"
-          [class.active]="selectedIndex == 3"
+          [class.active]="selectedIndex == 4"
         >
           Quick Quote</span
         >
         <span
-          [class.active]="selectedIndex == 4"
+          [class.active]="selectedIndex == 5"
           (click)="selectItem(4, '/components/login')"
           class="list-group-item pointer"
           >Login</span
         >
 
         <span
-          [class.active]="selectedIndex == 5"
+          [class.active]="selectedIndex == 6"
           (click)="selectItem(5, '/components/quotes-list')"
           class="list-group-item pointer"
           >Quotes List</span
         >
         <span
-          [class.active]="selectedIndex == 6"
+          [class.active]="selectedIndex == 7"
           (click)="selectItem(6, '/components/policies-list')"
           class="list-group-item pointer"
           >Policies List</span
         >
         <span
-          [class.active]="selectedIndex == 7"
+          [class.active]="selectedIndex == 8"
           (click)="selectItem(7, '/components/view-policy')"
           class="list-group-item pointer"
           >View Policy</span
         >
         <span
-          [class.active]="selectedIndex == 8"
+          [class.active]="selectedIndex == 9"
           (click)="selectItem(8, '/components/manage-policy')"
           class="list-group-item pointer"
           >View Policy (v2)</span
@@ -254,7 +277,10 @@
   >
     <div class="d-flex flex-row w-100 align-items-center">
       <div class="col-md-2 text-start">
-        <button class="btn btn-link pointer" (click)="backToGettingStarted()">
+        <button
+          class="btn btn-link pointer"
+          (click)="backToGettingStarted()"
+        >
           <i class="fal fa-long-arrow-left me-2"></i>Exit fullscreen
         </button>
       </div>

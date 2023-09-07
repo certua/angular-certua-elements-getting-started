@@ -1,4 +1,7 @@
-<div class="row" *ngIf="showError">
+<div
+  class="row"
+  *ngIf="showError"
+>
   <div class="col">
     <h3>There is an issue with the site configuration</h3>
     <a routerLink="/">Home</a>
@@ -10,16 +13,16 @@
   This component allows you to login to a site so you can access a
   client/organisations quotes/policies
 </p>
-<certua-ae-login
-  *ngIf="!loginSuccess"
+<certua-insurance-login
   [referrerSiteCode]="config?.referrerId"
   (loginSuccess)="setLoginSuccess($event)"
-  (loginFailure)="setLoginFailure($event)"
-></certua-ae-login>
+></certua-insurance-login>
 
-<div class="col-md-12" *ngIf="loginSuccess">
+<div
+  class="col-md-12"
+  *ngIf="loginSuccess"
+>
   <div class="alert alert-success">You are already logged in</div>
-  <div class="btn btn-primary mb-4" (click)="logOut()">Logout</div>
 </div>
 
 <div>

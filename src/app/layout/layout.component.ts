@@ -114,47 +114,52 @@ export class LayoutComponent implements OnInit {
     switch (page) {
       case 'connect':
       case 'quote-and-buy':
-      case 'insurance-overview': {
+      case 'insurance-overview':
+      case 'component-overview': {
         this.selectedIndex = 0;
         break;
       }
       case 'manage-connections':
-      case 'claims': {
+      case 'quote-and-buy': {
         this.selectedIndex = 1;
         break;
       }
       case 'account-summary':
-      case 'fnol': {
+      case 'claims': {
         this.selectedIndex = 2;
         break;
       }
       case 'transactions':
-      case 'quick-quote': {
+      case 'fnol': {
         this.selectedIndex = 3;
         break;
       }
       case 'cashflow':
-      case 'login': {
+      case 'quick-quote': {
         this.selectedIndex = 4;
         break;
       }
-      case 'quotes-list': {
+      case 'login': {
         this.selectedIndex = 5;
         break;
       }
 
-      case 'policies-list': {
+      case 'quotes-list': {
         this.selectedIndex = 6;
         break;
       }
 
-      case 'view-policy': {
+      case 'policies-list': {
         this.selectedIndex = 7;
         break;
       }
 
-      case 'manage-policy': {
+      case 'view-policy': {
         this.selectedIndex = 8;
+        break;
+      }
+      case 'manage-policy': {
+        this.selectedIndex = 9;
         break;
       }
     }

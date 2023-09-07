@@ -17,6 +17,7 @@ import { ClaimsComponent } from './insurance/claims/claims.component';
 import { QuickQuoteComponent } from './insurance/quick-quote/quick-quote.component';
 import { PoliciesListComponent } from './insurance/policies-list/policies-list.component';
 import { ViewPolicyV2Component } from './insurance/view-policy-v2/view-policy-v2.component';
+import { OverviewComponent } from './insurance/overview/overview.component';
 
 export const routes: Routes = [
   {
@@ -109,6 +110,10 @@ export const routes: Routes = [
           {
             path: 'manage-policy',
             component: ViewPolicyV2Component,
+          },
+          {
+            path: 'overview',
+            component: OverviewComponent,
           },
         ],
       },

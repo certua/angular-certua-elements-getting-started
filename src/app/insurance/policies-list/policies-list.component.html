@@ -1,17 +1,20 @@
-<div class="row" *ngIf="showError">
+<div
+  class="row"
+  *ngIf="showError"
+>
   <div class="col">
     <h3>There is an issue with the site configuration</h3>
     <a routerLink="/">Home</a>
   </div>
 </div>
-<div class="row" *ngIf="!showError">
+<div
+  class="row"
+  *ngIf="!showError"
+>
   <h2>Policies List</h2>
   <p>This component displays Policies for the logged in client/organisation</p>
   <certua-insurance-policies-list
     [referrerSiteCode]="config?.referrerId"
-    [accesstoken]="accessToken"
-    [clientId]="clientId"
-    [organisationId]="organisationId"
     (viewPolicyJourney)="viewPolicy($event)"
   >
   </certua-insurance-policies-list>
@@ -19,7 +22,7 @@
 <div>
   <h4>Example code</h4>
   <pre><code>
-    &lt;certua-insurance-policies-list 
+    &lt;certua-insurance-policies-list
     [referrerSiteCode]="config.referrerId"
     [accesstoken]="accessToken"
     [clientId]="clientId"
