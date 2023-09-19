@@ -1,6 +1,6 @@
 import { InsuranceOverviewComponent } from './insurance/insurance-overview/insurance-overview.component';
 import { QuoteListComponent } from './insurance/quote-list/quote-list.component';
-import { LoginComponent } from './onboarding/login/login.component';
+import { LoginComponent } from './insurance/login/login.component';
 import { ViewPolicyComponent } from './insurance/view-policy/view-policy.component';
 import { LayoutComponent } from './layout/layout.component';
 import { CashflowComponent } from './open-banking/cashflow/cashflow.component';
@@ -112,7 +112,7 @@ export const routes: Routes = [
             component: ViewPolicyV2Component,
           },
           {
-            path: 'overview',
+            path: 'component-overview',
             component: OverviewComponent,
           },
         ],
