@@ -40,8 +40,6 @@ export class QuoteAndBuyComponent implements OnInit {
       this.config = configJson;
     }
 
-    this.accessToken = localStorage.getItem('certua-accessToken');
-
     this.loaded = true;
   }
 }
