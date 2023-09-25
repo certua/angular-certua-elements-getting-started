@@ -30,5 +30,5 @@ export const environment = {
       'https://cdn.certua.io/ux-micro-frontends/onboarding/dev/current',
   },
   environmentName: 'dev',
-  uxAPIUrl: 'https://api.dev.getbrisk.com/api',
+  uxAPIUrl: 'https://ux-api-dev.certua.io/api',
 };

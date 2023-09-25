@@ -16,22 +16,18 @@
 <certua-insurance-login
   [referrerSiteCode]="config?.referrerId"
   (loginSuccess)="setLoginSuccess($event)"
-></certua-insurance-login>
-
-<div
-  class="col-md-12"
-  *ngIf="loginSuccess"
+  [loginUrl]="'http://localhost:4200/angular/components/login'"
 >
-  <div class="alert alert-success">You are already logged in</div>
-</div>
+  <button class="btn btn-primary">Login</button>
+</certua-insurance-login>
 
 <div>
   <h4>Example code</h4>
   <pre><code>
-  &lt;certua-ae-login  [referrerSiteCode]="config.referrerId"
+  &lt;certua-insurance-login  [referrerSiteCode]="config.referrerId"
   (loginSuccess)="setLoginSuccess($event)"
   (loginFailure)="setLoginFailure($event)"
-  &lt;/certua-ae-login &gt;
+  &lt;/certua-insurance-login &gt;
   </code>
 </pre>
   <h4>Component specific inputs</h4>
