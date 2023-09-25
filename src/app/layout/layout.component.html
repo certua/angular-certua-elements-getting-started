@@ -1,21 +1,11 @@
 <div class="container-fluid">
-  <div
-    class="row bg-grey border-bottom"
-    id="header"
-    *ngIf="!fullScreen"
-  >
+  <div class="row bg-grey border-bottom" id="header" *ngIf="!fullScreen">
     <div class="col px-0">
       <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-          <a
-            class="navbar-brand"
-            href="/"
-          >
+          <a class="navbar-brand" href="/">
             <div class="d-flex justify-items-center">
-              <img
-                (click)="removeType()"
-                src="assets/certua.png"
-              /></div
+              <img (click)="removeType()" src="assets/certua.png" /></div
           ></a>
           <button
             class="navbar-toggler"
@@ -28,10 +18,7 @@
           >
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div
-            class="collapse navbar-collapse"
-            id="navbarSupportedContent"
-          >
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto">
               <li class="nav-item">
                 <a
@@ -51,10 +38,7 @@
                   >Overview</a
                 >
               </li>
-              <li
-                class="nav-item"
-                *ngIf="!!elementType"
-              >
+              <li class="nav-item" *ngIf="!!elementType">
                 <a
                   [routerLink]="'/components'"
                   routerLinkActive="text-primary"
@@ -69,20 +53,9 @@
       </nav>
     </div>
   </div>
-  <div
-    class="row"
-    id="sidebar"
-    *ngIf="!fullScreen"
-  >
-    <div
-      class="col-md-3 border-end"
-      id="side"
-      *ngIf="showNavigation"
-    >
-      <app-tab-arrows
-        #tabArrows
-        class="d-md-none"
-      ></app-tab-arrows>
+  <div class="row" id="sidebar" *ngIf="!fullScreen">
+    <div class="col-md-3 border-end" id="side" *ngIf="showNavigation">
+      <app-tab-arrows #tabArrows class="d-md-none"></app-tab-arrows>
       <div
         class="list-group mt-4 d-flex flex-md-column flex-row overflow-auto mx-1 pointer"
         id="items"
@@ -127,13 +100,6 @@
         id="items"
         *ngIf="section == SiteSection.Components && elementType == 'insurance'"
       >
-        <span
-          (click)="selectItem(0, '/components/overview')"
-          class="list-group-item"
-          [class.active]="selectedIndex == 0"
-        >
-          Overview</span
-        >
         <span
           (click)="selectItem(0, '/components/quote-and-buy')"
           class="list-group-item"
@@ -267,10 +233,7 @@
       </div>
       <nav></nav>
     </div>
-    <div
-      class="col mt-4"
-      id="content"
-    >
+    <div class="col mt-4" id="content">
       <router-outlet></router-outlet>
       <app-common-inputs
         *ngIf="showNavigation && elementType == 'open-banking'"
@@ -285,10 +248,7 @@
   >
     <div class="d-flex flex-row w-100 align-items-center">
       <div class="col-md-2 text-start">
-        <button
-          class="btn btn-link pointer"
-          (click)="backToGettingStarted()"
-        >
+        <button class="btn btn-link pointer" (click)="backToGettingStarted()">
           <i class="fal fa-long-arrow-left me-2"></i>Exit fullscreen
         </button>
       </div>
