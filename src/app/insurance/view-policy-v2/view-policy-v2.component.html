@@ -31,9 +31,6 @@
     &lt;certua-insurance-view-policy
     *ngIf="loaded"
      [config]="config"
-     [accesstoken]="accessToken"
-     [clientId]="clientId"
-     [organisationId]="organisationId"
      (makeAClaim)="goToMakeAClaim($event)"
      (goToQuoteAndBuy)="goToQuoteAndBuy($event)"
     &lt;/certua-insurance-view-policy &gt;
