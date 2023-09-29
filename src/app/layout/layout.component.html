@@ -166,23 +166,30 @@
         *ngIf="section == SiteSection.Overview && elementType == 'insurance'"
       >
         <span
-          (click)="selectItem(0, '/overview-insurance', 'getting-started')"
+          (click)="selectItem(0, '/overview-insurance', 'introduction')"
           class="list-group-item"
           [class.active]="selectedIndex == 0"
+        >
+          Introduction</span
+        >
+        <span
+          (click)="selectItem(1, '/overview-insurance', 'getting-started')"
+          class="list-group-item"
+          [class.active]="selectedIndex == 1"
         >
           Getting started</span
         >
         <span
-          (click)="selectItem(1, '/overview-insurance', 'site-code')"
+          (click)="selectItem(2, '/overview-insurance', 'site-code')"
           class="list-group-item"
-          [class.active]="selectedIndex == 1"
+          [class.active]="selectedIndex == 2"
         >
           Site Code</span
         >
         <span
-          (click)="selectItem(2, '/overview-insurance', 'theming')"
+          (click)="selectItem(3, '/overview-insurance', 'theming')"
           class="list-group-item"
-          [class.active]="selectedIndex == 2"
+          [class.active]="selectedIndex == 3"
         >
           Theming</span
         >

@@ -23,11 +23,13 @@ export interface ReferrerCodeCheck {
   styleUrls: ['./insurance-overview.component.scss'],
 })
 export class InsuranceOverviewComponent implements OnInit, AfterViewInit {
+  @ViewChild('introduction')
+  introductionElement!: ElementRef;
   @ViewChild('getStarted')
   getStartedElement!: ElementRef;
   @ViewChild('siteCode') siteCodeElement!: ElementRef;
   @ViewChild('theming') themingElement!: ElementRef;
-  @ViewChild('productContent') productContentElement!: ElementRef;
+
   @ViewChild('security') securityElement!: ElementRef;
   @ViewChild('clientLibraries') clientLibrariesElement!: ElementRef;
   @ViewChild('components') componentsElement!: ElementRef;
@@ -43,48 +45,45 @@ export class InsuranceOverviewComponent implements OnInit, AfterViewInit {
   referrerSet = false;
   referrerName = '';
   isSidebar = false;
+  offset = 100;
+  public introductionOffset: number = 0;
   public getStartedOffset: number = 0;
   public siteCodeOffset: number = 0;
   public themingOffset: number = 0;
-  public productContentOffset: number = 0;
+
   public securityOffset: number = 0;
   public clientLibrariesOffset: number = 0;
   public componentsOffset: number = 0;
+
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    this.setOffset();
+  }
+
   @HostListener('window:scroll', ['$event'])
-  checkOffsetTop() {
+  checkOffsetTop(event: any) {
+    console.log(event);
+
+    let offset = window.pageYOffset + this.offset;
     let currentIndex = 0;
-    if (
-      window.pageYOffset >= this.getStartedOffset &&
-      window.pageYOffset < this.siteCodeOffset
-    ) {
+    if (offset >= this.getStartedOffset && offset < this.siteCodeOffset) {
       currentIndex = 1;
-    } else if (
-      window.pageYOffset >= this.siteCodeOffset &&
-      window.pageYOffset < this.themingOffset
-    ) {
+    } else if (offset >= this.siteCodeOffset && offset < this.themingOffset) {
       currentIndex = 2;
-    } else if (
-      window.pageYOffset >= this.themingOffset &&
-      window.pageYOffset < this.productContentOffset
-    ) {
+    } else if (offset >= this.themingOffset && offset < this.securityOffset) {
       currentIndex = 3;
     } else if (
-      window.pageYOffset >= this.productContentOffset &&
-      window.pageYOffset < this.securityOffset
+      offset >= this.securityOffset &&
+      offset < this.clientLibrariesOffset
     ) {
       currentIndex = 4;
     } else if (
-      window.pageYOffset >= this.securityOffset &&
-      window.pageYOffset < this.clientLibrariesOffset
+      offset >= this.clientLibrariesOffset &&
+      offset < this.componentsOffset
     ) {
       currentIndex = 5;
-    } else if (
-      window.pageYOffset >= this.clientLibrariesOffset &&
-      window.pageYOffset < this.componentsOffset
-    ) {
+    } else if (offset >= this.componentsOffset) {
       currentIndex = 6;
-    } else if (window.pageYOffset >= this.componentsOffset) {
-      currentIndex = 7;
     } else {
       currentIndex = 0;
     }
@@ -96,6 +95,14 @@ export class InsuranceOverviewComponent implements OnInit, AfterViewInit {
         detail: { index: currentIndex },
       })
     );
+  }
+
+  setOffset() {
+    if (window.innerWidth > 768) {
+      this.offset = 100;
+    } else {
+      this.offset = 150;
+    }
   }
   ngOnInit() {
     let config = localStorage.getItem('insuranceConfig');
@@ -110,8 +117,7 @@ export class InsuranceOverviewComponent implements OnInit, AfterViewInit {
     this.getStartedOffset = this.getStartedElement.nativeElement.offsetTop;
     this.siteCodeOffset = this.siteCodeElement.nativeElement.offsetTop;
     this.themingOffset = this.themingElement.nativeElement.offsetTop;
-    this.productContentOffset =
-      this.productContentElement.nativeElement.offsetTop;
+
     this.securityOffset = this.securityElement.nativeElement.offsetTop;
     this.clientLibrariesOffset =
       this.clientLibrariesElement.nativeElement.offsetTop;
