@@ -108,6 +108,19 @@ export const routes: Routes = [
             ],
           },
           {
+            path: 'view-policy2',
+            children: [
+              {
+                path: '',
+                component: ViewPolicyV2Component,
+              },
+              {
+                path: ':id',
+                component: ViewPolicyV2Component,
+              },
+            ],
+          },
+          {
             path: 'manage-policy',
             component: ViewPolicyV2Component,
           },

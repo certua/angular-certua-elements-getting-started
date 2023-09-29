@@ -56,6 +56,6 @@ export class PoliciesListComponent implements OnInit {
   }
 
   viewPolicy(value: any) {
-    this.router.navigate([`/components/view-policy/${value.detail.id}`]);
+    this.router.navigate([`/components/view-policy2/${value.detail.id}`]);
   }
 }
