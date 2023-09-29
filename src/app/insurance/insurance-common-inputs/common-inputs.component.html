@@ -16,13 +16,7 @@
           and buy journey integration<br /><code>{{ config | json }}}</code>
         </td>
       </tr>
-      <tr>
-        <td>accesstoken</td>
-        <td *ngIf="quoteAndBuy">Yes</td>
-        <td *ngIf="!quoteAndBuy">No</td>
 
-        <td>Pass null if no access token available or for anonymous journey</td>
-      </tr>
       <tr *ngIf="!quoteAndBuy">
         <td>referrerSiteCode</td>
         <td>Yes</td>
