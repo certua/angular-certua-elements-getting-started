@@ -23,6 +23,7 @@ bootstrapApplication(AppComponent, {
       withComponentInputBinding(),
       withInMemoryScrolling({
         anchorScrolling: 'enabled',
+        scrollPositionRestoration: 'disabled',
       })
     ),
     importProvidersFrom(BrowserModule, NgIdleModule.forRoot()),

@@ -96,10 +96,9 @@ export class LayoutComponent implements OnInit {
   selectItem(i: number, route: string, section?: string) {
     this.tabArrows.selectItem(i);
 
-    this.selectedIndex = i;
-
     if (!section) {
       this.router.navigate([route]);
+      this.selectedIndex = i; //dont' set this as host listener will
     } else {
       this.router.navigate([route], { fragment: section });
     }
@@ -114,52 +113,47 @@ export class LayoutComponent implements OnInit {
     switch (page) {
       case 'connect':
       case 'quote-and-buy':
-      case 'insurance-overview':
-      case 'component-overview': {
+      case 'insurance-overview': {
         this.selectedIndex = 0;
         break;
       }
       case 'manage-connections':
-      case 'quote-and-buy': {
+      case 'claims': {
         this.selectedIndex = 1;
         break;
       }
       case 'account-summary':
-      case 'claims': {
+      case 'fnol': {
         this.selectedIndex = 2;
         break;
       }
       case 'transactions':
-      case 'fnol': {
+      case 'quick-quote': {
         this.selectedIndex = 3;
         break;
       }
       case 'cashflow':
-      case 'quick-quote': {
-        this.selectedIndex = 4;
-        break;
-      }
       case 'login': {
-        this.selectedIndex = 5;
+        this.selectedIndex = 4;
         break;
       }
 
       case 'quotes-list': {
-        this.selectedIndex = 6;
+        this.selectedIndex = 5;
         break;
       }
 
       case 'policies-list': {
-        this.selectedIndex = 7;
+        this.selectedIndex = 6;
         break;
       }
 
       case 'view-policy': {
-        this.selectedIndex = 8;
+        this.selectedIndex = 7;
         break;
       }
       case 'manage-policy': {
-        this.selectedIndex = 9;
+        this.selectedIndex = 8;
         break;
       }
     }
