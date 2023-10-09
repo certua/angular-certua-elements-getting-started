@@ -67,6 +67,10 @@ export const routes: Routes = [
             component: AccountSummaryComponent,
           },
           {
+            path: 'introduction',
+            component: OverviewComponent,
+          },
+          {
             path: 'quote-and-buy',
             component: QuoteAndBuyComponent,
           },

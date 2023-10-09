@@ -11,6 +11,7 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
+import { Title } from '@angular/platform-browser';
 export interface ReferrerCodeCheck {
   name: string;
   isSidebar: boolean;
@@ -42,6 +43,7 @@ export class InsuranceOverviewComponent implements OnInit, AfterViewInit {
 
   referrerCode = '';
   httpClient = inject(HttpClient);
+  titleService = inject(Title);
   referrerSet = false;
   referrerName = '';
   isSidebar = false;
@@ -108,9 +110,10 @@ export class InsuranceOverviewComponent implements OnInit, AfterViewInit {
     let config = localStorage.getItem('insuranceConfig');
     if (!!config) {
       this.referrerSet = true;
-
       this.referrerName = localStorage.getItem('certua-referrerName') ?? '';
     }
+
+    this.titleService.setTitle('Insurance Elements Overview | Certua');
   }
 
   ngAfterViewInit(): void {
@@ -128,6 +131,9 @@ export class InsuranceOverviewComponent implements OnInit, AfterViewInit {
     localStorage.clear();
     sessionStorage.clear();
     localStorage.setItem('elementType', 'insurance');
+    window.dispatchEvent(
+      new CustomEvent('show-navigation', { detail: { show: false } })
+    );
     this.referrerSet = false;
     this.referrerName = '';
     this.isSidebar = false;
@@ -139,6 +145,7 @@ export class InsuranceOverviewComponent implements OnInit, AfterViewInit {
     localStorage.clear();
     sessionStorage.clear();
 
+    localStorage.setItem('certua-referrerName', this.referrerName);
     localStorage.setItem('elementType', 'insurance');
 
     localStorage.setItem(
@@ -147,6 +154,10 @@ export class InsuranceOverviewComponent implements OnInit, AfterViewInit {
         referrerId: this.referrerCode,
         basePath: 'angular/components/quote-and-buy',
       })
+    );
+
+    window.dispatchEvent(
+      new CustomEvent('show-navigation', { detail: { show: true } })
     );
 
     localStorage.setItem('certua-sidebar', this.isSidebar.toString());

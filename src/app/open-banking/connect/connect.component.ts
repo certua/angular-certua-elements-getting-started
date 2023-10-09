@@ -67,10 +67,10 @@ export class ConnectComponent implements OnInit {
   };
 
   ngOnInit() {
-    if (!localStorage.getItem('elementType')) {
+    if (localStorage.getItem('elementType') == 'insurance') {
+      this.router.navigate(['/components/introduction']);
+    } else {
       this.router.navigate(['/home']);
-    } else if (localStorage.getItem('elementType') == 'insurance') {
-      this.router.navigate(['/components/quote-and-buy']);
     }
 
     if (!localStorage.getItem('apiConfig')) {

@@ -13,7 +13,7 @@ import {
   withRouterConfig,
 } from '@angular/router';
 import { routes } from './app/app-routes';
-import { provideOAuthClient } from 'angular-oauth2-oidc';
+import { OAuthStorage, provideOAuthClient } from 'angular-oauth2-oidc';
 import { NgIdleModule } from '@ng-idle/core';
 
 bootstrapApplication(AppComponent, {

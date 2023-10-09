@@ -9,13 +9,15 @@ import {
   NgZone,
   OnInit,
 } from '@angular/core';
+import { CommonInputsComponent } from '../../open-banking/common-inputs/common-inputs.component';
+import { InsuranceCommonInputsComponent } from '../insurance-common-inputs/common-inputs.component';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
   standalone: true,
-  imports: [NgIf, RouterLink, JsonPipe],
+  imports: [NgIf, RouterLink, JsonPipe, InsuranceCommonInputsComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class LoginComponent implements OnInit {

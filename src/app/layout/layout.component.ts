@@ -34,6 +34,7 @@ export enum SiteSection {
 })
 export class LayoutComponent implements OnInit {
   showNavigation = false;
+  showComponentMenu = false;
   elementType: string = '';
   private activatedRoute = inject(ActivatedRoute);
   private router = inject(Router);
@@ -88,6 +89,14 @@ export class LayoutComponent implements OnInit {
     this.elementType = type;
     let page = location.pathname.replace('/angular/components/', '');
     this.checkSelected(page);
+
+    addEventListener('show-navigation', (event: any) => {
+      this.showComponentMenu = event.detail.show;
+    });
+
+    if (localStorage.getItem('insuranceConfig')) {
+      this.showComponentMenu = true;
+    }
   }
 
   backToGettingStarted() {
@@ -112,53 +121,55 @@ export class LayoutComponent implements OnInit {
     console.log('route', page);
     switch (page) {
       case 'connect':
-      case 'quote-and-buy':
-      case 'insurance-overview': {
+
+      case 'insurance-overview':
+      case 'overview': {
         this.selectedIndex = 0;
         break;
       }
       case 'manage-connections':
+      case 'quote-and-buy':
       case 'claims': {
         this.selectedIndex = 1;
         break;
       }
-      case 'account-summary':
-      case 'fnol': {
+      case 'account-summary': {
         this.selectedIndex = 2;
         break;
       }
       case 'transactions':
-      case 'quick-quote': {
+      case 'fnol': {
         this.selectedIndex = 3;
         break;
       }
       case 'cashflow':
-      case 'login': {
+      case 'quick-quote': {
         this.selectedIndex = 4;
         break;
       }
 
-      case 'quotes-list': {
+      case 'login': {
         this.selectedIndex = 5;
         break;
       }
 
-      case 'policies-list': {
+      case 'quotes-list': {
         this.selectedIndex = 6;
         break;
       }
 
-      case 'view-policy': {
+      case 'policies-list': {
         this.selectedIndex = 7;
         break;
       }
+      case 'view-policy':
       case 'manage-policy': {
         this.selectedIndex = 8;
         break;
       }
     }
     if (page.includes('view-policy')) {
-      this.selectedIndex = 7;
+      this.selectedIndex = 8;
     }
 
     if (
@@ -168,6 +179,18 @@ export class LayoutComponent implements OnInit {
       this.fullScreen = true;
     } else {
       this.fullScreen = false;
+    }
+  }
+
+  watchAnyObject(object: any, methods: any[], callback: Function) {
+    for (let method of methods) {
+      let original = object[method].bind(object);
+      const newMethod = function (...args: any[]) {
+        let result = original(...args);
+        callback(method, ...args);
+        return result;
+      };
+      object[method] = newMethod.bind(object);
     }
   }
 }
