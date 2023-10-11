@@ -38,9 +38,14 @@
   margin-top: 100px !important;
 }
 #side {
-  position: sticky;
   margin-top: 4rem;
   background-color: white;
   padding-bottom: 10px;
   z-index: 999;
+}
+
+.stay-put {
+  position: sticky;
+  top: 100px;
+  z-index: 490;
 }
