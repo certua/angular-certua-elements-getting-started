@@ -1,3 +1,4 @@
+import { InsuranceCommonInputsComponent } from './../insurance-common-inputs/common-inputs.component';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { JsonPipe, NgIf } from '@angular/common';
 import {
@@ -10,7 +11,6 @@ import {
   OnInit,
 } from '@angular/core';
 import { CommonInputsComponent } from '../../open-banking/common-inputs/common-inputs.component';
-import { InsuranceCommonInputsComponent } from '../insurance-common-inputs/common-inputs.component';
 
 @Component({
   selector: 'app-login',
