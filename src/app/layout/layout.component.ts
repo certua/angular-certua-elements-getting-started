@@ -94,7 +94,10 @@ export class LayoutComponent implements OnInit {
       this.showComponentMenu = event.detail.show;
     });
 
-    if (localStorage.getItem('insuranceConfig')) {
+    if (
+      (type == 'insurance' && localStorage.getItem('insuranceConfig')) ||
+      type == 'open-banking'
+    ) {
       this.showComponentMenu = true;
     }
   }

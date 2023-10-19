@@ -105,6 +105,11 @@ export class ObSetupComponent {
             })
           )
         ),
+        tap((_) =>
+          window.dispatchEvent(
+            new CustomEvent('show-navigation', { detail: { show: true } })
+          )
+        ),
         tap(
           (_) => (this.apiConfig = <string>localStorage.getItem('apiConfig'))
         ),

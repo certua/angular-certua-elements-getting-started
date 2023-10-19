@@ -69,7 +69,7 @@ export class ConnectComponent implements OnInit {
   ngOnInit() {
     if (localStorage.getItem('elementType') == 'insurance') {
       this.router.navigate(['/components/introduction']);
-    } else {
+    } else if (!localStorage.getItem('elementType')) {
       this.router.navigate(['/home']);
     }
 
