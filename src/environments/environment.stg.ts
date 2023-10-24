@@ -15,7 +15,7 @@ export const environment = {
       subTenantReference: '12499',
     },
     elementsURL:
-      'https://cdn.certua.io/ux-micro-frontends/open-banking-elements/stg/v1.0.7-pre',
+      'https://cdn.certua.io/ux-micro-frontends/open-banking-elements/stg/v1.0.8-pre',
   },
   insurance: {
     quoteAndBuyURL:
@@ -23,6 +23,12 @@ export const environment = {
     elementsURL:
       'https://cdn.certua.io/ux-micro-frontends/insurance-elements/stg/v1.0.2-pre',
     demoSiteCode: '08db6c19-8664-4f14-817a-e8f2b28fca36',
+    demoSidebarCode: '08db56d8-079c-4244-8869-41a7b35771ae',
+  },
+  onboarding: {
+    onboardingURL:
+      'https://cdn.certua.io/ux-micro-frontends/onboarding/stg/v3.1.13-pre',
   },
   environmentName: 'stg',
+  uxAPIUrl: 'https://api.stg.getbrisk.com/api',
 };

@@ -23,6 +23,12 @@ export const environment = {
     elementsURL:
       'https://cdn.certua.io/ux-micro-frontends/insurance-elements/dev/current',
     demoSiteCode: '08db6c19-8664-4f14-817a-e8f2b28fca36',
+    demoSidebarCode: '6c8f947d-e1a5-434a-a27e-cc405b7a4f4a',
+  },
+  onboarding: {
+    onboardingURL:
+      'https://cdn.certua.io/ux-micro-frontends/onboarding/dev/current',
   },
   environmentName: 'dev',
+  uxAPIUrl: 'https://api.dev.getbrisk.com/api',
 };
