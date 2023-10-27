@@ -19,7 +19,12 @@ export const environment = {
   insurance: {
     quoteAndBuyURL: 'http://localhost:4256',
     elementsURL: 'http://localhost:4207',
-    demoSiteCode: '08db6c19-8664-4f14-817a-e8f2b28fca36',
+    demoSiteCode: '88484503-ffd2-4b2b-86d0-f5c0de6d1395',
+    demoSidebarCode: '6c8f947d-e1a5-434a-a27e-cc405b7a4f4a',
+  },
+  onboarding: {
+    onboardingURL: 'http://localhost:4201',
   },
   environmentName: 'local',
+  uxAPIUrl: 'http://localhost:32213/api',
 };

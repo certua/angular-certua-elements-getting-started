@@ -1,3 +1,7 @@
+import { InsuranceOverviewComponent } from './insurance/insurance-overview/insurance-overview.component';
+import { QuoteListComponent } from './insurance/quote-list/quote-list.component';
+import { LoginComponent } from './insurance/login/login.component';
+import { ViewPolicyComponent } from './insurance/view-policy/view-policy.component';
 import { LayoutComponent } from './layout/layout.component';
 import { CashflowComponent } from './open-banking/cashflow/cashflow.component';
 import { TransactionsComponent } from './open-banking/transactions/transactions.component';
@@ -11,8 +15,11 @@ import { QuoteAndBuyComponent } from './insurance/quote-and-buy/quote-and-buy.co
 import { FnolComponent } from './insurance/fnol/fnol.component';
 import { ClaimsComponent } from './insurance/claims/claims.component';
 import { QuickQuoteComponent } from './insurance/quick-quote/quick-quote.component';
+import { PoliciesListComponent } from './insurance/policies-list/policies-list.component';
+import { ViewPolicyV2Component } from './insurance/view-policy-v2/view-policy-v2.component';
+import { OverviewComponent } from './insurance/overview/overview.component';
 
-const routes: Routes = [
+export const routes: Routes = [
   {
     component: LayoutComponent,
     path: '',
@@ -25,6 +32,11 @@ const routes: Routes = [
       {
         path: 'home',
         component: HomeComponent,
+      },
+
+      {
+        path: 'overview-insurance',
+        component: InsuranceOverviewComponent,
       },
       {
         path: 'components',
@@ -55,6 +67,10 @@ const routes: Routes = [
             component: AccountSummaryComponent,
           },
           {
+            path: 'introduction',
+            component: OverviewComponent,
+          },
+          {
             path: 'quote-and-buy',
             component: QuoteAndBuyComponent,
           },
@@ -70,14 +86,54 @@ const routes: Routes = [
             path: 'quick-quote',
             component: QuickQuoteComponent,
           },
+          {
+            path: 'login',
+            component: LoginComponent,
+          },
+          {
+            path: 'quotes-list',
+            component: QuoteListComponent,
+          },
+          {
+            path: 'policies-list',
+            component: PoliciesListComponent,
+          },
+          {
+            path: 'view-policy',
+            children: [
+              {
+                path: '',
+                component: ViewPolicyComponent,
+              },
+              {
+                path: ':id',
+                component: ViewPolicyComponent,
+              },
+            ],
+          },
+          {
+            path: 'view-policy2',
+            children: [
+              {
+                path: '',
+                component: ViewPolicyV2Component,
+              },
+              {
+                path: ':id',
+                component: ViewPolicyV2Component,
+              },
+            ],
+          },
+          {
+            path: 'manage-policy',
+            component: ViewPolicyV2Component,
+          },
+          {
+            path: 'component-overview',
+            component: OverviewComponent,
+          },
         ],
       },
     ],
   },
 ];
-
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
-})
-export class AppRoutingModule {}

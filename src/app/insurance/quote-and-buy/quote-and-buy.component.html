@@ -1,25 +1,30 @@
-<div class="row" *ngIf="showError">
+<div
+  class="row"
+  *ngIf="showError"
+>
   <div class="col">
     <h3>There is an issue with the site configuration</h3>
     <a routerLink="/">Home</a>
   </div>
 </div>
-<div class="row" *ngIf="!showError">
+<div
+  class="row"
+  *ngIf="!showError"
+>
   <h2>Quote and buy</h2>
   <p>This component displays a Quote and buy Journey</p>
-  <mf-insurance-journey
+  <certua-insurance-quote-and-buy
     [config]="config"
-    [accesstoken]="accessToken"
     *ngIf="!!loaded"
-  ></mf-insurance-journey>
+    [useCertuaAuth]="true"
+  ></certua-insurance-quote-and-buy>
 </div>
 <div>
   <h4>Example code</h4>
   <pre><code>
-    &lt;mf-insurance-journey 
+    &lt;certua-insurance-quote-and-buy
       [config]="config"
-      [accesstoken]="accessToken"
-    &lt;/mf-insurance-journey &gt;
+    &lt;/certua-insurance-quote-and-buy &gt;
     </code>
   </pre>
   <h4>Component specific inputs</h4>

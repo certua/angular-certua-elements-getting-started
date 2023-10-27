@@ -37,7 +37,7 @@ export class ClaimsComponent implements OnInit {
     let configJson = localStorage.getItem('insuranceConfig');
 
     if (!!configJson) {
-      this.config = configJson;
+      this.config = JSON.parse(configJson);
     }
 
     this.accessToken = localStorage.getItem('certua-accessToken');
