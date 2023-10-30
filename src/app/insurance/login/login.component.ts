@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
   route = inject(ActivatedRoute);
   loaded = false;
   loginSuccess = false;
-
+  window = window;
   ngOnInit() {
     if (!localStorage.getItem('elementType')) {
       this.router.navigate(['/home']);
