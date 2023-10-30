@@ -26,6 +26,21 @@ export class FnolComponent implements OnInit {
   showError = false;
   router = inject(Router);
   loaded = false;
+  prefill: any;
+  makeAClaimJson = {
+    address: {
+      addressLine1: '9 Anchor House',
+      addressLine2: 'Anchor Quay',
+      addressLine3: '',
+      city: 'Norwich',
+      country: 'UK',
+      county: 'Norfolk',
+      postCode: 'NR3 3XP',
+      type: 'Correspondence',
+    },
+    insuredFullName: 'Chuck Allen',
+    policyNumber: 'CER_TestPolicy-600-P005258',
+  };
 
   ngOnInit() {
     if (!localStorage.getItem('elementType')) {
@@ -37,11 +52,13 @@ export class FnolComponent implements OnInit {
     let configJson = localStorage.getItem('insuranceConfig');
 
     if (!!configJson) {
-      this.config = configJson;
+      this.config = JSON.parse(configJson);
     }
 
     this.accessToken = localStorage.getItem('certua-accessToken');
 
+    console.log('state', window.history.state);
+    this.prefill = window.history.state.data;
     this.loaded = true;
   }
 }

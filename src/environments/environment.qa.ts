@@ -22,7 +22,13 @@ export const environment = {
       'https://cdn.certua.io/ux-micro-frontends/quote-and-buy/qa/current',
     elementsURL:
       'https://cdn.certua.io/ux-micro-frontends/insurance-elements/qa/current',
-    demoSiteCode: '08db6c19-8664-4f14-817a-e8f2b28fca36',
+    demoSiteCode: '950d58ac-b445-4370-9131-84f6e93fb32c',
+    demoSidebarCode: '1bc578b2-c6ba-4519-a1dc-e2d5670ce1e9',
+  },
+  onboarding: {
+    onboardingURL:
+      'https://cdn.certua.io/ux-micro-frontends/onboarding/qa/current',
   },
   environmentName: 'qa',
+  uxAPIUrl: 'https://ux-api-qa.certua.io/api',
 };

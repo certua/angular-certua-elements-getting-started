@@ -9,6 +9,7 @@
   <p>This component displays a FNOL Form</p>
   <certua-insurance-fnol
     [referrerSiteCode]="config?.referrerId"
+    [prefill]="prefill"
     *ngIf="!!loaded"
   ></certua-insurance-fnol>
 </div>
@@ -17,6 +18,7 @@
   <pre><code>
     &lt;certua-insurance-fnol
     [referrerSiteCode]="config?.referrerId"
+    [prefill]="prefill"
     
     &lt;/certua-insurance-fnol &gt;
     </code>
@@ -30,7 +32,17 @@
 
         <th>Description</th>
       </thead>
-      <tbody></tbody>
+      <tbody>
+        <tr>
+          <td>prefill</td>
+          <td>No</td>
+          <td>
+            Data to prefill claims form. Emitted from View policy when user
+            clicks 'Make a claim' Example:
+            <code>{{ makeAClaimJson | json }}</code>
+          </td>
+        </tr>
+      </tbody>
     </table>
   </div>
 

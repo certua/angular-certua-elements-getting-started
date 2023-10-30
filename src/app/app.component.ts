@@ -1,7 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, inject, OnInit } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
-import { NgSwitch, NgSwitchDefault, NgSwitchCase } from '@angular/common';
+import {
+  NgSwitch,
+  NgSwitchDefault,
+  NgSwitchCase,
+  ViewportScroller,
+} from '@angular/common';
 import { environment } from 'src/environments/environment';
+import { OAuthService, OAuthSuccessEvent } from 'angular-oauth2-oidc';
+import { filter } from 'rxjs';
+import { DEFAULT_INTERRUPTSOURCES, Idle } from '@ng-idle/core';
 
 @Component({
   selector: 'app-root',
@@ -11,13 +19,25 @@ import { environment } from 'src/environments/environment';
   imports: [NgSwitch, NgSwitchDefault, NgSwitchCase, RouterOutlet, RouterLink],
 })
 export class AppComponent implements OnInit {
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    this.setOffset();
+  }
+  innerWidth = 0;
   title = 'get-started-open-banking-angular';
+  private oauthService = inject(OAuthService);
+  private idle = inject(Idle);
+  private loggingOut = false;
   elementType: string = '';
   openBankingUrl = environment.openBanking.elementsURL + '/main.js';
 
   quoteAndBuyUrl = environment.insurance.quoteAndBuyURL + '/main.js';
   insuranceElementsUrl = environment.insurance.elementsURL + '/main.js';
+  onboardingUrl = environment.onboarding.onboardingURL + '/main.js';
+  vps = inject(ViewportScroller);
   ngOnInit() {
+    this.setOffset();
+
     let type = localStorage.getItem('elementType');
     if (!!type) {
       this.elementType = type;
@@ -28,6 +48,17 @@ export class AppComponent implements OnInit {
         this.loadScript(this.quoteAndBuyUrl, null);
         this.loadScript(this.insuranceElementsUrl, null);
       }
+    }
+    //this.setupSecurity();
+  }
+
+  setOffset() {
+    this.innerWidth = window.innerWidth;
+
+    if (this.innerWidth > 768) {
+      this.vps.setOffset([0, 100]);
+    } else {
+      this.vps.setOffset([0, 150]);
     }
   }
   private async loadScript(url: string, onload: any) {

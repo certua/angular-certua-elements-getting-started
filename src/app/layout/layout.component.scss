@@ -17,3 +17,35 @@
     }
   }
 }
+#full-header,
+#header {
+  width: 100%;
+  background-color: #fff;
+  position: -webkit-sticky;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+}
+
+#items {
+  //position: sticky;
+  // top: 100px;
+  margin-top: 2rem;
+  z-index: 490;
+}
+
+#content {
+  margin-top: 100px !important;
+}
+#side {
+  margin-top: 4rem;
+  background-color: white;
+  padding-bottom: 10px;
+  z-index: 999;
+}
+
+.stay-put {
+  position: sticky;
+  top: 100px;
+  z-index: 490;
+}
