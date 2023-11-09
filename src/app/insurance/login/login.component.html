@@ -14,9 +14,9 @@
 <certua-insurance-login
   [referrerSiteCode]="config?.referrerId"
   (loginSuccess)="setLoginSuccess($event)"
-  [loginUrl]="'http://localhost:4200/angular/components/login'"
-  [logoutUrl]="'http://localhost:4200/angular/components/login'"
-  [coversUrl]="'http://localhost:4200/angular/components/view-policy2'"
+  [loginUrl]="window.location.origin + '/angular/components/login'"
+  [logoutUrl]="window.location.origin + '/angular/components/login'"
+  [coversUrl]="window.location.origin + '/angular/components/view-policy2'"
 >
   <button class="btn btn-primary" login>Login</button>
   <button class="btn btn-secondary btn-circle" logout>Logout</button>
@@ -29,9 +29,9 @@
       <code>
     &lt;certua-insurance-login
     [referrerSiteCode]="config.referrerId"
-    [coversUrl]="'http://localhost:4200/angular/components/view-policy2'"
-    [loginUrl]="'http://localhost:4200/angular/components/view-policy2'"
-    [logoutUrl]="'http://localhost:4200/angular/components/login'"&gt;
+    [loginUrl]="window.location.origin + '/angular/components/login'"
+  [logoutUrl]="window.location.origin + '/angular/components/login'"
+  [coversUrl]="window.location.origin + '/angular/components/view-policy2'"&gt;
 
     &lt;button class="btn btn-primary" login&gt;Login&lt;/button&gt;
     &lt;button class="btn btn-secondary btn-circle" logout&gt;&lt;i class="fa fa-user"&gt;&lt;/button&gt;
