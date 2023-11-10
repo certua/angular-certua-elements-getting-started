@@ -35,11 +35,12 @@ export class InsuranceOverviewComponent implements OnInit, AfterViewInit {
   @ViewChild('clientLibraries') clientLibrariesElement!: ElementRef;
   @ViewChild('components') componentsElement!: ElementRef;
 
-  qnbLink: string = environment.insurance.quoteAndBuyURL + 'main.js';
-  insuranceElementsLink: string = environment.insurance.elementsURL + 'main.js';
-  qnbPolyfills: string = environment.insurance.quoteAndBuyURL + 'polyfills.js';
+  qnbLink: string = environment.insurance.quoteAndBuyURL + '/main.js';
+  insuranceElementsLink: string =
+    environment.insurance.elementsURL + '/main.js';
+  qnbPolyfills: string = environment.insurance.quoteAndBuyURL + '/polyfills.js';
   insuranceElementsPolyfills: string =
-    environment.insurance.elementsURL + 'polyfills.js';
+    environment.insurance.elementsURL + '/polyfills.js';
 
   referrerCode = '';
   httpClient = inject(HttpClient);
