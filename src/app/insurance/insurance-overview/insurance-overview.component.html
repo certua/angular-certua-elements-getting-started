@@ -1,7 +1,4 @@
-<section
-  id="introduction"
-  #introduction
->
+<section id="introduction" #introduction>
   <h1>Introduction</h1>
 
   <p>
@@ -24,10 +21,7 @@
     Let's dive in and help you on the way to sell insurance online.
   </p>
 
-  <section
-    id="getting-started"
-    #getStarted
-  >
+  <section id="getting-started" #getStarted>
     <h3>Getting started</h3>
 
     <div>
@@ -40,17 +34,14 @@
       </ul>
     </div>
   </section>
-  <section
-    id="site-code"
-    #siteCode
-  >
+  <section id="site-code" #siteCode>
     <h3>Get a site code</h3>
     The site code configure the components telling them what theme, and
     insurance product that they are using. This is a unique code that we will
     provide you with. If you don't have a site code then please contact us at
     <a href="mailto:luke@certua.io">luke@certua.io</a>
     <div *ngIf="!referrerSet">
-      <div class="alert alert-light w-50 my-2">
+      <div class="alert alert-light col-12 col-md-6 my-2">
         If you would like to see a demo of our components before you get your
         own site code you can use one of our demo site codes. We have two
         different styles of journey, one with multiple questions on one page, or
@@ -113,11 +104,11 @@
         </div>
       </div>
 
-      <div class="alert alert-light w-50 my-2">
+      <div class="alert alert-light col-12 col-md-6 my-2">
         If we have already provided you with a site code then this won't change
         and you can enter this here
       </div>
-      <div class="text-start w-50">
+      <div class="text-start col-12 col-md-6">
         <input
           id="referrerId"
           type="text"
@@ -125,20 +116,14 @@
           [(ngModel)]="referrerCode"
           (ngModelChange)="checkReferrer()"
         />
-        <p
-          class="mt-2 text-success font-weight-bold"
-          *ngIf="!!referrerName"
-        >
+        <p class="mt-2 text-success font-weight-bold" *ngIf="!!referrerName">
           <i class="fa fa-check mr-2"></i>{{ referrerName }}
         </p>
-        <button
-          class="btn btn-primary mt-2"
-          (click)="setReferrer()"
-        >
+        <button class="btn btn-primary mt-2" (click)="setReferrer()">
           Set site code
         </button>
       </div>
-      <div class="alert alert-light w-50 mt-4">
+      <div class="alert alert-light col-12 col-md-6 mt-4">
         If you would like your own site code with your own branding then we can
         set this up for you. Please email us at
         <a href="mailto:luke@certua.io">luke@certua.io</a>
@@ -146,26 +131,18 @@
     </div>
     <div *ngIf="referrerSet">
       <div
-        class="d-flex alert alert-success w-50 justify-content-between align-items-center"
+        class="d-flex alert alert-success col-12 col-md-6 justify-content-between align-items-center"
       >
         <span
           >You are currently using <strong>{{ referrerName }}</strong> site
           code</span
         >
 
-        <div
-          class="btn btn-secondary"
-          (click)="reset()"
-        >
-          Choose new site
-        </div>
+        <div class="btn btn-secondary" (click)="reset()">Choose new site</div>
       </div>
     </div>
   </section>
-  <section
-    id="theming"
-    #theming
-  >
+  <section id="theming" #theming>
     <h3>Theming</h3>
     <p>
       We fully support the ability to theme the components to match your site.
@@ -175,10 +152,7 @@
     </p>
   </section>
 
-  <section
-    id="security"
-    #security
-  >
+  <section id="security" #security>
     <h3>Security</h3>
     <p>
       The easiest way to get started is to use our security. This will allow you
@@ -186,17 +160,14 @@
       you wish to use your own security then please speak to us.
     </p>
   </section>
-  <section
-    id="client-libraries"
-    #clientLibraries
-  >
+  <section id="client-libraries" #clientLibraries>
     <h3>Client Libraries</h3>
     <p>We provide the following libraries to make your integration easier</p>
 
     <p><a [href]="qnbLink">Quote and Buy Library</a></p>
     <p><a [href]="insuranceElementsLink">Insurance Elements Library</a></p>
 
-    <div class="alert alert-light w-50">
+    <div class="alert alert-light col-12 col-md-6">
       Please note if you are integrating this using a framework other than
       Angular you will also need to load the polyfills files.
       <p class="mt-2"><a [href]="qnbPolyfills">Quote and Buy Polyfills</a></p>
@@ -205,10 +176,7 @@
       </p>
     </div>
   </section>
-  <section
-    id="using-components"
-    #components
-  >
+  <section id="using-components" #components>
     <h3>Using our components</h3>
     <p>
       No matter what coding language your site is written in you can easily
@@ -228,7 +196,7 @@
       <br />
       <img
         src="assets/insurance-components-flow.webp"
-        style="max-width: 600px"
+        class="col-12 col-md-6"
       />
     </p>
 
