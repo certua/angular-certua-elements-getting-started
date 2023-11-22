@@ -155,24 +155,14 @@ export class LayoutComponent implements OnInit {
         this.selectedIndex = 5;
         break;
       }
-
-      case 'quotes-list': {
-        this.selectedIndex = 6;
-        break;
-      }
-
-      case 'policies-list': {
-        this.selectedIndex = 7;
-        break;
-      }
       case 'view-policy':
       case 'manage-policy': {
-        this.selectedIndex = 8;
+        this.selectedIndex = 6;
         break;
       }
     }
     if (page.includes('view-policy')) {
-      this.selectedIndex = 8;
+      this.selectedIndex = 6;
     }
 
     if (
