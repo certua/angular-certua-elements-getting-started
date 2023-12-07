@@ -24,9 +24,11 @@ export class ManageConnectionsComponent implements OnInit {
   contextTokenOptions = '';
   redirectionConfig = {
     successUrl:
-      window.location.origin + '/manage-connections?accountConnection=success',
+      window.location.origin +
+      '/angular/components/manage-connections?accountConnection=success',
     failureUrl:
-      window.location.origin + '/manage-connections?accountConnection=failure',
+      window.location.origin +
+      '/angular/components/manage-connections?accountConnection=failure',
     popup: false,
   };
   loaded = false;
