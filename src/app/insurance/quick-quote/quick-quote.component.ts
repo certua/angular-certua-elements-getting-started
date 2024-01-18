@@ -11,6 +11,7 @@ import {
 import { add, parseISO } from 'date-fns';
 import { InjectSetupWrapper } from '@angular/core/testing';
 import { InsuranceCommonInputsComponent } from '../insurance-common-inputs/common-inputs.component';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-quick-quote',
@@ -27,6 +28,7 @@ export class QuickQuoteComponent implements OnInit {
   router = inject(Router);
   loaded = false;
   quickQuoteJson = '';
+  public environment = environment;
   ngOnInit() {
     if (!localStorage.getItem('elementType')) {
       this.router.navigate(['/home']);

@@ -31,4 +31,5 @@ export const environment = {
   },
   environmentName: 'dev',
   uxAPIUrl: 'https://api.dev.getbrisk.com/api',
+  docsUrl: 'https://docsdev.certua.io/docs',
 };

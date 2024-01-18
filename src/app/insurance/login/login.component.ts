@@ -11,6 +11,7 @@ import {
   OnInit,
 } from '@angular/core';
 import { CommonInputsComponent } from '../../open-banking/common-inputs/common-inputs.component';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -29,6 +30,8 @@ export class LoginComponent implements OnInit {
   loaded = false;
   loginSuccess = false;
   window = window;
+
+  public environment = environment;
   ngOnInit() {
     if (!localStorage.getItem('elementType')) {
       this.router.navigate(['/home']);

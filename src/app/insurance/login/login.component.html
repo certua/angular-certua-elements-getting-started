@@ -1,4 +1,7 @@
-<div class="row" *ngIf="showError">
+<div
+  class="row"
+  *ngIf="showError"
+>
   <div class="col">
     <h3>There is an issue with the site configuration</h3>
     <a routerLink="/">Home</a>
@@ -11,6 +14,19 @@
   access the other components including View Policy. You will need to pass in
   what the component is to display for the login and logout buttons.
 </p>
+<p>
+  The documentation for this component can be found at
+  <a
+    target="_blank"
+    [href]="
+      environment.docsUrl + '/via-web-components/insurance-elements/login'
+    "
+    >{{
+      environment.docsUrl + '/via-web-components/insurance-elements/login'
+    }}</a
+  >
+</p>
+
 <certua-insurance-login
   [referrerSiteCode]="config?.referrerId"
   (loginSuccess)="setLoginSuccess($event)"
@@ -18,8 +34,18 @@
   [logoutUrl]="window.location.origin + '/angular/components/login'"
   [coversUrl]="window.location.origin + '/angular/components/view-policy2'"
 >
-  <button class="btn btn-primary" login>Login</button>
-  <button class="btn btn-secondary btn-circle" logout>Logout</button>
+  <button
+    class="btn btn-primary"
+    login
+  >
+    Login
+  </button>
+  <button
+    class="btn btn-secondary btn-circle"
+    logout
+  >
+    Logout
+  </button>
 </certua-insurance-login>
 
 <p></p>

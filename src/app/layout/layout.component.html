@@ -204,7 +204,6 @@
           id="items"
           *ngIf="section == SiteSection.Overview && elementType == 'insurance'"
         >
-          selectedIndex: {{ selectedIndex }}
           <span
             (click)="selectItem(0, '/overview-insurance', 'introduction')"
             class="list-group-item"

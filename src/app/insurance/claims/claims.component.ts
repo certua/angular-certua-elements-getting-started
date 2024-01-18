@@ -1,3 +1,4 @@
+import { environment } from 'src/environments/environment';
 import { Router, RouterLink } from '@angular/router';
 import { JsonPipe, NgIf } from '@angular/common';
 import {
@@ -26,7 +27,7 @@ export class ClaimsComponent implements OnInit {
   showError = false;
   router = inject(Router);
   loaded = false;
-
+  public environment = environment;
   ngOnInit() {
     if (!localStorage.getItem('elementType')) {
       this.router.navigate(['/home']);

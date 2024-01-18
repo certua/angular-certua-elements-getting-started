@@ -1,23 +1,42 @@
-<div class="row" *ngIf="showError">
+<div
+  class="row"
+  *ngIf="showError"
+>
   <div class="col">
     <h3>There is an issue with the site configuration</h3>
     <a routerLink="/">Home</a>
   </div>
 </div>
-<div class="row" *ngIf="!showError">
+<div
+  class="row"
+  *ngIf="!showError"
+>
   <h2>Claims</h2>
   <p>This component displays the Claim Information</p>
+  <p>
+    The documentation for this component can be found at
+    <a
+      target="_blank"
+      [href]="
+        environment.docsUrl + '/via-web-components/insurance-elements/claims'
+      "
+      >{{
+        environment.docsUrl + '/via-web-components/insurance-elements/claims'
+      }}</a
+    >
+  </p>
   <certua-insurance-claims-information
     [referrerSiteCode]="config?.referrerId"
     *ngIf="!!loaded"
   ></certua-insurance-claims-information>
 </div>
+
 <div>
   <h4>Example code</h4>
   <pre><code>
     &lt;certua-insurance-claims
     [referrerSiteCode]="config?.referrerId"
-    
+
     &lt;/certua-insurance-claims &gt;
     </code>
   </pre>

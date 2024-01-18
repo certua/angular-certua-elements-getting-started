@@ -1,12 +1,32 @@
-<div class="row" *ngIf="showError">
+<div
+  class="row"
+  *ngIf="showError"
+>
   <div class="col">
     <h3>There is an issue with the site configuration</h3>
     <a routerLink="/">Home</a>
   </div>
 </div>
-<div class="row" *ngIf="!showError">
+<div
+  class="row"
+  *ngIf="!showError"
+>
   <h2>Quick Quote</h2>
   <p>This component displays questions to generate a Quick Quote</p>
+  <p>
+    The documentation for this component can be found at
+    <a
+      target="_blank"
+      [href]="
+        environment.docsUrl +
+        '/via-web-components/insurance-elements/quick-quote'
+      "
+      >{{
+        environment.docsUrl +
+          '/via-web-components/insurance-elements/quick-quote'
+      }}</a
+    >
+  </p>
   <certua-insurance-quick-quote
     [referrerSiteCode]="config?.referrerId"
     (quickQuote)="updateQuote($event)"

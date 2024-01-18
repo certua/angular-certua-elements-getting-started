@@ -1,3 +1,4 @@
+import { environment } from 'src/environments/environment';
 import { Router, RouterLink } from '@angular/router';
 import { JsonPipe, NgIf } from '@angular/common';
 import {
@@ -27,6 +28,7 @@ export class FnolComponent implements OnInit {
   router = inject(Router);
   loaded = false;
   prefill: any;
+  public environment = environment;
   makeAClaimJson = {
     address: {
       addressLine1: '9 Anchor House',
