@@ -46,9 +46,9 @@ export class LayoutComponent implements OnInit {
 
   section = SiteSection.Home;
   ngOnInit() {
-    window.addEventListener('selected-index', (event: any) => {
-      this.selectedIndex = event.detail.index;
-    });
+    // window.addEventListener('selected-index', (event: any) => {
+    //   this.selectedIndex = event.detail.index;
+    // });
 
     this.router.events
       .pipe(
@@ -107,6 +107,7 @@ export class LayoutComponent implements OnInit {
   }
   selectItem(i: number, route: string, section?: string) {
     this.tabArrows.selectItem(i);
+    this.selectedIndex = i;
 
     if (!section) {
       this.router.navigate([route]);
@@ -124,7 +125,6 @@ export class LayoutComponent implements OnInit {
     console.log('route', page);
     switch (page) {
       case 'connect':
-
       case 'insurance-overview':
       case 'overview': {
         this.selectedIndex = 0;

@@ -1,27 +1,22 @@
-<section id="introduction" #introduction>
+<section
+  id="introduction"
+  #introduction
+>
   <h1>Introduction</h1>
 
   <p>
-    Welcome to the documentation for Certua Insurance Elements, your gateway to
-    a seamless insurance journey integration within your website. With our
-    versatile web components, you can offer your customers a frictionless
-    experience without the need to navigate away from your site.
-  </p>
-  <p>
-    Our web components are designed to harmonise with your brand's identity,
-    effortlessly incorporating your colors and logos where necessary, ensuring a
-    consistent and cohesive user experience. By leveraging our components, you
-    not only simplify the process but also ensure compliance when selling
-    insurance.
-  </p>
-  <p>
-    In this developer-focused documentation, we'll guide you through the easy
-    integration and customization of Certua Insurance Elements, empowering you
-    to provide a compliant and user-friendly insurance solution on your website.
-    Let's dive in and help you on the way to sell insurance online.
+    Welcome to the getting started sample application for Certua Insurance
+    Elements. These examples are to be used along side the documentation found
+    at
+    <a href="https://docsdev.certua.io/docs/via-web-components/intro"
+      >https://docsdev.certua.io/docs/via-web-components/intro</a
+    >
   </p>
 
-  <section id="getting-started" #getStarted>
+  <section
+    id="getting-started"
+    #getStarted
+  >
     <h3>Getting started</h3>
 
     <div>
@@ -34,7 +29,10 @@
       </ul>
     </div>
   </section>
-  <section id="site-code" #siteCode>
+  <section
+    id="site-code"
+    #siteCode
+  >
     <h3>Get a site code</h3>
     The site code configure the components telling them what theme, and
     insurance product that they are using. This is a unique code that we will
@@ -48,33 +46,6 @@
         one with questions displayed in a sidebar.
       </div>
       <div class="row w-100">
-        <div class="col-md-3 d-flex flex-column justify-content-end">
-          <div class="card">
-            <div class="card-body">
-              <video
-                width="400"
-                autoplay="true"
-                loop="true"
-                src="https://s3.eu-west-2.amazonaws.com/images.generic-insurance/getting-started/generic-demo.mp4"
-                class="card-img-top"
-                type="video/mp4"
-              >
-                Your browser does not support HTML video.
-              </video>
-              <p>
-                This shows the Quote and Buy Journey with multiple questions per
-                screen and is more commonly used for SME based insurance
-                products
-              </p>
-            </div>
-            <button
-              class="btn btn-secondary m-2"
-              (click)="setDefaultReferrer()"
-            >
-              Use demo site
-            </button>
-          </div>
-        </div>
         <div class="col-md-3 d-flex flex-column justify-content-end">
           <div class="card h-100">
             <div class="card-body">
@@ -116,10 +87,16 @@
           [(ngModel)]="referrerCode"
           (ngModelChange)="checkReferrer()"
         />
-        <p class="mt-2 text-success font-weight-bold" *ngIf="!!referrerName">
+        <p
+          class="mt-2 text-success font-weight-bold"
+          *ngIf="!!referrerName"
+        >
           <i class="fa fa-check mr-2"></i>{{ referrerName }}
         </p>
-        <button class="btn btn-primary mt-2" (click)="setReferrer()">
+        <button
+          class="btn btn-primary mt-2"
+          (click)="setReferrer()"
+        >
           Set site code
         </button>
       </div>
@@ -138,29 +115,20 @@
           code</span
         >
 
-        <div class="btn btn-secondary" (click)="reset()">Choose new site</div>
+        <div
+          class="btn btn-secondary"
+          (click)="reset()"
+        >
+          Choose new site
+        </div>
       </div>
     </div>
   </section>
-  <section id="theming" #theming>
-    <h3>Theming</h3>
-    <p>
-      We fully support the ability to theme the components to match your site.
-      The components colour, logo's, fonts etc are all configurable. If you'd
-      like to update your theming then please get in touch and we can do this
-      for you.
-    </p>
-  </section>
 
-  <section id="security" #security>
-    <h3>Security</h3>
-    <p>
-      The easiest way to get started is to use our security. This will allow you
-      to use our components without having to worry about security. However, if
-      you wish to use your own security then please speak to us.
-    </p>
-  </section>
-  <section id="client-libraries" #clientLibraries>
+  <section
+    id="client-libraries"
+    #clientLibraries
+  >
     <h3>Client Libraries</h3>
     <p>We provide the following libraries to make your integration easier</p>
 
@@ -176,7 +144,10 @@
       </p>
     </div>
   </section>
-  <section id="using-components" #components>
+  <section
+    id="using-components"
+    #components
+  >
     <h3>Using our components</h3>
     <p>
       No matter what coding language your site is written in you can easily
