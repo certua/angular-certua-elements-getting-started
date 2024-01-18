@@ -104,4 +104,8 @@ export class ConnectComponent implements OnInit {
       root.style.setProperty('--secondary', secondary);
     }
   }
+
+  connectionSuccess() {
+    console.log('connection success');
+  }
 }
