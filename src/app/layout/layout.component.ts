@@ -103,7 +103,7 @@ export class LayoutComponent implements OnInit {
   }
 
   backToGettingStarted() {
-    this.router.navigate(['components/claims']);
+    this.fullScreen = false;
   }
   selectItem(i: number, route: string, section?: string) {
     this.tabArrows.selectItem(i);
