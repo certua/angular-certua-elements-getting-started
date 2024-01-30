@@ -1,24 +1,20 @@
-<div
-  class="row"
-  *ngIf="showError"
->
+<div class="row" *ngIf="showError">
   <div class="col">
     <h3>There is an issue with the site configuration</h3>
     <a routerLink="/">Home</a>
   </div>
 </div>
-<div
-  class="row"
-  *ngIf="!showError"
->
+<div class="row" *ngIf="!showError">
   <h2>View Policy v2</h2>
   <p>
     This component displays the active policy for the supplied
     client/organisation id.
   </p>
 
-  <div class="alert alert-light col-12 col-md-6">
-    Please note that you will need to be logged in to view the policy.
+  <div class="alert alert-light col-12">
+    Please note that you will need to be logged in to view the policy. If the
+    account has a quote and not a policy you will need to go to the quotes list
+    component.
   </div>
 
   <certua-insurance-view-policy
