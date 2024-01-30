@@ -1,61 +1,64 @@
-<app-no-token-error *ngIf="showError"></app-no-token-error>
+@if (showError) {
+  <app-no-token-error></app-no-token-error>
+}
 
-<div
-  class="row"
-  *ngIf="!showError"
->
-  <h2>Account summary list</h2>
-  <p>
-    This component can be used to show an overview of all connected accounts
-  </p>
-  <certua-ob-account-summary-list
-    [contextData]="contextTokenOptions"
-    [daasUrl]="daasUrl"
-  >
-  </certua-ob-account-summary-list>
-</div>
+@if (!showError) {
+  <div
+    class="row"
+    >
+    <h2>Account summary list</h2>
+    <p>
+      This component can be used to show an overview of all connected accounts
+    </p>
+    <certua-ob-account-summary-list
+      [contextData]="contextTokenOptions"
+      [daasUrl]="daasUrl"
+      >
+    </certua-ob-account-summary-list>
+  </div>
+}
 <div>
   <h4>Example code</h4>
   <pre><code>
     &lt;certua-ob-account-summary-list
-      [daasUrl]="daasUrl"
-      [contextData]="contextData"&gt;
+    [daasUrl]="daasUrl"
+    [contextData]="contextData"&gt;
     &lt;/certua-ob-account-summary-list&gt;
-    </code>
-  </pre>
+  </code>
+</pre>
 
-  <h4>Event bus messages</h4>
-  <p>
-    This component emits the total value of the account balances grouped by
-    currency with the event type of <code>account-summary-balances</code>
-  </p>
-  <pre><code>
-   {{this.accountSummaryEvent |json}}
-    </code></pre>
-  <h4>Component specific inputs</h4>
-  <div class="table-responsive">
-    <table class="table">
-      <thead>
-        <th>Property Name</th>
-        <th>Mandatory</th>
-        <th>Region</th>
-        <th>Description</th>
-      </thead>
-      <tbody>
-        <tr>
-          <td>sortOptions</td>
-          <td>No</td>
-          <td>All</td>
-          <td>
-            This is JSON which allows you to set the sortFieldName and
-            sortOrder. Currently limited to sortFieldName must be 'balance' and
-            sortOrder 'asc' or 'desc'. If this is not passed then they are
-            ordered by Provider name
-            <br />
-            <code> {{ sortOptions | json }} </code>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+<h4>Event bus messages</h4>
+<p>
+  This component emits the total value of the account balances grouped by
+  currency with the event type of <code>account-summary-balances</code>
+</p>
+<pre><code>
+  {{this.accountSummaryEvent |json}}
+</code></pre>
+<h4>Component specific inputs</h4>
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+      <th>Property Name</th>
+      <th>Mandatory</th>
+      <th>Region</th>
+      <th>Description</th>
+    </thead>
+    <tbody>
+      <tr>
+        <td>sortOptions</td>
+        <td>No</td>
+        <td>All</td>
+        <td>
+          This is JSON which allows you to set the sortFieldName and
+          sortOrder. Currently limited to sortFieldName must be 'balance' and
+          sortOrder 'asc' or 'desc'. If this is not passed then they are
+          ordered by Provider name
+          <br />
+          <code> {{ sortOptions | json }} </code>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 </div>

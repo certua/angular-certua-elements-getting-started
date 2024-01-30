@@ -7,21 +7,24 @@
       <th>Description</th>
     </thead>
     <tbody>
-      <tr *ngIf="quoteAndBuy">
-        <td><code>config</code></td>
-        <td>Yes</td>
-        <td>
-          This contains information on the site you are integrating the quote
-          and buy journey integration<br /><code>{{ config | json }}}</code>
-        </td>
-      </tr>
+      @if (quoteAndBuy) {
+        <tr>
+          <td><code>config</code></td>
+          <td>Yes</td>
+          <td>
+            This contains information on the site you are integrating the quote
+            and buy journey integration<br /><code>{{ config | json }}</code>
+          </td>
+        </tr>
+      }
 
-      <tr *ngIf="!quoteAndBuy">
-        <td><code>referrerSiteCode</code></td>
-        <td>Yes</td>
-
-        <td>This is a string containing the Guid of your referrerSiteCode</td>
-      </tr>
+      @if (!quoteAndBuy) {
+        <tr>
+          <td><code>referrerSiteCode</code></td>
+          <td>Yes</td>
+          <td>This is a string containing the Guid of your referrerSiteCode</td>
+        </tr>
+      }
     </tbody>
   </table>
 </div>

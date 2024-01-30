@@ -1,5 +1,5 @@
 import { RouterLink } from '@angular/router';
-import { JsonPipe, NgIf } from '@angular/common';
+import { JsonPipe } from '@angular/common';
 import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
@@ -17,12 +17,11 @@ import { NoTokenErrorComponent } from '../no-token-error/no-token-error.componen
   styleUrls: ['./account-summary.component.scss'],
   standalone: true,
   imports: [
-    NgIf,
     RouterLink,
     CommonInputsComponent,
     JsonPipe,
-    NoTokenErrorComponent,
-  ],
+    NoTokenErrorComponent
+],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AccountSummaryComponent implements OnInit {

@@ -1,4 +1,4 @@
-import { NgIf } from '@angular/common';
+
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -21,7 +21,7 @@ export enum Step {
   styleUrls: ['./ob-setup.component.scss'],
   standalone: true,
   providers: [],
-  imports: [NgIf, FormsModule, RouterModule],
+  imports: [FormsModule, RouterModule],
 })
 export class ObSetupComponent {
   Step = Step;

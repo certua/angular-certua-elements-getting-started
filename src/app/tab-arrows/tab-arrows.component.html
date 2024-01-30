@@ -1,16 +1,18 @@
-<div
-  *ngIf="showArrowLeft"
-  id="arrow-left"
-  class="btn btn-xsmall-circle d-md-none border border-circle shadow-sm ms-3 mt-2"
-  (click)="$event.preventDefault(); $event.stopPropagation(); moveNav(-100)"
->
-  <i class="fas fa-chevron-left"></i>
-</div>
-<div
-  *ngIf="showArrowRight"
-  id="arrow-right"
-  class="btn btn-xsmall-circle ms-auto d-md-none border border-circle shadow-sm me-3 mt-2"
-  (click)="$event.preventDefault(); $event.stopPropagation(); moveNav(100)"
->
-  <i class="fas fa-chevron-right"></i>
-</div>
+@if (showArrowLeft) {
+  <div
+    id="arrow-left"
+    class="btn btn-xsmall-circle d-md-none border border-circle shadow-sm ms-3 mt-2"
+    (click)="$event.preventDefault(); $event.stopPropagation(); moveNav(-100)"
+    >
+    <i class="fas fa-chevron-left"></i>
+  </div>
+}
+@if (showArrowRight) {
+  <div
+    id="arrow-right"
+    class="btn btn-xsmall-circle ms-auto d-md-none border border-circle shadow-sm me-3 mt-2"
+    (click)="$event.preventDefault(); $event.stopPropagation(); moveNav(100)"
+    >
+    <i class="fas fa-chevron-right"></i>
+  </div>
+}

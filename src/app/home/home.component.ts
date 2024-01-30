@@ -1,4 +1,4 @@
-import { NgIf } from '@angular/common';
+
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Component, inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -14,7 +14,7 @@ import { ObSetupComponent } from '../open-banking/ob-setup/ob-setup.component';
   styleUrls: ['./home.component.scss'],
   standalone: true,
   providers: [],
-  imports: [NgIf, FormsModule, RouterModule, ObSetupComponent],
+  imports: [FormsModule, RouterModule, ObSetupComponent],
 })
 export class HomeComponent implements OnInit {
   elementType: string = '';

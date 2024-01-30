@@ -1,11 +1,6 @@
 import { Component, HostListener, inject, OnInit } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
-import {
-  NgSwitch,
-  NgSwitchDefault,
-  NgSwitchCase,
-  ViewportScroller,
-} from '@angular/common';
+import { ViewportScroller } from '@angular/common';
 import { environment } from 'src/environments/environment';
 import { OAuthService, OAuthSuccessEvent } from 'angular-oauth2-oidc';
 import { filter } from 'rxjs';
@@ -16,7 +11,7 @@ import { DEFAULT_INTERRUPTSOURCES, Idle } from '@ng-idle/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   standalone: true,
-  imports: [NgSwitch, NgSwitchDefault, NgSwitchCase, RouterOutlet, RouterLink],
+  imports: [RouterOutlet, RouterLink],
 })
 export class AppComponent implements OnInit {
   @HostListener('window:resize', ['$event'])

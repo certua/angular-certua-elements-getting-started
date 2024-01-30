@@ -1,47 +1,50 @@
-<div
-  class="row"
-  *ngIf="showError"
->
-  <div class="col">
-    <h3>There is an issue with the site configuration</h3>
-    <a routerLink="/">Home</a>
+@if (showError) {
+  <div
+    class="row"
+    >
+    <div class="col">
+      <h3>There is an issue with the site configuration</h3>
+      <a routerLink="/">Home</a>
+    </div>
   </div>
-</div>
-<div
-  class="row"
-  *ngIf="!showError"
->
-  <h2>Quick Quote</h2>
-  <p>This component displays questions to generate a Quick Quote</p>
-  <p>
-    The documentation for this component can be found at
-    <a
-      target="_blank"
+}
+@if (!showError) {
+  <div
+    class="row"
+    >
+    <h2>Quick Quote</h2>
+    <p>This component displays questions to generate a Quick Quote</p>
+    <p>
+      The documentation for this component can be found at
+      <a
+        target="_blank"
       [href]="
         environment.docsUrl +
         '/via-web-components/insurance-elements/quick-quote'
       "
-      >{{
+        >{{
         environment.docsUrl +
-          '/via-web-components/insurance-elements/quick-quote'
-      }}</a
-    >
-  </p>
-  <certua-insurance-quick-quote
-    [referrerSiteCode]="config?.referrerId"
-    (quickQuote)="updateQuote($event)"
-    *ngIf="!!loaded"
-  ></certua-insurance-quick-quote>
-</div>
-<h4>Output event - Quick quote</h4>
-<pre> <code>{{ quickQuoteJson | json }}</code></pre>
-<div>
-  <h4>Example code</h4>
-  <pre><code>
-    &lt;certua-insurance-quick-quote
-    [referrerSiteCode]="config?.referrerId"
-    (quickQuote)="updateQuote($event)"
-    &lt;/certua-insurance-quick-quote &gt;
+        '/via-web-components/insurance-elements/quick-quote'
+        }}</a
+        >
+      </p>
+      @if (!!loaded) {
+        <certua-insurance-quick-quote
+          [referrerSiteCode]="config?.referrerId"
+          (quickQuote)="updateQuote($event)"
+        ></certua-insurance-quick-quote>
+      }
+    </div>
+  }
+  <h4>Output event - Quick quote</h4>
+  <pre> <code>{{ quickQuoteJson | json }}</code></pre>
+  <div>
+    <h4>Example code</h4>
+    <pre><code>
+      &lt;certua-insurance-quick-quote
+      [referrerSiteCode]="config?.referrerId"
+      (quickQuote)="updateQuote($event)"
+      &lt;/certua-insurance-quick-quote &gt;
     </code>
   </pre>
   <h4>Component specific inputs</h4>

@@ -1,54 +1,78 @@
-<div
-  class="row"
-  *ngIf="showError"
->
-  <div class="col">
-    <h3>There is an issue with the site configuration</h3>
-    <a routerLink="/">Home</a>
+@if (showError) {
+  <div class="row">
+    <div class="col">
+      <h3>There is an issue with the site configuration</h3>
+      <a routerLink="/">Home</a>
+    </div>
   </div>
-</div>
-<div
-  class="row"
-  *ngIf="!showError"
->
-  <h2>Quotes List</h2>
-  <p>This component displays Quotes for the logged in client/organisation</p>
-  <certua-insurance-quotes-list
-    [referrerSiteCode]="config?.referrerId"
-    [organisationId]="organisationId"
-  >
-  </certua-insurance-quotes-list>
-</div>
+}
+@if (!showError) {
+  <div class="row">
+    <h2>Quotes List</h2>
+    <p>This component displays Quotes for the logged in client/organisation</p>
+    <certua-insurance-quotes-list
+      [organisationId]="organisationId"
+      [clientId]="clientId"
+      [basePath]="'components/quotes-list'"
+      (goToQuoteAndBuy)="goToQuoteAndBuy($event)"
+      >
+    </certua-insurance-quotes-list>
+  </div>
+}
 <div>
   <h4>Example code</h4>
   <pre><code>
     &lt;certua-insurance-quotes-list
     [referrerSiteCode]="config.referrerId"
     &lt;/certua-insurance-quotes-list  &gt;
-    </code>
-  </pre>
-  <h4>Component specific inputs</h4>
-  <div class="table-responsive">
-    <table class="table">
-      <thead>
-        <th>Property Name</th>
-        <th>Mandatory</th>
+  </code>
+</pre>
+<h4>Component specific inputs</h4>
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+      <th>Property Name</th>
+      <th>Mandatory</th>
 
-        <th>Description</th>
-      </thead>
+      <th>Description</th>
+    </thead>
 
-      <tbody>
-        <tr>
-          <td>clientId</td>
-          <td>If entity type is Individual</td>
-          <td>Pass clientId if entity type is Individual</td>
-        </tr>
-        <tr>
-          <td>organisationId</td>
-          <td>If entity type is Organisation</td>
-          <td>Pass organisationId if entity type is Organisation</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+    <tbody>
+      <tr>
+        <td>clientId</td>
+        <td>If entity type is Individual</td>
+        <td>Pass clientId if entity type is Individual</td>
+      </tr>
+      <tr>
+        <td>organisationId</td>
+        <td>If entity type is Organisation</td>
+        <td>Pass organisationId if entity type is Organisation</td>
+      </tr>
+      <tr>
+        <td>basePath</td>
+        <td>Yes</td>
+        <td>base path displaying this component</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<h4>Output events</h4>
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+      <th>Event Name</th>
+      <th>Data</th>
+      <th>Description</th>
+    </thead>
+    <tbody>
+      <tr>
+        <td>goToQuoteAndBuy</td>
+        <td>
+          <code>{{ goToQuoteAndBuyJson | json }}</code>
+        </td>
+        <td>xxxxxxxx</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 </div>

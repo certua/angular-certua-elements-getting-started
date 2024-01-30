@@ -1,22 +1,44 @@
-<div class="row" *ngIf="showError">
-  <div class="col">
-    <h3>There is an issue with the site configuration</h3>
-    <a routerLink="/">Home</a>
-  </div>
-</div>
-<div class="row" *ngIf="!showError">
-  <h2>View Policy</h2>
-  <p>This component displays a Policy for the supplied policy id</p>
-  <div class="col-md-12" *ngIf="!policyId">
-    <div class="alert alert-warning">
-      You need to go to Policies list and click 'View' on the policy you wish to
-      view
-    </div>
-    <div class="btn btn-primary mb-4" (click)="goToMyPolicies()">
-      Go to policies list
+@if (showError) {
+  <div class="row">
+    <div class="col">
+      <h3>There is an issue with the site configuration</h3>
+      <a routerLink="/">Home</a>
     </div>
   </div>
-  <certua-insurance-policy-confirmation
+}
+@if (!showError) {
+  <div class="row">
+    <h2>View Policy</h2>
+    <p>This component displays a Policy for the supplied policy id</p>
+    @if (!policyId) {
+      <div class="col-md-12">
+        <div class="alert alert-warning">
+          You need to go to Policies list and click 'View' on the policy you wish to
+          view
+        </div>
+        <div class="btn btn-primary mb-4" (click)="goToMyPolicies()">
+          Go to policies list
+        </div>
+      </div>
+    }
+    @if (loaded && !!policyId) {
+      <certua-insurance-policy-confirmation
+        [config]="config"
+        [accesstoken]="accessToken"
+        [policyId]="policyId"
+        [standalone]="true"
+        (backToCovers)="goToMyPolicies()"
+        (makeAClaim)="goToMakeAClaim($event)"
+        (goToQuoteAndBuy)="goToQuoteAndBuy($event)"
+        >
+      </certua-insurance-policy-confirmation>
+    }
+  </div>
+}
+<div>
+  <h4>Example code</h4>
+  <pre><code>
+    &lt;certua-insurance-policy-confirmation
     *ngIf="loaded && !!policyId"
     [config]="config"
     [accesstoken]="accessToken"
@@ -25,84 +47,69 @@
     (backToCovers)="goToMyPolicies()"
     (makeAClaim)="goToMakeAClaim($event)"
     (goToQuoteAndBuy)="goToQuoteAndBuy($event)"
-  >
-  </certua-insurance-policy-confirmation>
-</div>
-<div>
-  <h4>Example code</h4>
-  <pre><code>
-    &lt;certua-insurance-policy-confirmation
-    *ngIf="loaded && !!policyId"
-     [config]="config"
-     [accesstoken]="accessToken"
-     [policyId]="policyId"
-     [standalone]="true"
-     (backToCovers)="goToMyPolicies()"
-     (makeAClaim)="goToMakeAClaim($event)"
-     (goToQuoteAndBuy)="goToQuoteAndBuy($event)"
     &lt;/certua-insurance-policy-confirmation &gt;
-    </code>
-  </pre>
-  <h4>Output events</h4>
+  </code>
+</pre>
+<h4>Output events</h4>
+<table class="table">
+  <thead>
+    <th>Event Name</th>
+    <th>Data</th>
+    <th>Description</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td>backToCovers</td>
+      <td>None</td>
+      <td>User has clicked back to covers link</td>
+    </tr>
+    <tr>
+      <td>makeAClaim</td>
+      <td>
+        <code>{{ makeAClaimJson | json }}</code>
+      </td>
+      <td>
+        User has clicked make a claim button (if present- this is a product
+        config setting), this emits the prefill info which can be used to
+        prepopulate the FNOL claim form
+      </td>
+    </tr>
+    <tr>
+      <td>goToQuoteAndBuy</td>
+      <td>
+        <code>{{ goToQuoteAndBuyJson | json }}</code>
+      </td>
+      <td>xxxxxxxx</td>
+    </tr>
+  </tbody>
+</table>
+<!-- <pre> <code>{{ JSON.stringify(quickQuoteJson) }}</code></pre> -->
+
+<h4>Component specific inputs</h4>
+<div class="table-responsive">
   <table class="table">
     <thead>
-      <th>Event Name</th>
-      <th>Data</th>
+      <th>Property Name</th>
+      <th>Mandatory</th>
+
       <th>Description</th>
     </thead>
     <tbody>
       <tr>
-        <td>backToCovers</td>
-        <td>None</td>
-        <td>User has clicked back to covers link</td>
+        <td>policyId</td>
+        <td>Yes</td>
+        <td>The policyId of the policy you are viewing</td>
       </tr>
       <tr>
-        <td>makeAClaim</td>
-        <td>
-          <code>{{ makeAClaimJson | json }}</code>
-        </td>
-        <td>
-          User has clicked make a claim button (if present- this is a product
-          config setting), this emits the prefill info which can be used to
-          prepopulate the FNOL claim form
-        </td>
-      </tr>
-      <tr>
-        <td>goToQuoteAndBuy</td>
-        <td>
-          <code>{{ goToQuoteAndBuyJson | json }}</code>
-        </td>
-        <td>xxxxxxxx</td>
+        <td>standalone</td>
+        <td>Yes</td>
+        <td>This needs to be set to true</td>
       </tr>
     </tbody>
   </table>
-  <!-- <pre> <code>{{ JSON.stringify(quickQuoteJson) }}</code></pre> -->
+</div>
 
-  <h4>Component specific inputs</h4>
-  <div class="table-responsive">
-    <table class="table">
-      <thead>
-        <th>Property Name</th>
-        <th>Mandatory</th>
-
-        <th>Description</th>
-      </thead>
-      <tbody>
-        <tr>
-          <td>policyId</td>
-          <td>Yes</td>
-          <td>The policyId of the policy you are viewing</td>
-        </tr>
-        <tr>
-          <td>standalone</td>
-          <td>Yes</td>
-          <td>This needs to be set to true</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <app-insurance-common-inputs
-    [quoteAndBuy]="true"
-  ></app-insurance-common-inputs>
+<app-insurance-common-inputs
+  [quoteAndBuy]="true"
+></app-insurance-common-inputs>
 </div>

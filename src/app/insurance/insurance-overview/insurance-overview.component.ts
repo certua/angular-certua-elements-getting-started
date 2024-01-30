@@ -9,7 +9,7 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { HttpClient } from '@angular/common/http';
 import { Title } from '@angular/platform-browser';
 export interface ReferrerCodeCheck {
@@ -19,7 +19,7 @@ export interface ReferrerCodeCheck {
 @Component({
   selector: 'app-insurance-overview',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [FormsModule],
   templateUrl: './insurance-overview.component.html',
   styleUrls: ['./insurance-overview.component.scss'],
 })

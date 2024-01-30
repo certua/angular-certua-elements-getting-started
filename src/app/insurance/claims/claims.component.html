@@ -1,43 +1,46 @@
-<div
-  class="row"
-  *ngIf="showError"
->
-  <div class="col">
-    <h3>There is an issue with the site configuration</h3>
-    <a routerLink="/">Home</a>
+@if (showError) {
+  <div
+    class="row"
+    >
+    <div class="col">
+      <h3>There is an issue with the site configuration</h3>
+      <a routerLink="/">Home</a>
+    </div>
   </div>
-</div>
-<div
-  class="row"
-  *ngIf="!showError"
->
-  <h2>Claims</h2>
-  <p>This component displays the Claim Information</p>
-  <p>
-    The documentation for this component can be found at
-    <a
-      target="_blank"
+}
+@if (!showError) {
+  <div
+    class="row"
+    >
+    <h2>Claims</h2>
+    <p>This component displays the Claim Information</p>
+    <p>
+      The documentation for this component can be found at
+      <a
+        target="_blank"
       [href]="
         environment.docsUrl + '/via-web-components/insurance-elements/claims'
       "
-      >{{
+        >{{
         environment.docsUrl + '/via-web-components/insurance-elements/claims'
-      }}</a
-    >
-  </p>
-  <certua-insurance-claims-information
-    [referrerSiteCode]="config?.referrerId"
-    *ngIf="!!loaded"
-  ></certua-insurance-claims-information>
-</div>
+        }}</a
+        >
+      </p>
+      @if (!!loaded) {
+        <certua-insurance-claims-information
+          [referrerSiteCode]="config?.referrerId"
+        ></certua-insurance-claims-information>
+      }
+    </div>
+  }
 
-<div>
-  <h4>Example code</h4>
-  <pre><code>
-    &lt;certua-insurance-claims
-    [referrerSiteCode]="config?.referrerId"
+  <div>
+    <h4>Example code</h4>
+    <pre><code>
+      &lt;certua-insurance-claims
+      [referrerSiteCode]="config?.referrerId"
 
-    &lt;/certua-insurance-claims &gt;
+      &lt;/certua-insurance-claims &gt;
     </code>
   </pre>
   <h4>Component specific inputs</h4>

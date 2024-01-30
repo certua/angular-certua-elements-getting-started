@@ -11,7 +11,7 @@ import {
   AfterViewChecked,
 } from '@angular/core';
 
-import { CommonModule } from '@angular/common';
+
 
 import { OutputFileType } from 'typescript';
 
@@ -20,7 +20,7 @@ import { OutputFileType } from 'typescript';
   templateUrl: './tab-arrows.component.html',
   styleUrls: ['./tab-arrows.component.scss'],
   standalone: true,
-  imports: [CommonModule],
+  imports: [],
 })
 export class TabArrowsComponent implements AfterViewInit {
   showArrowLeft = false;

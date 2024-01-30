@@ -1,5 +1,5 @@
 import { Router, RouterLink } from '@angular/router';
-import { JsonPipe, NgIf } from '@angular/common';
+import { JsonPipe } from '@angular/common';
 import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
@@ -15,12 +15,11 @@ import { NoTokenErrorComponent } from '../no-token-error/no-token-error.componen
   templateUrl: './connect.component.html',
   styleUrls: ['./connect.component.scss'],
   imports: [
-    NgIf,
     RouterLink,
     JsonPipe,
     CommonInputsComponent,
-    NoTokenErrorComponent,
-  ],
+    NoTokenErrorComponent
+],
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

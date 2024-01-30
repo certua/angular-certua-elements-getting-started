@@ -8,7 +8,7 @@ import {
   RouterLinkActive,
 } from '@angular/router';
 import { Component, OnInit, inject, ViewChild } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { SelectMultipleControlValueAccessor } from '@angular/forms';
 import { filter, map, tap } from 'rxjs';
 import { CommonInputsComponent } from '../open-banking/common-inputs/common-inputs.component';
@@ -22,13 +22,12 @@ export enum SiteSection {
   selector: 'app-layout',
   standalone: true,
   imports: [
-    CommonModule,
     RouterOutlet,
     RouterLink,
     RouterLinkActive,
     CommonInputsComponent,
-    TabArrowsComponent,
-  ],
+    TabArrowsComponent
+],
   templateUrl: './layout.component.html',
   styleUrls: ['./layout.component.scss'],
 })

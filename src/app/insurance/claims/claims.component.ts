@@ -1,6 +1,6 @@
 import { environment } from 'src/environments/environment';
 import { Router, RouterLink } from '@angular/router';
-import { JsonPipe, NgIf } from '@angular/common';
+import { JsonPipe } from '@angular/common';
 import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
@@ -18,7 +18,7 @@ import { InsuranceCommonInputsComponent } from '../insurance-common-inputs/commo
   templateUrl: './claims.component.html',
   styleUrls: ['./claims.component.scss'],
   standalone: true,
-  imports: [NgIf, RouterLink, JsonPipe, InsuranceCommonInputsComponent],
+  imports: [RouterLink, JsonPipe, InsuranceCommonInputsComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class ClaimsComponent implements OnInit {

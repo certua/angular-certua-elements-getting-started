@@ -119,19 +119,19 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "get-started-open-banking-angular:build:production"
+              "buildTarget": "get-started-open-banking-angular:build:production"
             },
             "stg": {
-              "browserTarget": "get-started-open-banking-angular:build:stg"
+              "buildTarget": "get-started-open-banking-angular:build:stg"
             },
             "qa": {
-              "browserTarget": "get-started-open-banking-angular:build:qa"
+              "buildTarget": "get-started-open-banking-angular:build:qa"
             },
             "development": {
-              "browserTarget": "get-started-open-banking-angular:build:development"
+              "buildTarget": "get-started-open-banking-angular:build:development"
             },
             "local": {
-              "browserTarget": "get-started-open-banking-angular:build:local"
+              "buildTarget": "get-started-open-banking-angular:build:local"
             }
           },
           "defaultConfiguration": "development"
@@ -139,7 +139,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "get-started-open-banking-angular:build"
+            "buildTarget": "get-started-open-banking-angular:build"
           }
         },
         "test": {
