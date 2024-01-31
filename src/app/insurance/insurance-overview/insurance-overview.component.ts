@@ -109,7 +109,9 @@ export class InsuranceOverviewComponent implements OnInit, AfterViewInit {
   }
   ngOnInit() {
     let config = localStorage.getItem('insuranceConfig');
-    if (!!config) {
+    if (!!config && !localStorage.getItem('elementType')) {
+      this.setDefaultReferrer(true);
+    } else {
       this.referrerSet = true;
       this.referrerName = localStorage.getItem('certua-referrerName') ?? '';
     }

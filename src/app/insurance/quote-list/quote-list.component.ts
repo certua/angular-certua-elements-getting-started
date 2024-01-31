@@ -29,6 +29,12 @@ export class QuoteListComponent implements OnInit {
   clientId = '';
   organisationId = '';
 
+  goToQuoteAndBuyJson = {
+    quote: 'e.quote',
+    policyId: 'e.policyId',
+    restartJourney: 'e.restartJourney',
+  };
+
   ngOnInit() {
     if (!localStorage.getItem('elementType')) {
       this.router.navigate(['/home']);
@@ -51,5 +57,18 @@ export class QuoteListComponent implements OnInit {
     }
 
     this.loaded = true;
+  }
+  goToQuoteAndBuy(value: any) {
+    let newConfig = localStorage.getItem('insuranceConfig') as any;
+    newConfig = JSON.parse(newConfig);
+    newConfig = {
+      ...newConfig,
+      quote: value.detail.quote,
+    };
+    localStorage.setItem('insuranceConfig', JSON.stringify(newConfig));
+    console.log('goToQuoteAndBuy event', value);
+    this.router.navigate(['/components/quote-and-buy'], {
+      state: { data: value.detail },
+    });
   }
 }

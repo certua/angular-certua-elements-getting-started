@@ -39,7 +39,7 @@ export const routes: Routes = [
         component: InsuranceOverviewComponent,
       },
       {
-        path: 'components',
+        path: 'open-banking/components',
         children: [
           {
             path: '',
@@ -65,6 +65,16 @@ export const routes: Routes = [
           {
             path: 'account-summary',
             component: AccountSummaryComponent,
+          },
+        ],
+      },
+      {
+        path: 'insurance/components',
+        children: [
+          {
+            path: '',
+            pathMatch: 'full',
+            redirectTo: 'introduction',
           },
           {
             path: 'introduction',

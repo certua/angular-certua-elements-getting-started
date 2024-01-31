@@ -23,7 +23,10 @@
   <h4>Example code</h4>
   <pre><code>
     &lt;certua-insurance-quotes-list
-    [referrerSiteCode]="config.referrerId"
+    [organisationId]="organisationId"
+    [clientId]="clientId"
+    [basePath]="'components/quotes-list'"
+    (goToQuoteAndBuy)="goToQuoteAndBuy($event)"
     &lt;/certua-insurance-quotes-list  &gt;
   </code>
 </pre>

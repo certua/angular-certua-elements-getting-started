@@ -23,16 +23,7 @@ export class HomeComponent implements OnInit {
   quoteAndBuyUrl = environment.insurance.quoteAndBuyURL + '/main.js';
   insuranceElementsUrl = environment.insurance.elementsURL + '/main.js';
   router = inject(Router);
-  ngOnInit() {
-    let type = localStorage.getItem('elementType');
-    if (!!type) {
-      this.elementType = type;
-
-      if (this.elementType == 'insurance') {
-        this.router.navigate(['overview-insurance']);
-      }
-    }
-  }
+  ngOnInit() {}
   setType(type: string) {
     localStorage.setItem('elementType', type);
     this.elementType = type;

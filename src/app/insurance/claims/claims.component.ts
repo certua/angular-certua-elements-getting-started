@@ -29,20 +29,11 @@ export class ClaimsComponent implements OnInit {
   loaded = false;
   public environment = environment;
   ngOnInit() {
-    if (!localStorage.getItem('elementType')) {
-      this.router.navigate(['/home']);
-    } else if (localStorage.getItem('elementType') == 'open-banking') {
-      this.router.navigate(['/components/connect']);
-    }
-
     let configJson = localStorage.getItem('insuranceConfig');
 
     if (!!configJson) {
       this.config = JSON.parse(configJson);
+      this.loaded = true;
     }
-
-    this.accessToken = localStorage.getItem('certua-accessToken');
-
-    this.loaded = true;
   }
 }
