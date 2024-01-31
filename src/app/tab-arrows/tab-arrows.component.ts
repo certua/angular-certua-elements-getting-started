@@ -65,6 +65,7 @@ export class TabArrowsComponent implements AfterViewInit {
   }
 
   calculateArrows() {
+    if (!this.navigation) return;
     var navigation = this.navigation;
     this.hideAndShowArrows(navigation);
     navigation.addEventListener('scroll', (_) => {
@@ -72,6 +73,7 @@ export class TabArrowsComponent implements AfterViewInit {
     });
   }
   hideAndShowArrows(navigation: any) {
+    if (!navigation) return;
     if (navigation.clientWidth == 0) {
       navigation = this.navigation;
       setTimeout((_: any) => this.hideAndShowArrows(navigation), 100);
