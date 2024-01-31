@@ -1,21 +1,17 @@
-<div
-  class="row"
-  *ngIf="showError"
->
+<div class="row" *ngIf="showError">
   <div class="col">
     <h3>There is an issue with the site configuration</h3>
     <a routerLink="/">Home</a>
   </div>
 </div>
-<div
-  class="row"
-  *ngIf="!showError"
->
+<div class="row" *ngIf="!showError">
   <h2>Quotes List</h2>
   <p>This component displays Quotes for the logged in client/organisation</p>
   <certua-insurance-quotes-list
-    [referrerSiteCode]="config?.referrerId"
     [organisationId]="organisationId"
+    [clientId]="clientId"
+    [basePath]="'components/quotes-list'"
+    (goToQuoteAndBuy)="goToQuoteAndBuy($event)"
   >
   </certua-insurance-quotes-list>
 </div>
@@ -23,7 +19,10 @@
   <h4>Example code</h4>
   <pre><code>
     &lt;certua-insurance-quotes-list
-    [referrerSiteCode]="config.referrerId"
+    [organisationId]="organisationId"
+    [clientId]="clientId"
+    [basePath]="'components/quotes-list'"
+    (goToQuoteAndBuy)="goToQuoteAndBuy($event)"
     &lt;/certua-insurance-quotes-list  &gt;
     </code>
   </pre>
@@ -47,6 +46,30 @@
           <td>organisationId</td>
           <td>If entity type is Organisation</td>
           <td>Pass organisationId if entity type is Organisation</td>
+        </tr>
+        <tr>
+          <td>basePath</td>
+          <td>Yes</td>
+          <td>base path displaying this component</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <h4>Output events</h4>
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <th>Event Name</th>
+        <th>Data</th>
+        <th>Description</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>goToQuoteAndBuy</td>
+          <td>
+            <code>{{ goToQuoteAndBuyJson | json }}</code>
+          </td>
+          <td>xxxxxxxx</td>
         </tr>
       </tbody>
     </table>
