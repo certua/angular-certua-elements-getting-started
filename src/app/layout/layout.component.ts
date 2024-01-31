@@ -113,7 +113,7 @@ export class LayoutComponent implements OnInit {
   }
 
   backToGettingStarted() {
-    this.router.navigate(['/insurance/components/introduction']);
+    this.fullScreen = false;
   }
   selectItem(i: number, route: string, section?: string) {
     this.tabArrows.selectItem(i);
