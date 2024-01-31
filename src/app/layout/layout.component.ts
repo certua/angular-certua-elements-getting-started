@@ -77,7 +77,12 @@ export class LayoutComponent implements OnInit {
 
           let type: string = localStorage.getItem('elementType') ?? '';
           this.elementType = type;
-          let page = event['url'].replace('/components/', '');
+          let page = '';
+          if (this.elementType === 'insurance') {
+            page = event['url'].replace('/insurance/components/', '');
+          } else if (this.elementType === 'open-banking') {
+            page = event['url'].replace('/open-banking/components/', '');
+          }
           this.checkSelected(page);
         })
       )
@@ -87,7 +92,12 @@ export class LayoutComponent implements OnInit {
     this.showNavigation = !home;
     let type: string = localStorage.getItem('elementType') ?? '';
     this.elementType = type;
-    let page = location.pathname.replace('/angular/components/', '');
+    let page = '';
+    if (this.elementType === 'insurance') {
+      page = location.pathname.replace('/angular/insurance/components/', '');
+    } else if (this.elementType === 'open-banking') {
+      page = location.pathname.replace('/angular/open-banking/components/', '');
+    }
     this.checkSelected(page);
 
     addEventListener('show-navigation', (event: any) => {
@@ -103,7 +113,7 @@ export class LayoutComponent implements OnInit {
   }
 
   backToGettingStarted() {
-    this.router.navigate(['components/claims']);
+    this.fullScreen = false;
   }
   selectItem(i: number, route: string, section?: string) {
     this.tabArrows.selectItem(i);
