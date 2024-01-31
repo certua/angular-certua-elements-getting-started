@@ -171,6 +171,12 @@
             class="list-group-item pointer"
             >View Policy</span
           >
+          <span
+            [class.active]="selectedIndex == 8"
+            (click)="selectItem(8, '/components/documents')"
+            class="list-group-item pointer"
+            >Documents</span
+          >
         </div>
         <div
           class="list-group mt-4 d-flex flex-md-column flex-row overflow-auto mx-1 pointer"

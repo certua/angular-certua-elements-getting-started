@@ -1,7 +1,4 @@
-<section
-  id="introduction"
-  #introduction
->
+<section id="introduction" #introduction>
   <h1>Introduction</h1>
 
   <p>
@@ -13,10 +10,7 @@
     >
   </p>
 
-  <section
-    id="getting-started"
-    #getStarted
-  >
+  <section id="getting-started" #getStarted>
     <h3>Getting started</h3>
 
     <div>
@@ -29,15 +23,12 @@
       </ul>
     </div>
   </section>
-  <section
-    id="site-code"
-    #siteCode
-  >
+  <section id="site-code" #siteCode>
     <h3>Get a site code</h3>
     The site code configure the components telling them what theme, and
     insurance product that they are using. This is a unique code that we will
     provide you with. If you don't have a site code then please contact us at
-    <a href="mailto:luke@certua.io">luke@certua.io</a>
+    <a href="mailto:luke@certua.io">luke&#64;certua.io</a>
     <div *ngIf="!referrerSet">
       <div class="alert alert-light col-12 col-md-6 my-2">
         If you would like to see a demo of our components before you get your
@@ -87,23 +78,17 @@
           [(ngModel)]="referrerCode"
           (ngModelChange)="checkReferrer()"
         />
-        <p
-          class="mt-2 text-success font-weight-bold"
-          *ngIf="!!referrerName"
-        >
+        <p class="mt-2 text-success font-weight-bold" *ngIf="!!referrerName">
           <i class="fa fa-check mr-2"></i>{{ referrerName }}
         </p>
-        <button
-          class="btn btn-primary mt-2"
-          (click)="setReferrer()"
-        >
+        <button class="btn btn-primary mt-2" (click)="setReferrer()">
           Set site code
         </button>
       </div>
       <div class="alert alert-light col-12 col-md-6 mt-4">
         If you would like your own site code with your own branding then we can
         set this up for you. Please email us at
-        <a href="mailto:luke@certua.io">luke@certua.io</a>
+        <a href="mailto:luke@certua.io">luke&#64;certua.io</a>
       </div>
     </div>
     <div *ngIf="referrerSet">
@@ -115,20 +100,12 @@
           code</span
         >
 
-        <div
-          class="btn btn-secondary"
-          (click)="reset()"
-        >
-          Choose new site
-        </div>
+        <div class="btn btn-secondary" (click)="reset()">Choose new site</div>
       </div>
     </div>
   </section>
 
-  <section
-    id="client-libraries"
-    #clientLibraries
-  >
+  <section id="client-libraries" #clientLibraries>
     <h3>Client Libraries</h3>
     <p>We provide the following libraries to make your integration easier</p>
 
@@ -144,10 +121,7 @@
       </p>
     </div>
   </section>
-  <section
-    id="using-components"
-    #components
-  >
+  <section id="using-components" #components>
     <h3>Using our components</h3>
     <p>
       No matter what coding language your site is written in you can easily

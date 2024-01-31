@@ -18,6 +18,7 @@ import { QuickQuoteComponent } from './insurance/quick-quote/quick-quote.compone
 import { PoliciesListComponent } from './insurance/policies-list/policies-list.component';
 import { ViewPolicyV2Component } from './insurance/view-policy-v2/view-policy-v2.component';
 import { OverviewComponent } from './insurance/overview/overview.component';
+import { DocumentsComponent } from './insurance/documents/documents.component';
 
 export const routes: Routes = [
   {
@@ -93,6 +94,10 @@ export const routes: Routes = [
           {
             path: 'quotes-list',
             component: QuoteListComponent,
+          },
+          {
+            path: 'documents',
+            component: DocumentsComponent,
           },
           {
             path: 'policies-list',
