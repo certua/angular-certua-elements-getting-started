@@ -15,28 +15,32 @@
       </div>
     </div>
 
-    <div class="row" *ngIf="!elementType">
+    @if (!elementType) {
+<div class="row">
       <div class="col">
         <h3>Which elements would you like to integrate?</h3>
         <div class="row mt-4">
           <div
             class="col-md-3 offset-md-3 pointer shadow p-3 element-box"
-            (click)="setType('open-banking')"
-          >
-            <i class="fa-solid fa-building-columns fa-2xl circle-icon"></i>
-            <p class="text-uppercase font-weight-bold mt-4">Open banking</p>
-          </div>
-          <div
-            class="col-md-3 pointer shadow p-3 ms-md-2 mt-2 mt-md-0 element-box"
-            (click)="setType('insurance')"
-          >
-            <i class="fa -solid fa-shield-halved fa-2xl circle-icon"></i>
-            <p class="text-uppercase font-weight-bold mt-4">Insurance</p>
+                (click)="setType('open-banking')"
+                >
+                <i class="fa-solid fa-building-columns fa-2xl circle-icon"></i>
+                <p class="text-uppercase font-weight-bold mt-4">Open banking</p>
+              </div>
+              <div
+                class="col-md-3 pointer shadow p-3 ms-md-2 mt-2 mt-md-0 element-box"
+                (click)="setType('insurance')"
+                >
+                <i class="fa -solid fa-shield-halved fa-2xl circle-icon"></i>
+                <p class="text-uppercase font-weight-bold mt-4">Insurance</p>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
+      }
 
-    <app-ob-setup *ngIf="elementType === 'open-banking'"></app-ob-setup>
+      @if (elementType === 'open-banking') {
+        <app-ob-setup></app-ob-setup>
+      }
+    </div>
   </div>
-</div>

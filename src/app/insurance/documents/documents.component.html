@@ -5,6 +5,18 @@
     related documents which may need to be displayed on your website for
     compliance.
   </p>
+  <p>
+    The documentation for this component can be found at
+    <a
+      target="_blank"
+      [href]="
+        environment.docsUrl + '/via-web-components/insurance-elements/documents'
+      "
+      >{{
+        environment.docsUrl + "/via-web-components/insurance-elements/documents"
+      }}</a
+    >
+  </p>
   <certua-insurance-documents
     [referrerSiteCode]="config?.referrerId"
     [showTitle]="true"

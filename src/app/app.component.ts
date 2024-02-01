@@ -25,7 +25,7 @@ import { LayoutComponent } from './layout/layout.component';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   standalone: true,
-  imports: [NgSwitch, NgSwitchDefault, NgSwitchCase, RouterOutlet, RouterLink],
+  imports: [RouterOutlet, RouterLink],
 })
 export class AppComponent implements OnInit {
   @HostListener('window:resize', ['$event'])

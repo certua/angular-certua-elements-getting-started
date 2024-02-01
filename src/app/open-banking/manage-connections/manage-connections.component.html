@@ -1,99 +1,103 @@
-<app-no-token-error *ngIf="showError"></app-no-token-error>
+@if (showError) {
+  <app-no-token-error></app-no-token-error>
+}
 
-<div class="row" *ngIf="!showError">
-  <h2>Manage connections</h2>
-  <p>
-    This component can be used to view connected accounts, refresh consent or
-    disconnect
-  </p>
-  <certua-ob-manage-connections
-    [contentOverrides]="contentOverrides"
-    [contextData]="contextTokenOptions"
-    [showAddButton]="false"
-    [showTitle]="false"
-    [redirectionConfig]="redirectionConfig"
-    [daasUrl]="daasUrl"
-    [editAccountName]="true"
-  >
-  </certua-ob-manage-connections>
-</div>
+@if (!showError) {
+  <div class="row">
+    <h2>Manage connections</h2>
+    <p>
+      This component can be used to view connected accounts, refresh consent or
+      disconnect
+    </p>
+    <certua-ob-manage-connections
+      [contentOverrides]="contentOverrides"
+      [contextData]="contextTokenOptions"
+      [showAddButton]="false"
+      [showTitle]="false"
+      [redirectionConfig]="redirectionConfig"
+      [daasUrl]="daasUrl"
+      [editAccountName]="true"
+      >
+    </certua-ob-manage-connections>
+  </div>
+}
 <div>
   <h4>Example code</h4>
   <pre><code>
     &lt;certua-ob-manage-connections
-      [contentOverrides]="contentOverrides"
-      [contextData]="contextData"
-      [showTitle]="false"
-      [daasUrl]="daasUrl"
-      [redirectionConfig]="redirectionConfig"
-      [showAddButton]="false"
-      [editAccountName]="true"&gt;
+    [contentOverrides]="contentOverrides"
+    [contextData]="contextData"
+    [showTitle]="false"
+    [daasUrl]="daasUrl"
+    [redirectionConfig]="redirectionConfig"
+    [showAddButton]="false"
+    [editAccountName]="true"&gt;
 
     &lt;/certua-ob-manage-connections&gt;
-    </code>
-  </pre>
-  <h4>Component specific inputs</h4>
-  <div class="table-responsive">
-    <table class="table">
-      <thead>
-        <th>Property Name</th>
-        <th>Mandatory</th>
-        <th>Region</th>
-        <th>Description</th>
-      </thead>
-      <tbody>
-        <tr>
-          <td>contentOverrides</td>
-          <td>No</td>
-          <td>UK only</td>
-          <td>
-            This is a JSON string which contains any text overrides that you
-            want to pass to the information screens/modals<br /><code>
-              {{ contentOverrides | json }}
-            </code>
-          </td>
-        </tr>
-        <tr>
-          <td>showTitle</td>
-          <td>No</td>
-          <td>All</td>
-          <td>
-            This will show or hide the web components title (Open Banking
-            Connected Accounts)
-          </td>
-        </tr>
-        <tr>
-          <td>showAddButton</td>
-          <td>No</td>
-          <td>All</td>
-          <td>
-            This controls if the Add Account button is shown above the currently
-            connected accounts.
-          </td>
-        </tr>
-        <tr>
-          <td>editAccountName</td>
-          <td>No</td>
-          <td>All</td>
-          <td>
-            This controls if the Rename Account button is shown when managing
-            connected accounts. Defaults to true unless set to false
-          </td>
-        </tr>
-        <tr>
-          <td>redirectionConfig</td>
-          <td>Yes</td>
-          <td>All</td>
-          <td>
-            This is a JSON string which contains the success or failure
-            redirection Urls, which are used after the connection to the bank.
-            Popup controls whether or not the bank url is shown in the same tab
-            or in a new tab, this defaults to false if not present<br /><code>{{
-              redirectionConfig | json
-            }}</code>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+  </code>
+</pre>
+<h4>Component specific inputs</h4>
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+      <th>Property Name</th>
+      <th>Mandatory</th>
+      <th>Region</th>
+      <th>Description</th>
+    </thead>
+    <tbody>
+      <tr>
+        <td>contentOverrides</td>
+        <td>No</td>
+        <td>UK only</td>
+        <td>
+          This is a JSON string which contains any text overrides that you
+          want to pass to the information screens/modals<br /><code>
+          {{ contentOverrides | json }}
+        </code>
+      </td>
+    </tr>
+    <tr>
+      <td>showTitle</td>
+      <td>No</td>
+      <td>All</td>
+      <td>
+        This will show or hide the web components title (Open Banking
+        Connected Accounts)
+      </td>
+    </tr>
+    <tr>
+      <td>showAddButton</td>
+      <td>No</td>
+      <td>All</td>
+      <td>
+        This controls if the Add Account button is shown above the currently
+        connected accounts.
+      </td>
+    </tr>
+    <tr>
+      <td>editAccountName</td>
+      <td>No</td>
+      <td>All</td>
+      <td>
+        This controls if the Rename Account button is shown when managing
+        connected accounts. Defaults to true unless set to false
+      </td>
+    </tr>
+    <tr>
+      <td>redirectionConfig</td>
+      <td>Yes</td>
+      <td>All</td>
+      <td>
+        This is a JSON string which contains the success or failure
+        redirection Urls, which are used after the connection to the bank.
+        Popup controls whether or not the bank url is shown in the same tab
+        or in a new tab, this defaults to false if not present<br /><code>{{
+        redirectionConfig | json
+      }}</code>
+    </td>
+  </tr>
+</tbody>
+</table>
+</div>
 </div>

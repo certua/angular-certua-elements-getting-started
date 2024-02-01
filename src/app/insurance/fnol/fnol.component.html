@@ -1,44 +1,47 @@
-<div
-  class="row"
-  *ngIf="showError"
->
-  <div class="col">
-    <h3>There is an issue with the site configuration</h3>
-    <a routerLink="/">Home</a>
+@if (showError) {
+  <div
+    class="row"
+    >
+    <div class="col">
+      <h3>There is an issue with the site configuration</h3>
+      <a routerLink="/">Home</a>
+    </div>
   </div>
-</div>
-<div
-  class="row"
-  *ngIf="!showError"
->
-  <h2>First Notification of Loss (FNOL)</h2>
-  <p>This component displays a FNOL Form</p>
-  <p>
-    The documentation for this component can be found at
-    <a
-      target="_blank"
+}
+@if (!showError) {
+  <div
+    class="row"
+    >
+    <h2>First Notification of Loss (FNOL)</h2>
+    <p>This component displays a FNOL Form</p>
+    <p>
+      The documentation for this component can be found at
+      <a
+        target="_blank"
       [href]="
         environment.docsUrl + '/via-web-components/insurance-elements/fnol'
       "
-      >{{
+        >{{
         environment.docsUrl + '/via-web-components/insurance-elements/fnol'
-      }}</a
-    >
-  </p>
-  <certua-insurance-fnol
-    [referrerSiteCode]="config?.referrerId"
-    [prefill]="prefill"
-    *ngIf="!!loaded"
-  ></certua-insurance-fnol>
-</div>
-<div>
-  <h4>Example code</h4>
-  <pre><code>
-    &lt;certua-insurance-fnol
-    [referrerSiteCode]="config?.referrerId"
-    [prefill]="prefill"
+        }}</a
+        >
+      </p>
+      @if (!!loaded) {
+        <certua-insurance-fnol
+          [referrerSiteCode]="config?.referrerId"
+          [prefill]="prefill"
+        ></certua-insurance-fnol>
+      }
+    </div>
+  }
+  <div>
+    <h4>Example code</h4>
+    <pre><code>
+      &lt;certua-insurance-fnol
+      [referrerSiteCode]="config?.referrerId"
+      [prefill]="prefill"
 
-    &lt;/certua-insurance-fnol &gt;
+      &lt;/certua-insurance-fnol &gt;
     </code>
   </pre>
   <h4>Component specific inputs</h4>

@@ -1,34 +1,38 @@
-<app-no-token-error *ngIf="showError"></app-no-token-error>
+@if (showError) {
+  <app-no-token-error></app-no-token-error>
+}
 
-<div class="row" *ngIf="!showError">
-  <h2>Transactions</h2>
-  <p>This component can be used to list and search a users transactions</p>
-  <certua-ob-transactions
-    [contextData]="contextTokenOptions"
-    [showAddButton]="false"
-    [daasUrl]="daasUrl"
-  >
-  </certua-ob-transactions>
-</div>
+@if (!showError) {
+  <div class="row">
+    <h2>Transactions</h2>
+    <p>This component can be used to list and search a users transactions</p>
+    <certua-ob-transactions
+      [contextData]="contextTokenOptions"
+      [showAddButton]="false"
+      [daasUrl]="daasUrl"
+      >
+    </certua-ob-transactions>
+  </div>
+}
 <div>
   <h4>Example code</h4>
   <pre><code>
     &lt;certua-ob-transactions
     [daasUrl]="daasUrl"
-      [contextData]="contextData"&gt;
+    [contextData]="contextData"&gt;
     &lt;/certua-ob-transactions&gt;
-    </code>
-  </pre>
-  <h4>Component specific inputs</h4>
-  <div class="table-responsive">
-    <table class="table">
-      <thead>
-        <th>Property Name</th>
-        <th>Mandatory</th>
-        <th>Region</th>
-        <th>Description</th>
-      </thead>
-      <tbody></tbody>
-    </table>
-  </div>
+  </code>
+</pre>
+<h4>Component specific inputs</h4>
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+      <th>Property Name</th>
+      <th>Mandatory</th>
+      <th>Region</th>
+      <th>Description</th>
+    </thead>
+    <tbody></tbody>
+  </table>
+</div>
 </div>
