@@ -1,0 +1,150 @@
+<div class="row">
+  <h2>Documents</h2>
+  <p>
+    The documents component provides a way for you to link to all of your policy
+    related documents which may need to be displayed on your website for
+    compliance.
+  </p>
+  <certua-insurance-documents
+    [referrerSiteCode]="config?.referrerId"
+    [showTitle]="true"
+    [mode]="'table-row'"
+    [policyIssueDate]="'01/01/2024'"
+    [trigger]="trigger"
+  ></certua-insurance-documents>
+</div>
+<div>
+  <h4>Example code</h4>
+  <pre><code>
+    &lt;certua-insurance-documents
+    [referrerSiteCode]="Your referrer code"
+    [trigger]="'BenefitSelection'"
+    [showTitle]="true"
+    [mode]="'table-row'"
+    [policyIssueDate]="'01/01/2024'"
+    &lt;/certua-insurance-documents  &gt;
+    </code>
+  </pre>
+
+  <h4>Component specific inputs</h4>
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <th>Property Name</th>
+        <th>Mandatory</th>
+
+        <th>Description</th>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td>trigger</td>
+          <td>Yes</td>
+          <td>
+            the trigger to return the documents relative to the position you are
+            in the insurance journey. See the options below.
+          </td>
+        </tr>
+        <tr>
+          <td>showTitle</td>
+          <td>No</td>
+          <td>
+            option to show the title of 'Policy Documents' above the list or
+            table. If not provided this defaults to false.
+          </td>
+        </tr>
+        <tr>
+          <td>mode</td>
+          <td>No</td>
+          <td>
+            the property to decide how the returned documents are displayed. If
+            this is not provided it will default to 'list'. see the options
+            below.
+          </td>
+        </tr>
+        <tr>
+          <td>policyIssueDate</td>
+          <td>No</td>
+          <td>
+            if you are displaying the documents as a table this will be required
+            to fill the issue date column for example '01/01/2024'.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <h4 class="mt-3">Available Triggers</h4>
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <th>Trigger</th>
+        <th>Description</th>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td>BenefitSelection</td>
+          <td>
+            the trigger to return the documents relative to the benefit
+            selection stage
+          </td>
+        </tr>
+        <tr>
+          <td>ReviewPolicy</td>
+          <td>
+            the trigger to return the documents relative to the review policy
+            stage
+          </td>
+        </tr>
+        <tr>
+          <td>PaymentPage</td>
+          <td>
+            the trigger to return the documents relative to the payment stage
+          </td>
+        </tr>
+        <tr>
+          <td>CompletePolicy</td>
+          <td>
+            the trigger to return the documents relative to the complete policy
+            stage
+          </td>
+        </tr>
+        <tr>
+          <td>PolicyConfirmation</td>
+          <td>
+            the trigger to return the documents relative to policy confirmation
+            stage
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <h4 class="mt-3">Available Modes</h4>
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <th>Mode</th>
+        <th>Description</th>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td>list</td>
+          <td>
+            displays the documents in a list of clickable links to download the
+            document
+          </td>
+        </tr>
+        <tr>
+          <td>table-row</td>
+          <td>
+            displays the documents in a table with a column for document name,
+            actions (download or view) and an issue date column. In this
+            instance the policyIssueDate input would be required
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <app-insurance-common-inputs></app-insurance-common-inputs>
+</div>

@@ -46,16 +46,16 @@ export class QuoteAndBuyComponent implements OnInit {
 
     addEventListener('saveQuote', (event: any) => {
       console.log('save quote received');
-      window.location.href = '/angular/components/login';
+      window.location.href = '/angular/insurance/components/login';
     });
     window.addEventListener('signup', (event: any) => {
       console.log('sign up event received');
 
       if (!event.detail.autoSignUp) {
-        window.location.href = '/angular/components/login';
+        window.location.href = '/angular/insurance/components/login';
       } else {
         console.log('dispatch success');
-        window.location.href = '/angular/components/login';
+        window.location.href = '/angular/insurance/components/login';
       }
     });
   }
