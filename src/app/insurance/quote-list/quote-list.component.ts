@@ -11,7 +11,7 @@ import {
 import { add, parseISO } from 'date-fns';
 import { InjectSetupWrapper } from '@angular/core/testing';
 import { InsuranceCommonInputsComponent } from '../insurance-common-inputs/common-inputs.component';
-
+import { environment } from '../../../environments/environment';
 @Component({
   selector: 'app-quote-list',
   templateUrl: './quote-list.component.html',
@@ -28,7 +28,7 @@ export class QuoteListComponent implements OnInit {
   loaded = false;
   clientId = '';
   organisationId = '';
-
+  public environment = environment;
   goToQuoteAndBuyJson = {
     quote: 'e.quote',
     policyId: 'e.policyId',

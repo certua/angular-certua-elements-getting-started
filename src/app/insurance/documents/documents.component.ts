@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 
 import { InsuranceCommonInputsComponent } from '../insurance-common-inputs/common-inputs.component';
-
+import { environment } from '../../../environments/environment';
 @Component({
   selector: 'app-documents',
   templateUrl: './documents.component.html',
@@ -23,7 +23,7 @@ export class DocumentsComponent implements OnInit {
   loaded = false;
   productCode = '';
   trigger = 'BenefitSelection';
-
+  public environment = environment;
   ngOnInit() {
     if (!localStorage.getItem('elementType')) {
       this.router.navigate(['/home']);

@@ -1,32 +1,45 @@
 @if (showError) {
-  <div class="row">
-    <div class="col">
-      <h3>There is an issue with the site configuration</h3>
-      <a routerLink="/">Home</a>
-    </div>
+<div class="row">
+  <div class="col">
+    <h3>There is an issue with the site configuration</h3>
+    <a routerLink="/">Home</a>
   </div>
-}
-@if (!showError) {
-  <div class="row">
-    <h2>View Policy v2</h2>
-    <p>
-      This component displays the active policy for the supplied
-      client/organisation id.
-    </p>
-    <div class="alert alert-light col-12">
-      Please note that you will need to be logged in to view the policy. If the
-      account has a quote and not a policy you will need to go to the quotes list
-      component.
-    </div>
-    @if (loaded) {
-      <certua-insurance-view-policy
-        [config]="config"
-        (makeAClaim)="goToMakeAClaim($event)"
-        (goToQuoteAndBuy)="goToQuoteAndBuy($event)"
-        >
-      </certua-insurance-view-policy>
-    }
+</div>
+} @if (!showError) {
+<div class="row">
+  <h2>View Policy v2</h2>
+  <p>
+    This component displays the active policy for the supplied
+    client/organisation id.
+  </p>
+  <p>
+    The documentation for this component can be found at
+    <a
+      target="_blank"
+      [href]="
+        environment.docsUrl +
+        '/via-web-components/insurance-elements/view-policy'
+      "
+      >{{
+        environment.docsUrl +
+          "/via-web-components/insurance-elements/view-policy"
+      }}</a
+    >
+  </p>
+  <div class="alert alert-light col-12">
+    Please note that you will need to be logged in to view the policy. If the
+    account has a quote and not a policy you will need to go to the quotes list
+    component.
   </div>
+  @if (loaded) {
+  <certua-insurance-view-policy
+    [config]="config"
+    (makeAClaim)="goToMakeAClaim($event)"
+    (goToQuoteAndBuy)="goToQuoteAndBuy($event)"
+  >
+  </certua-insurance-view-policy>
+  }
+</div>
 }
 <div>
   <h4>Example code</h4>
@@ -39,40 +52,40 @@
     &lt;/certua-insurance-view-policy &gt;
   </code>
 </pre>
-<h4>Output events</h4>
-<table class="table">
-  <thead>
-    <th>Event Name</th>
-    <th>Data</th>
-    <th>Description</th>
-  </thead>
-  <tbody>
-    <tr>
-      <td>makeAClaim</td>
-      <td>
-        <code>{{ makeAClaimJson | json }}</code>
-      </td>
-      <td>
-        User has clicked make a claim button (if present- this is a product
-        config setting), this emits the prefill info which can be used to
-        prepopulate the FNOL claim form
-      </td>
-    </tr>
-    <tr>
-      <td>goToQuoteAndBuy</td>
-      <td>
-        <code>{{ goToQuoteAndBuyJson | json }}</code>
-      </td>
-      <td>xxxxxxxx</td>
-    </tr>
-  </tbody>
-</table>
-<!-- <pre> <code>{{ JSON.stringify(quickQuoteJson) }}</code></pre> -->
+  <h4>Output events</h4>
+  <table class="table">
+    <thead>
+      <th>Event Name</th>
+      <th>Data</th>
+      <th>Description</th>
+    </thead>
+    <tbody>
+      <tr>
+        <td>makeAClaim</td>
+        <td>
+          <code>{{ makeAClaimJson | json }}</code>
+        </td>
+        <td>
+          User has clicked make a claim button (if present- this is a product
+          config setting), this emits the prefill info which can be used to
+          prepopulate the FNOL claim form
+        </td>
+      </tr>
+      <tr>
+        <td>goToQuoteAndBuy</td>
+        <td>
+          <code>{{ goToQuoteAndBuyJson | json }}</code>
+        </td>
+        <td>xxxxxxxx</td>
+      </tr>
+    </tbody>
+  </table>
+  <!-- <pre> <code>{{ JSON.stringify(quickQuoteJson) }}</code></pre> -->
 
-<h4>Component specific inputs</h4>
-<code>None</code>
+  <h4>Component specific inputs</h4>
+  <code>None</code>
 
-<app-insurance-common-inputs
-  [quoteAndBuy]="true"
-></app-insurance-common-inputs>
+  <app-insurance-common-inputs
+    [quoteAndBuy]="true"
+  ></app-insurance-common-inputs>
 </div>

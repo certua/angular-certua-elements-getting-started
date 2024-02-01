@@ -12,7 +12,7 @@ import {
 import { add, parseISO } from 'date-fns';
 import { InjectSetupWrapper } from '@angular/core/testing';
 import { InsuranceCommonInputsComponent } from '../insurance-common-inputs/common-inputs.component';
-
+import { environment } from '../../../environments/environment';
 @Component({
   selector: 'app-view-policy-v2',
   templateUrl: './view-policy-v2.component.html',
@@ -30,7 +30,7 @@ export class ViewPolicyV2Component implements OnInit {
   loaded = false;
   clientId: string = '';
   organisationId: string = '';
-
+  public environment = environment;
   makeAClaimJson = {
     address: {
       addressLine1: '9 Anchor House',
