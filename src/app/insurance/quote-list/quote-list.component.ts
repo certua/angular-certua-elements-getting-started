@@ -67,7 +67,7 @@ export class QuoteListComponent implements OnInit {
     };
     localStorage.setItem('insuranceConfig', JSON.stringify(newConfig));
     console.log('goToQuoteAndBuy event', value);
-    this.router.navigate(['/components/quote-and-buy'], {
+    this.router.navigate(['/insurance/components/quote-and-buy'], {
       state: { data: value.detail },
     });
   }
