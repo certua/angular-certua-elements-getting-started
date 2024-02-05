@@ -1,12 +1,10 @@
 @if (showError) {
-  <div
-    class="row"
-    >
-    <div class="col">
-      <h3>There is an issue with the site configuration</h3>
-      <a routerLink="/">Home</a>
-    </div>
+<div class="row">
+  <div class="col">
+    <h3>There is an issue with the site configuration</h3>
+    <a routerLink="/">Home</a>
   </div>
+</div>
 }
 
 <h2>Login</h2>
@@ -23,42 +21,34 @@
       environment.docsUrl + '/via-web-components/insurance-elements/login'
     "
     >{{
-    environment.docsUrl + '/via-web-components/insurance-elements/login'
+      environment.docsUrl + "/via-web-components/insurance-elements/login"
     }}</a
-    >
-  </p>
+  >
+</p>
 
-  <certua-insurance-login
-    [referrerSiteCode]="config?.referrerId"
-    (loginSuccess)="setLoginSuccess($event)"
-    [loginUrl]="window.location.origin + '/angular/components/login'"
-    [logoutUrl]="window.location.origin + '/angular/components/login'"
-    [coversUrl]="window.location.origin + '/angular/components/view-policy2'"
-    >
-    <button
-      class="btn btn-primary"
-      login
-      >
-      Login
-    </button>
-    <button
-      class="btn btn-secondary btn-circle"
-      logout
-      >
-      Logout
-    </button>
-  </certua-insurance-login>
+<certua-insurance-login
+  [referrerSiteCode]="config?.referrerId"
+  (loginSuccess)="setLoginSuccess($event)"
+  [loginUrl]="window.location.origin + '/angular/insurance/components/login'"
+  [logoutUrl]="window.location.origin + '/angular/insurance/components/login'"
+  [coversUrl]="
+    window.location.origin + '/angular/insurance/components/view-policy2'
+  "
+>
+  <button class="btn btn-primary" login>Login</button>
+  <button class="btn btn-secondary btn-circle" logout>Logout</button>
+</certua-insurance-login>
 
-  <p></p>
-  <h4>Example code</h4>
+<p></p>
+<h4>Example code</h4>
 
-  <pre>
+<pre>
     <code>
       &lt;certua-insurance-login
       [referrerSiteCode]="config.referrerId"
-      [loginUrl]="window.location.origin + '/angular/components/login'"
-      [logoutUrl]="window.location.origin + '/angular/components/login'"
-      [coversUrl]="window.location.origin + '/angular/components/view-policy2'"&gt;
+      [loginUrl]="window.location.origin + '/angular/insurance/components/login'"
+      [logoutUrl]="window.location.origin + '/angular/insurance/components/login'"
+      [coversUrl]="window.location.origin + '/angular/insurance/components/view-policy2'"&gt;
 
       &lt;button class="btn btn-primary" login&gt;Login&lt;/button&gt;
       &lt;button class="btn btn-secondary btn-circle" logout&gt;&lt;i class="fa fa-user"&gt;&lt;/button&gt;
@@ -66,51 +56,51 @@
       &lt;/certua-insurance-login &gt;
     </code>
   </pre>
-  <h4>Input Elements</h4>
-  <p></p>
-  <h4>Component specific inputs</h4>
-  <div class="table-responsive">
-    <table class="table">
-      <thead>
-        <th>Property Name</th>
-        <th>Mandatory</th>
-        <th>Description</th>
-      </thead>
-      <tbody>
-        <tr>
-          <td>
-            <code>loginUrl</code>
-          </td>
-          <td>Yes</td>
-          <td>
-            This is the url that the user will be redirected to after a successful
-            login. This page would usually host the View Policy component.
-          </td>
-        </tr>
+<h4>Input Elements</h4>
+<p></p>
+<h4>Component specific inputs</h4>
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+      <th>Property Name</th>
+      <th>Mandatory</th>
+      <th>Description</th>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <code>loginUrl</code>
+        </td>
+        <td>Yes</td>
+        <td>
+          This is the url that the user will be redirected to after a successful
+          login. This page would usually host the View Policy component.
+        </td>
+      </tr>
 
-        <tr>
-          <td>
-            <code>logoutUrl</code>
-          </td>
-          <td>Yes</td>
-          <td>
-            This is the url that the user will be redirected to after a successful
-            logout.
-          </td>
-        </tr>
+      <tr>
+        <td>
+          <code>logoutUrl</code>
+        </td>
+        <td>Yes</td>
+        <td>
+          This is the url that the user will be redirected to after a successful
+          logout.
+        </td>
+      </tr>
 
-        <tr>
-          <td>
-            <code>coversUrl</code>
-          </td>
-          <td>Yes</td>
-          <td>
-            This is the url that the user will be taken to when they choose the My
-            Covers option from the logged in menu. This page would usually host
-            the View Policy component.
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <app-insurance-common-inputs></app-insurance-common-inputs>
-  </div>
+      <tr>
+        <td>
+          <code>coversUrl</code>
+        </td>
+        <td>Yes</td>
+        <td>
+          This is the url that the user will be taken to when they choose the My
+          Covers option from the logged in menu. This page would usually host
+          the View Policy component.
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <app-insurance-common-inputs></app-insurance-common-inputs>
+</div>

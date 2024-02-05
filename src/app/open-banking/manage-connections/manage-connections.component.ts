@@ -14,8 +14,8 @@ import { NoTokenErrorComponent } from '../no-token-error/no-token-error.componen
     RouterLink,
     CommonModule,
     CommonInputsComponent,
-    NoTokenErrorComponent
-],
+    NoTokenErrorComponent,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class ManageConnectionsComponent implements OnInit {
@@ -24,10 +24,10 @@ export class ManageConnectionsComponent implements OnInit {
   redirectionConfig = {
     successUrl:
       window.location.origin +
-      '/angular/components/manage-connections?accountConnection=success',
+      '/angular/open-banking/components/manage-connections?accountConnection=success',
     failureUrl:
       window.location.origin +
-      '/angular/components/manage-connections?accountConnection=failure',
+      '/angular/open-banking/components/manage-connections?accountConnection=failure',
     popup: false,
   };
   loaded = false;

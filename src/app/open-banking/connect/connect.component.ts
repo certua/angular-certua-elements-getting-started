@@ -14,12 +14,7 @@ import { NoTokenErrorComponent } from '../no-token-error/no-token-error.componen
   selector: 'app-connect',
   templateUrl: './connect.component.html',
   styleUrls: ['./connect.component.scss'],
-  imports: [
-    RouterLink,
-    JsonPipe,
-    CommonInputsComponent,
-    NoTokenErrorComponent
-],
+  imports: [RouterLink, JsonPipe, CommonInputsComponent, NoTokenErrorComponent],
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
@@ -29,10 +24,10 @@ export class ConnectComponent implements OnInit {
   redirectionConfig = {
     successUrl:
       window.location.origin +
-      '/angular/components/connect?accountConnection=success',
+      '/angular/open-banking/components/connect?accountConnection=success',
     failureUrl:
       window.location.origin +
-      '/angular/components/connect?accountConnection=failure',
+      '/angular/open-banking/components/connect?accountConnection=failure',
     popup: false,
   };
   loaded = false;
