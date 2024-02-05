@@ -1,294 +1,248 @@
 <div class="container-fluid">
   @if (!fullScreen) {
-    <div class="row bg-grey border-bottom" id="header">
-      <div class="col px-0">
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
-          <div class="container-fluid">
-            <a class="navbar-brand" href="/">
-              <div class="d-flex justify-items-center">
-                <img (click)="removeType()" src="assets/certua.png" /></div
-              ></a>
-              <button
-                class="navbar-toggler"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
+  <div class="row bg-grey border-bottom" id="header">
+    <div class="col px-0">
+      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/">
+            <div class="d-flex justify-items-center">
+              <img (click)="removeType()" src="assets/certua.png" /></div
+          ></a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto">
+              <li class="nav-item">
+                @if (elementType == 'open-banking') {
+                <a
+                  [routerLink]="'/home'"
+                  routerLinkActive="text-primary"
+                  [routerLinkActiveOptions]="{ exact: false }"
+                  class="nav-link"
+                  >Home</a
                 >
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto">
-                  <li class="nav-item">
-                    @if (elementType == 'open-banking') {
-                      <a
-                        [routerLink]="'/home'"
-                        routerLinkActive="text-primary"
-                        [routerLinkActiveOptions]="{ exact: false }"
-                        class="nav-link"
-                        >Home</a
-                        >
-                      }
-                      @if (elementType == 'insurance') {
-                        <a
-                          [routerLink]="'/overview-insurance'"
-                          routerLinkActive="text-primary"
-                          [routerLinkActiveOptions]="{ exact: false }"
-                          (click)="selectedIndex = 0"
-                          class="nav-link"
-                          >Overview</a
-                          >
-                        }
-                      </li>
-                      @if (!!elementType && !!showComponentMenu) {
-                        <li class="nav-item">
-                          <a
-                            [routerLink]="elementType == 'insurance'
+                } @if (elementType == 'insurance') {
+                <a
+                  [routerLink]="'/overview-insurance'"
+                  routerLinkActive="text-primary"
+                  [routerLinkActiveOptions]="{ exact: false }"
+                  (click)="selectedIndex = 0"
+                  class="nav-link"
+                  >Overview</a
+                >
+                }
+              </li>
+              @if (!!elementType && !!showComponentMenu) {
+              <li class="nav-item">
+                <a
+                  [routerLink]="
+                    elementType == 'insurance'
                       ? '/insurance/components'
-                      : '/open-banking/components'"
-                            routerLinkActive="text-primary"
-                            [routerLinkActiveOptions]="{ exact: false }"
-                            (click)="selectedIndex = 0"
-                            class="nav-link"
-                            >Components</a
-                            >
-                          </li>
-                        }
-                      </ul>
-                    </div>
-                  </div>
-                </nav>
-              </div>
-            </div>
-          }
-          @if (!fullScreen) {
-            <div class="row" id="sidebar">
-              @if (showNavigation) {
-                <div class="col-md-3 border-end" id="side">
-                  <app-tab-arrows #tabArrows class="d-md-none"></app-tab-arrows>
-                  <div class="stay-put">
-                    @if (
-                      section == SiteSection.Components && elementType == 'open-banking'
-                      ) {
-                      <div
-                        class="list-group mt-4 d-flex flex-md-column flex-row overflow-auto mx-1 pointer"
-                        id="items"
-                        >
-                        <span
-                          (click)="selectItem(0, '/open-banking/components/connect')"
-                          class="list-group-item"
-                          [class.active]="selectedIndex == 0"
-                          >Connect</span
-                          >
-                          <span
-                            (click)="selectItem(1, '/open-banking/components/manage-connections')"
-                            class="list-group-item"
-                            [class.active]="selectedIndex == 1"
-                            >Manage Connections</span
-                            >
-                            <span
-                              (click)="selectItem(2, '/open-banking/components/account-summary')"
-                              class="list-group-item"
-                              [class.active]="selectedIndex == 2"
-                              >Account Summary
-                            </span>
-                            <span
-                              (click)="selectItem(3, '/open-banking/components/transactions')"
-                              class="list-group-item"
-                              [class.active]="selectedIndex == 3"
-                              >Transactions</span
-                              >
-                              <span
-                                (click)="selectItem(4, '/open-banking/components/cashflow')"
-                                class="list-group-item"
-                                [class.active]="selectedIndex == 4"
-                                >
-                                Cashflow</span
-                                >
-                              </div>
-                            }
-                            @if (
-                              section == SiteSection.Components && elementType == 'insurance'
-                              ) {
-                              <div
-                                class="list-group d-flex flex-md-column flex-row overflow-auto mx-1 pointer"
-                                id="items"
-                                >
-                                <span
-                                  (click)="selectItem(0, '/insurance/components/introduction')"
-                                  class="list-group-item"
-                                  [class.active]="selectedIndex == 0"
-                                  >
-                                  Overview</span
-                                  >
-                                  <span
-                                    (click)="selectItem(1, '/insurance/components/quote-and-buy')"
-                                    class="list-group-item"
-                                    [class.active]="selectedIndex == 1"
-                                    >
-                                    Quote and Buy</span
-                                    >
-                                    <span
-                                      (click)="selectItem(2, '/insurance/components/claims')"
-                                      class="list-group-item"
-                                      [class.active]="selectedIndex == 2"
-                                      >
-                                      Claims</span
-                                      >
-                                      <span
-                                        (click)="selectItem(3, '/insurance/components/fnol')"
-                                        class="list-group-item"
-                                        [class.active]="selectedIndex == 3"
-                                        >
-                                        Fnol</span
-                                        >
-                                        <span
-                                          (click)="selectItem(4, '/insurance/components/quick-quote')"
-                                          class="list-group-item"
-                                          [class.active]="selectedIndex == 4"
-                                          >
-                                          Quick Quote</span
-                                          >
-                                          <span
-                                            [class.active]="selectedIndex == 5"
-                                            (click)="selectItem(5, '/insurance/components/login')"
-                                            class="list-group-item pointer"
-                                            >Login</span
-                                            >
-                                            <span
-                                              [class.active]="selectedIndex == 7"
-                                              (click)="selectItem(7, '/insurance/components/quotes-list')"
-                                              class="list-group-item pointer"
-                                              >Quotes List</span
-                                              >
-                                              <!--    <span
-                                              [class.active]="selectedIndex == 6"
-                                              (click)="selectItem(6, '/components/policies-list')"
-                                              class="list-group-item pointer"
-                                              >Policies List</span
-                                              > -->
-                                              <!-- <span
-                                              [class.active]="selectedIndex == 8"
-                                              (click)="selectItem(7, '/components/view-policy')"
-                                              class="list-group-item pointer"
-                                              >View Policy</span
-                                              > -->
-                                              <span
-                                                [class.active]="selectedIndex == 6"
-                                                (click)="selectItem(6, '/insurance/components/manage-policy')"
-                                                class="list-group-item pointer"
-                                                >View Policy</span
-                                                >
-                                                       <span
+                      : '/open-banking/components'
+                  "
+                  routerLinkActive="text-primary"
+                  [routerLinkActiveOptions]="{ exact: false }"
+                  (click)="selectedIndex = 0"
+                  class="nav-link"
+                  >Components</a
+                >
+              </li>
+              }
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </div>
+  } @if (!fullScreen) {
+  <div class="row" id="sidebar">
+    @if (showNavigation) {
+    <div class="col-md-3 border-end" id="side">
+      <app-tab-arrows #tabArrows class="d-md-none"></app-tab-arrows>
+      <div class="stay-put">
+        @if ( section == SiteSection.Components && elementType == 'open-banking'
+        ) {
+        <div
+          class="list-group mt-4 d-flex flex-md-column flex-row overflow-auto mx-1 pointer"
+          id="items"
+        >
+          <span
+            (click)="selectItem(0, '/open-banking/components/connect')"
+            class="list-group-item"
+            [class.active]="selectedIndex == 0"
+            >Connect</span
+          >
+          <span
+            (click)="
+              selectItem(1, '/open-banking/components/manage-connections')
+            "
+            class="list-group-item"
+            [class.active]="selectedIndex == 1"
+            >Manage Connections</span
+          >
+          <span
+            (click)="selectItem(2, '/open-banking/components/account-summary')"
+            class="list-group-item"
+            [class.active]="selectedIndex == 2"
+            >Account Summary
+          </span>
+          <span
+            (click)="selectItem(3, '/open-banking/components/transactions')"
+            class="list-group-item"
+            [class.active]="selectedIndex == 3"
+            >Transactions</span
+          >
+          <span
+            (click)="selectItem(4, '/open-banking/components/cashflow')"
+            class="list-group-item"
+            [class.active]="selectedIndex == 4"
+          >
+            Cashflow</span
+          >
+        </div>
+        } @if ( section == SiteSection.Components && elementType == 'insurance'
+        ) {
+        <div
+          class="list-group d-flex flex-md-column flex-row overflow-auto mx-1 pointer"
+          id="items"
+        >
+          <span
+            (click)="selectItem(0, '/insurance/components/introduction')"
+            class="list-group-item"
+            [class.active]="selectedIndex == 0"
+          >
+            Overview</span
+          >
+          <span
+            (click)="selectItem(1, '/insurance/components/quote-and-buy')"
+            class="list-group-item"
+            [class.active]="selectedIndex == 1"
+          >
+            Quote and Buy</span
+          >
+          <span
+            (click)="selectItem(2, '/insurance/components/claims')"
+            class="list-group-item"
+            [class.active]="selectedIndex == 2"
+          >
+            Claims</span
+          >
+          <span
+            (click)="selectItem(3, '/insurance/components/fnol')"
+            class="list-group-item"
+            [class.active]="selectedIndex == 3"
+          >
+            Fnol</span
+          >
+          <span
+            (click)="selectItem(4, '/insurance/components/quick-quote')"
+            class="list-group-item"
+            [class.active]="selectedIndex == 4"
+          >
+            Quick Quote</span
+          >
+          <span
+            [class.active]="selectedIndex == 5"
+            (click)="selectItem(5, '/insurance/components/login')"
+            class="list-group-item pointer"
+            >Login</span
+          >
+          <span
+            [class.active]="selectedIndex == 7"
+            (click)="selectItem(7, '/insurance/components/quotes-list')"
+            class="list-group-item pointer"
+            >Quotes List</span
+          >
+
+          <span
+            [class.active]="selectedIndex == 6"
+            (click)="selectItem(6, '/insurance/components/manage-policy')"
+            class="list-group-item pointer"
+            >View Policy</span
+          >
+          <span
             [class.active]="selectedIndex == 8"
             (click)="selectItem(8, '/insurance/components/documents')"
             class="list-group-item pointer"
             >Documents</span
           >
-                                              </div>
-                                            }
-                                            @if (section == SiteSection.Overview && elementType == 'insurance') {
-                                              <div
-                                                class="list-group mt-4 d-flex flex-md-column flex-row overflow-auto mx-1 pointer"
-                                                id="items"
-                                                >
-                                                <span
-                                                  (click)="selectItem(0, '/overview-insurance', 'introduction')"
-                                                  class="list-group-item"
-                                                  [class.active]="selectedIndex == 0"
-                                                  >
-                                                  Introduction</span
-                                                  >
-                                                  <span
-                                                    (click)="selectItem(1, '/overview-insurance', 'getting-started')"
-                                                    class="list-group-item"
-                                                    [class.active]="selectedIndex == 1"
-                                                    >
-                                                    Getting started</span
-                                                    >
-                                                    <span
-                                                      (click)="selectItem(2, '/overview-insurance', 'site-code')"
-                                                      class="list-group-item"
-                                                      [class.active]="selectedIndex == 2"
-                                                      >
-                                                      Site Code</span
-                                                      >
-                                                      <span
-                                                        [class.active]="selectedIndex == 3"
-                                                        (click)="selectItem(3, '/overview-insurance', 'client-libraries')"
-                                                        class="list-group-item pointer"
-                                                        >Client Libraries</span
-                                                        >
-                                                        <span
-                                                          [class.active]="selectedIndex == 4"
-                                                          (click)="selectItem(4, '/overview-insurance', 'using-components')"
-                                                          class="list-group-item pointer"
-                                                          >Using components</span
-                                                          >
-                                                          <!--   <span
-                                                          [class.active]="selectedIndex == 5"
-                                                          (click)="selectItem(5, '/components/quotes-list')"
-                                                          class="list-group-item pointer"
-                                                          >Quotes List</span
-                                                          >
-                                                          <span
-                                                            [class.active]="selectedIndex == 6"
-                                                            (click)="selectItem(6, '/components/policies-list')"
-                                                            class="list-group-item pointer"
-                                                            >Policies List</span
-                                                            >
-                                                            <span
-                                                              [class.active]="selectedIndex == 7"
-                                                              (click)="selectItem(7, '/components/view-policy')"
-                                                              class="list-group-item pointer"
-                                                              >View Policy</span
-                                                              >
-                                                              <span
-                                                                [class.active]="selectedIndex == 8"
-                                                                (click)="selectItem(8, '/components/manage-policy')"
-                                                                class="list-group-item pointer"
-                                                                >View Policy (v2)</span
-                                                                > -->
-                                                              </div>
-                                                            }
-                                                          </div>
-                                                          <nav></nav>
-                                                        </div>
-                                                      }
-                                                      <div class="col mt-4" id="content">
-                                                        <router-outlet></router-outlet>
-                                                        @if (showNavigation && elementType == 'open-banking') {
-                                                          <app-common-inputs
-                                                          ></app-common-inputs>
-                                                        }
-                                                      </div>
-                                                    </div>
-                                                  }
-
-                                                  @if (fullScreen) {
-                                                    <div
-                                                      id="full-header"
-                                                      class="row mx-0 nav-main bg-white dl-nav-main"
-                                                      >
-                                                      <div class="d-flex flex-row w-100 align-items-center">
-                                                        <div class="col-md-2 text-start">
-                                                          <button class="btn btn-link pointer" (click)="backToGettingStarted()">
-                                                            <i class="fal fa-long-arrow-left me-2"></i>Exit fullscreen
-                                                          </button>
-                                                        </div>
-                                                      </div>
-                                                    </div>
-                                                  }
-                                                  @if (fullScreen) {
-                                                    <div>
-                                                      <router-outlet></router-outlet>
-                                                      @if (showNavigation && elementType == 'open-banking') {
-                                                        <app-common-inputs
-                                                        ></app-common-inputs>
-                                                      }
-                                                    </div>
-                                                  }
-                                                </div>
-   
+        </div>
+        } @if (section == SiteSection.Overview && elementType == 'insurance') {
+        <div
+          class="list-group mt-4 d-flex flex-md-column flex-row overflow-auto mx-1 pointer"
+          id="items"
+        >
+          <span
+            (click)="selectItem(0, '/overview-insurance', 'introduction')"
+            class="list-group-item"
+            [class.active]="selectedIndex == 0"
+          >
+            Introduction</span
+          >
+          <span
+            (click)="selectItem(1, '/overview-insurance', 'getting-started')"
+            class="list-group-item"
+            [class.active]="selectedIndex == 1"
+          >
+            Getting started</span
+          >
+          <span
+            (click)="selectItem(2, '/overview-insurance', 'site-code')"
+            class="list-group-item"
+            [class.active]="selectedIndex == 2"
+          >
+            Site Code</span
+          >
+          <span
+            [class.active]="selectedIndex == 3"
+            (click)="selectItem(3, '/overview-insurance', 'client-libraries')"
+            class="list-group-item pointer"
+            >Client Libraries</span
+          >
+          <span
+            [class.active]="selectedIndex == 4"
+            (click)="selectItem(4, '/overview-insurance', 'using-components')"
+            class="list-group-item pointer"
+            >Using components</span
+          >
+        </div>
+        }
+      </div>
+      <nav></nav>
+    </div>
+    }
+    <div class="col mt-4" id="content">
+      <router-outlet></router-outlet>
+      @if (showNavigation && elementType == 'open-banking') {
+      <app-common-inputs></app-common-inputs>
+      }
+    </div>
+  </div>
+  } @if (fullScreen) {
+  <div id="full-header" class="row mx-0 nav-main bg-white dl-nav-main">
+    <div class="d-flex flex-row w-100 align-items-center">
+      <div class="col-md-2 text-start">
+        <button class="btn btn-link pointer" (click)="backToGettingStarted()">
+          <i class="fal fa-long-arrow-left me-2"></i>Exit fullscreen
+        </button>
+      </div>
+    </div>
+  </div>
+  } @if (fullScreen) {
+  <div>
+    <router-outlet></router-outlet>
+    @if (showNavigation && elementType == 'open-banking') {
+    <app-common-inputs></app-common-inputs>
+    }
+  </div>
+  }
+</div>

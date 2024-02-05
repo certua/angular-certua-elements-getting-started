@@ -20,7 +20,7 @@ export class InsuranceCommonInputsComponent implements OnInit {
   @Input() quoteAndBuy = false;
   config = {
     referrerId: 'xxxxx-xxxx-xxxx',
-    basePath: 'angular/components/quote-and-buy',
+    basePath: 'angular/insurance/components/quote-and-buy',
   };
   ngOnInit() {}
 }

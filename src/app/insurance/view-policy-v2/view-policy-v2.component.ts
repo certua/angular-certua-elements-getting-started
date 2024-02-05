@@ -56,7 +56,7 @@ export class ViewPolicyV2Component implements OnInit {
     if (!localStorage.getItem('elementType')) {
       this.router.navigate(['/home']);
     } else if (localStorage.getItem('elementType') == 'open-banking') {
-      this.router.navigate(['/components/connect']);
+      this.router.navigate(['/open-banking/components/connect']);
     }
 
     let configJson = localStorage.getItem('insuranceConfig');
@@ -76,12 +76,14 @@ export class ViewPolicyV2Component implements OnInit {
 
   goToQuoteAndBuy(value: any) {
     console.log('goToQuoteAndBuy event', value);
-    this.router.navigate(['/components/quote-and-buy'], { state: { value } });
+    this.router.navigate(['/insurance/components/quote-and-buy'], {
+      state: { value },
+    });
   }
 
   goToMakeAClaim(value: any) {
     console.log('makeAClaim event', value);
-    this.router.navigate(['/components/fnol'], {
+    this.router.navigate(['/insurance/components/fnol'], {
       state: { data: value.detail },
     });
   }

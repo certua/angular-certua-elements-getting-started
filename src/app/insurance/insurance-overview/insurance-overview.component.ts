@@ -155,7 +155,7 @@ export class InsuranceOverviewComponent implements OnInit, AfterViewInit {
       'insuranceConfig',
       JSON.stringify({
         referrerId: this.referrerCode,
-        basePath: 'angular/components/quote-and-buy',
+        basePath: 'angular/insurance/components/quote-and-buy',
       })
     );
 

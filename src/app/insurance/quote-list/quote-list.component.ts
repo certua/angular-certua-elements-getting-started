@@ -39,7 +39,7 @@ export class QuoteListComponent implements OnInit {
     if (!localStorage.getItem('elementType')) {
       this.router.navigate(['/home']);
     } else if (localStorage.getItem('elementType') == 'open-banking') {
-      this.router.navigate(['/components/connect']);
+      this.router.navigate(['/open-banking/components/connect']);
     }
 
     let configJson = localStorage.getItem('insuranceConfig');
@@ -67,7 +67,7 @@ export class QuoteListComponent implements OnInit {
     };
     localStorage.setItem('insuranceConfig', JSON.stringify(newConfig));
     console.log('goToQuoteAndBuy event', value);
-    this.router.navigate(['/components/quote-and-buy'], {
+    this.router.navigate(['/insurance/components/quote-and-buy'], {
       state: { data: value.detail },
     });
   }
