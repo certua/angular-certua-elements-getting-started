@@ -31,4 +31,5 @@ export const environment = {
   },
   environmentName: 'qa',
   uxAPIUrl: 'https://ux-api-qa.certua.io/api',
+  docsUrl: 'https://docsqa.certua.io/docs',
 };

@@ -9,7 +9,7 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { HttpClient } from '@angular/common/http';
 import { Title } from '@angular/platform-browser';
 export interface ReferrerCodeCheck {
@@ -19,7 +19,7 @@ export interface ReferrerCodeCheck {
 @Component({
   selector: 'app-insurance-overview',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [FormsModule],
   templateUrl: './insurance-overview.component.html',
   styleUrls: ['./insurance-overview.component.scss'],
 })
@@ -109,7 +109,9 @@ export class InsuranceOverviewComponent implements OnInit, AfterViewInit {
   }
   ngOnInit() {
     let config = localStorage.getItem('insuranceConfig');
-    if (!!config) {
+    if (!!config && !localStorage.getItem('elementType')) {
+      this.setDefaultReferrer(true);
+    } else {
       this.referrerSet = true;
       this.referrerName = localStorage.getItem('certua-referrerName') ?? '';
     }
@@ -153,7 +155,7 @@ export class InsuranceOverviewComponent implements OnInit, AfterViewInit {
       'insuranceConfig',
       JSON.stringify({
         referrerId: this.referrerCode,
-        basePath: 'angular/components/quote-and-buy',
+        basePath: 'angular/insurance/components/quote-and-buy',
       })
     );
 

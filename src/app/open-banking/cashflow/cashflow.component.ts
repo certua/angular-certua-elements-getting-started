@@ -1,6 +1,6 @@
 import { RouterLink } from '@angular/router';
 import { Component, OnInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { CommonModule, NgIf } from '@angular/common';
+
 import { add, parseISO } from 'date-fns';
 import { CommonInputsComponent } from '../common-inputs/common-inputs.component';
 import { NoTokenErrorComponent } from '../no-token-error/no-token-error.component';
@@ -9,12 +9,10 @@ import { NoTokenErrorComponent } from '../no-token-error/no-token-error.componen
   selector: 'app-cashflow',
   standalone: true,
   imports: [
-    CommonModule,
-    NgIf,
     RouterLink,
     CommonInputsComponent,
-    NoTokenErrorComponent,
-  ],
+    NoTokenErrorComponent
+],
   templateUrl: './cashflow.component.html',
   styleUrls: ['./cashflow.component.scss'],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

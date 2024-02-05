@@ -1,5 +1,5 @@
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { JsonPipe, NgIf } from '@angular/common';
+import { JsonPipe } from '@angular/common';
 import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
@@ -18,7 +18,7 @@ import { InsuranceCommonInputsComponent } from '../insurance-common-inputs/commo
   templateUrl: './view-policy.component.html',
   styleUrls: ['./view-policy.component.scss'],
   standalone: true,
-  imports: [NgIf, RouterLink, JsonPipe, InsuranceCommonInputsComponent],
+  imports: [RouterLink, JsonPipe, InsuranceCommonInputsComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class ViewPolicyComponent implements OnInit {
@@ -56,7 +56,7 @@ export class ViewPolicyComponent implements OnInit {
     if (!localStorage.getItem('elementType')) {
       this.router.navigate(['/home']);
     } else if (localStorage.getItem('elementType') == 'open-banking') {
-      this.router.navigate(['/components/connect']);
+      this.router.navigate(['/open-banking/components/connect']);
     }
 
     let configJson = localStorage.getItem('insuranceConfig');

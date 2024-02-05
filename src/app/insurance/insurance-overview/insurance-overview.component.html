@@ -1,255 +1,229 @@
-<section id="introduction" #introduction>
+<section
+  id="introduction"
+  #introduction
+  >
   <h1>Introduction</h1>
 
   <p>
-    Welcome to the documentation for Certua Insurance Elements, your gateway to
-    a seamless insurance journey integration within your website. With our
-    versatile web components, you can offer your customers a frictionless
-    experience without the need to navigate away from your site.
-  </p>
-  <p>
-    Our web components are designed to harmonise with your brand's identity,
-    effortlessly incorporating your colors and logos where necessary, ensuring a
-    consistent and cohesive user experience. By leveraging our components, you
-    not only simplify the process but also ensure compliance when selling
-    insurance.
-  </p>
-  <p>
-    In this developer-focused documentation, we'll guide you through the easy
-    integration and customization of Certua Insurance Elements, empowering you
-    to provide a compliant and user-friendly insurance solution on your website.
-    Let's dive in and help you on the way to sell insurance online.
-  </p>
-
-  <section id="getting-started" #getStarted>
-    <h3>Getting started</h3>
-
-    <div>
-      In order to embed Certua Insurance Elements you will need to
-      <ul>
-        <li>Get a Site Code</li>
-        <li>Choose your security type</li>
-        <li>Load our client libraries</li>
-        <li>Implement our components</li>
-      </ul>
-    </div>
-  </section>
-  <section id="site-code" #siteCode>
-    <h3>Get a site code</h3>
-    The site code configure the components telling them what theme, and
-    insurance product that they are using. This is a unique code that we will
-    provide you with. If you don't have a site code then please contact us at
-    <a href="mailto:luke@certua.io">luke@certua.io</a>
-    <div *ngIf="!referrerSet">
-      <div class="alert alert-light col-12 col-md-6 my-2">
-        If you would like to see a demo of our components before you get your
-        own site code you can use one of our demo site codes. We have two
-        different styles of journey, one with multiple questions on one page, or
-        one with questions displayed in a sidebar.
-      </div>
-      <div class="row w-100">
-        <div class="col-md-3 d-flex flex-column justify-content-end">
-          <div class="card">
-            <div class="card-body">
-              <video
-                width="400"
-                autoplay="true"
-                loop="true"
-                src="https://s3.eu-west-2.amazonaws.com/images.generic-insurance/getting-started/generic-demo.mp4"
-                class="card-img-top"
-                type="video/mp4"
-              >
-                Your browser does not support HTML video.
-              </video>
-              <p>
-                This shows the Quote and Buy Journey with multiple questions per
-                screen and is more commonly used for SME based insurance
-                products
-              </p>
-            </div>
-            <button
-              class="btn btn-secondary m-2"
-              (click)="setDefaultReferrer()"
-            >
-              Use demo site
-            </button>
-          </div>
-        </div>
-        <div class="col-md-3 d-flex flex-column justify-content-end">
-          <div class="card h-100">
-            <div class="card-body">
-              <video
-                width="400"
-                autoplay="true"
-                loop="true"
-                src="https://s3.eu-west-2.amazonaws.com/images.generic-insurance/getting-started/sidebar-demo.mp4"
-                class="card-img-top"
-                type="video/mp4"
-              >
-                Your browser does not support HTML video.
-              </video>
-              <p>
-                This shows the Quote and Buy journey in a panel at the side of
-                the screen with one question per screen and is more commonly
-                used for Individual or Life insurance products.
-              </p>
-            </div>
-            <button
-              class="btn btn-secondary m-2"
-              (click)="setDefaultReferrer(true)"
-            >
-              Use demo sidebar site
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <div class="alert alert-light col-12 col-md-6 my-2">
-        If we have already provided you with a site code then this won't change
-        and you can enter this here
-      </div>
-      <div class="text-start col-12 col-md-6">
-        <input
-          id="referrerId"
-          type="text"
-          class="form-control"
-          [(ngModel)]="referrerCode"
-          (ngModelChange)="checkReferrer()"
-        />
-        <p class="mt-2 text-success font-weight-bold" *ngIf="!!referrerName">
-          <i class="fa fa-check mr-2"></i>{{ referrerName }}
-        </p>
-        <button class="btn btn-primary mt-2" (click)="setReferrer()">
-          Set site code
-        </button>
-      </div>
-      <div class="alert alert-light col-12 col-md-6 mt-4">
-        If you would like your own site code with your own branding then we can
-        set this up for you. Please email us at
-        <a href="mailto:luke@certua.io">luke@certua.io</a>
-      </div>
-    </div>
-    <div *ngIf="referrerSet">
-      <div
-        class="d-flex alert alert-success col-12 col-md-6 justify-content-between align-items-center"
+    Welcome to the getting started sample application for Certua Insurance
+    Elements. These examples are to be used along side the documentation found
+    at
+    <a href="https://docsdev.certua.io/docs/via-web-components/intro"
+      >https://docsdev.certua.io/docs/via-web-components/intro</a
       >
-        <span
-          >You are currently using <strong>{{ referrerName }}</strong> site
-          code</span
-        >
+    </p>
 
-        <div class="btn btn-secondary" (click)="reset()">Choose new site</div>
+    <section
+      id="getting-started"
+      #getStarted
+      >
+      <h3>Getting started</h3>
+
+      <div>
+        In order to embed Certua Insurance Elements you will need to
+        <ul>
+          <li>Get a Site Code</li>
+          <li>Choose your security type</li>
+          <li>Load our client libraries</li>
+          <li>Implement our components</li>
+        </ul>
       </div>
-    </div>
-  </section>
-  <section id="theming" #theming>
-    <h3>Theming</h3>
-    <p>
-      We fully support the ability to theme the components to match your site.
-      The components colour, logo's, fonts etc are all configurable. If you'd
-      like to update your theming then please get in touch and we can do this
-      for you.
-    </p>
-  </section>
+    </section>
+    <section
+      id="site-code"
+      #siteCode
+      >
+      <h3>Get a site code</h3>
+      The site code configure the components telling them what theme, and
+      insurance product that they are using. This is a unique code that we will
+      provide you with. If you don't have a site code then please contact us at
+      <a href="mailto:luke@certua.io">luke&#64;certua.io</a>
+      @if (!referrerSet) {
+        <div>
+          <div class="alert alert-light col-12 col-md-6 my-2">
+            If you would like to see a demo of our components before you get your
+            own site code you can use one of our demo site codes. We have two
+            different styles of journey, one with multiple questions on one page, or
+            one with questions displayed in a sidebar.
+          </div>
+          <div class="row w-100">
+            <div class="col-md-3 d-flex flex-column justify-content-end">
+              <div class="card h-100">
+                <div class="card-body">
+                  <video
+                    width="400"
+                    autoplay="true"
+                    loop="true"
+                    src="https://s3.eu-west-2.amazonaws.com/images.generic-insurance/getting-started/sidebar-demo.mp4"
+                    class="card-img-top"
+                    type="video/mp4"
+                    >
+                    Your browser does not support HTML video.
+                  </video>
+                  <p>
+                    This shows the Quote and Buy journey in a panel at the side of
+                    the screen with one question per screen and is more commonly
+                    used for Individual or Life insurance products.
+                  </p>
+                </div>
+                <button
+                  class="btn btn-secondary m-2"
+                  (click)="setDefaultReferrer(true)"
+                  >
+                  Use demo sidebar site
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="alert alert-light col-12 col-md-6 my-2">
+            If we have already provided you with a site code then this won't change
+            and you can enter this here
+          </div>
+          <div class="text-start col-12 col-md-6">
+            <input
+              id="referrerId"
+              type="text"
+              class="form-control"
+              [(ngModel)]="referrerCode"
+              (ngModelChange)="checkReferrer()"
+              />
+              @if (!!referrerName) {
+                <p
+                  class="mt-2 text-success font-weight-bold"
+                  >
+                  <i class="fa fa-check mr-2"></i>{{ referrerName }}
+                </p>
+              }
+              <button
+                class="btn btn-primary mt-2"
+                (click)="setReferrer()"
+                >
+                Set site code
+              </button>
+            </div>
+            <div class="alert alert-light col-12 col-md-6 mt-4">
+              If you would like your own site code with your own branding then we can
+              set this up for you. Please email us at
+              <a href="mailto:luke@certua.io">luke&#64;certua.io</a>
+            </div>
+          </div>
+        }
+        @if (referrerSet) {
+          <div>
+            <div
+              class="d-flex alert alert-success col-12 col-md-6 justify-content-between align-items-center"
+              >
+              <span
+                >You are currently using <strong>{{ referrerName }}</strong> site
+                code</span
+                >
+                <div
+                  class="btn btn-secondary"
+                  (click)="reset()"
+                  >
+                  Choose new site
+                </div>
+              </div>
+            </div>
+          }
+        </section>
 
-  <section id="security" #security>
-    <h3>Security</h3>
-    <p>
-      The easiest way to get started is to use our security. This will allow you
-      to use our components without having to worry about security. However, if
-      you wish to use your own security then please speak to us.
-    </p>
-  </section>
-  <section id="client-libraries" #clientLibraries>
-    <h3>Client Libraries</h3>
-    <p>We provide the following libraries to make your integration easier</p>
+        <section
+          id="client-libraries"
+          #clientLibraries
+          >
+          <h3>Client Libraries</h3>
+          <p>We provide the following libraries to make your integration easier</p>
 
-    <p><a [href]="qnbLink">Quote and Buy Library</a></p>
-    <p><a [href]="insuranceElementsLink">Insurance Elements Library</a></p>
+          <p><a [href]="qnbLink">Quote and Buy Library</a></p>
+          <p><a [href]="insuranceElementsLink">Insurance Elements Library</a></p>
 
-    <div class="alert alert-light col-12 col-md-6">
-      Please note if you are integrating this using a framework other than
-      Angular you will also need to load the polyfills files.
-      <p class="mt-2"><a [href]="qnbPolyfills">Quote and Buy Polyfills</a></p>
-      <p>
-        <a [href]="insuranceElementsPolyfills">Insurance Elements Polyfills</a>
-      </p>
-    </div>
-  </section>
-  <section id="using-components" #components>
-    <h3>Using our components</h3>
-    <p>
-      No matter what coding language your site is written in you can easily
-      embed our components with minimal html and javascript. Using our example
-      codebase and component explanations embedding one or more of our
-      components into your site should be super simple for any developer.
-    </p>
-    <h4>How our components work together</h4>
-    <p>
-      We have multiple components that work together to build up the full
-      insurance purchasing and servicing experience. You can choose which
-      components you wish to use.
-    </p>
-    <p>
-      The image shows the components that are available and the order in which
-      they are usually used.
-      <br />
-      <img
-        src="assets/insurance-components-flow.webp"
-        class="col-12 col-md-6"
-      />
-    </p>
+          <div class="alert alert-light col-12 col-md-6">
+            Please note if you are integrating this using a framework other than
+            Angular you will also need to load the polyfills files.
+            <p class="mt-2"><a [href]="qnbPolyfills">Quote and Buy Polyfills</a></p>
+            <p>
+              <a [href]="insuranceElementsPolyfills">Insurance Elements Polyfills</a>
+            </p>
+          </div>
+        </section>
+        <section
+          id="using-components"
+          #components
+          >
+          <h3>Using our components</h3>
+          <p>
+            No matter what coding language your site is written in you can easily
+            embed our components with minimal html and javascript. Using our example
+            codebase and component explanations embedding one or more of our
+            components into your site should be super simple for any developer.
+          </p>
+          <h4>How our components work together</h4>
+          <p>
+            We have multiple components that work together to build up the full
+            insurance purchasing and servicing experience. You can choose which
+            components you wish to use.
+          </p>
+          <p>
+            The image shows the components that are available and the order in which
+            they are usually used.
+            <br />
+            <img
+              src="assets/insurance-components-flow.webp"
+              class="col-12 col-md-6"
+              />
+            </p>
 
-    <h5>1. Quote and buy</h5>
-    <p>
-      The main component is the Quote and Buy component. This component is
-      responsible for the quoting and purchasing journey. This component can be
-      used on its own or in conjunction with the other components. This is the
-      usual starting point for your customers.
-    </p>
-    <h5>2. Login</h5>
-    <p>
-      This displays a login button based on your authentication status, if you
-      are using our security there is nothing more that you need. If you would
-      like to link your own security then please speak to us.
-    </p>
-    <h5>3. View Policy</h5>
-    <p>
-      This component provides access to any quotes or policies that the customer
-      has, as well as viewing the policy details. This will also provide the
-      customer with the ability to make Material and Non Material changes to
-      their policy.
-    </p>
-    <h5>4. Log out</h5>
-    <p>
-      This will show a icon that when clicked on will show a dropdown menu with
-      the options to Change Password, View Covers or Logout.
-    </p>
-    <h5>Claims</h5>
-    <p>
-      Information about how to make a claim on a policy and can be used by you
-      to make this information available to your customers on your web site. It
-      is important to make this information easily accessible to your customers
-      as it is a regulatory requirement.
-    </p>
-    <h5>Documents</h5>
-    <p>
-      This component will provide you with a way to make the policy
-      documentation available to your customers on your web site. It is
-      important to make this information easily accessible to your customers as
-      it is a regulatory requirement.
-    </p>
-    <h5>First Notification of Loss (FNOL)</h5>
-    <p>
-      When supported by the insurance product, this displays a form a customer
-      can fill in to make a claim. Please check with us if you need to implement
-      this component.
-    </p>
-    <h5>Quick Quote</h5>
-    <p>
-      This allows you to give out indicative quotes based on a subset of
-      questions. This is an optional component that can be used depending on the
-      Insurance product being distributed.
-    </p>
-  </section>
-</section>
+            <h5>1. Quote and buy</h5>
+            <p>
+              The main component is the Quote and Buy component. This component is
+              responsible for the quoting and purchasing journey. This component can be
+              used on its own or in conjunction with the other components. This is the
+              usual starting point for your customers.
+            </p>
+            <h5>2. Login</h5>
+            <p>
+              This displays a login button based on your authentication status, if you
+              are using our security there is nothing more that you need. If you would
+              like to link your own security then please speak to us.
+            </p>
+            <h5>3. View Policy</h5>
+            <p>
+              This component provides access to any quotes or policies that the customer
+              has, as well as viewing the policy details. This will also provide the
+              customer with the ability to make Material and Non Material changes to
+              their policy.
+            </p>
+            <h5>4. Log out</h5>
+            <p>
+              This will show a icon that when clicked on will show a dropdown menu with
+              the options to Change Password, View Covers or Logout.
+            </p>
+            <h5>Claims</h5>
+            <p>
+              Information about how to make a claim on a policy and can be used by you
+              to make this information available to your customers on your web site. It
+              is important to make this information easily accessible to your customers
+              as it is a regulatory requirement.
+            </p>
+            <h5>Documents</h5>
+            <p>
+              This component will provide you with a way to make the policy
+              documentation available to your customers on your web site. It is
+              important to make this information easily accessible to your customers as
+              it is a regulatory requirement.
+            </p>
+            <h5>First Notification of Loss (FNOL)</h5>
+            <p>
+              When supported by the insurance product, this displays a form a customer
+              can fill in to make a claim. Please check with us if you need to implement
+              this component.
+            </p>
+            <h5>Quick Quote</h5>
+            <p>
+              This allows you to give out indicative quotes based on a subset of
+              questions. This is an optional component that can be used depending on the
+              Insurance product being distributed.
+            </p>
+          </section>
+        </section>

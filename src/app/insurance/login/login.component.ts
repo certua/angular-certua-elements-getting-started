@@ -1,6 +1,6 @@
 import { InsuranceCommonInputsComponent } from './../insurance-common-inputs/common-inputs.component';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { JsonPipe, NgIf } from '@angular/common';
+import { JsonPipe } from '@angular/common';
 import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
@@ -11,13 +11,14 @@ import {
   OnInit,
 } from '@angular/core';
 import { CommonInputsComponent } from '../../open-banking/common-inputs/common-inputs.component';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
   standalone: true,
-  imports: [NgIf, RouterLink, JsonPipe, InsuranceCommonInputsComponent],
+  imports: [RouterLink, JsonPipe, InsuranceCommonInputsComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class LoginComponent implements OnInit {
@@ -29,11 +30,13 @@ export class LoginComponent implements OnInit {
   loaded = false;
   loginSuccess = false;
   window = window;
+
+  public environment = environment;
   ngOnInit() {
     if (!localStorage.getItem('elementType')) {
       this.router.navigate(['/home']);
     } else if (localStorage.getItem('elementType') == 'open-banking') {
-      this.router.navigate(['/components/connect']);
+      this.router.navigate(['/open-banking/components/connect']);
     }
 
     let configJson = localStorage.getItem('insuranceConfig');

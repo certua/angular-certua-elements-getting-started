@@ -1,5 +1,5 @@
 import { RouterLink } from '@angular/router';
-import { CommonModule, NgIf } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { add, parseISO } from 'date-fns';
 import { CommonInputsComponent } from '../common-inputs/common-inputs.component';
@@ -11,7 +11,6 @@ import { NoTokenErrorComponent } from '../no-token-error/no-token-error.componen
   styleUrls: ['./manage-connections.component.scss'],
   standalone: true,
   imports: [
-    NgIf,
     RouterLink,
     CommonModule,
     CommonInputsComponent,
@@ -25,10 +24,10 @@ export class ManageConnectionsComponent implements OnInit {
   redirectionConfig = {
     successUrl:
       window.location.origin +
-      '/angular/components/manage-connections?accountConnection=success',
+      '/angular/open-banking/components/manage-connections?accountConnection=success',
     failureUrl:
       window.location.origin +
-      '/angular/components/manage-connections?accountConnection=failure',
+      '/angular/open-banking/components/manage-connections?accountConnection=failure',
     popup: false,
   };
   loaded = false;

@@ -1,5 +1,5 @@
 import { Router, RouterLink } from '@angular/router';
-import { JsonPipe, NgIf } from '@angular/common';
+import { JsonPipe } from '@angular/common';
 import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
@@ -11,13 +11,13 @@ import {
 import { add, parseISO } from 'date-fns';
 import { InjectSetupWrapper } from '@angular/core/testing';
 import { InsuranceCommonInputsComponent } from '../insurance-common-inputs/common-inputs.component';
-
+import { environment } from '../../../environments/environment';
 @Component({
   selector: 'app-quote-list',
   templateUrl: './quote-list.component.html',
   styleUrls: ['./quote-list.component.scss'],
   standalone: true,
-  imports: [NgIf, RouterLink, JsonPipe, InsuranceCommonInputsComponent],
+  imports: [RouterLink, JsonPipe, InsuranceCommonInputsComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class QuoteListComponent implements OnInit {
@@ -28,12 +28,18 @@ export class QuoteListComponent implements OnInit {
   loaded = false;
   clientId = '';
   organisationId = '';
+  public environment = environment;
+  goToQuoteAndBuyJson = {
+    quote: 'e.quote',
+    policyId: 'e.policyId',
+    restartJourney: 'e.restartJourney',
+  };
 
   ngOnInit() {
     if (!localStorage.getItem('elementType')) {
       this.router.navigate(['/home']);
     } else if (localStorage.getItem('elementType') == 'open-banking') {
-      this.router.navigate(['/components/connect']);
+      this.router.navigate(['/open-banking/components/connect']);
     }
 
     let configJson = localStorage.getItem('insuranceConfig');
@@ -51,5 +57,18 @@ export class QuoteListComponent implements OnInit {
     }
 
     this.loaded = true;
+  }
+  goToQuoteAndBuy(value: any) {
+    let newConfig = localStorage.getItem('insuranceConfig') as any;
+    newConfig = JSON.parse(newConfig);
+    newConfig = {
+      ...newConfig,
+      quote: value.detail.quote,
+    };
+    localStorage.setItem('insuranceConfig', JSON.stringify(newConfig));
+    console.log('goToQuoteAndBuy event', value);
+    this.router.navigate(['/insurance/components/quote-and-buy'], {
+      state: { data: value.detail },
+    });
   }
 }

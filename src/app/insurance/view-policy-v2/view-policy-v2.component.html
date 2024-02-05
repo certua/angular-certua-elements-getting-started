@@ -1,41 +1,57 @@
-<div
-  class="row"
-  *ngIf="showError"
->
+@if (showError) {
+<div class="row">
   <div class="col">
     <h3>There is an issue with the site configuration</h3>
     <a routerLink="/">Home</a>
   </div>
 </div>
-<div
-  class="row"
-  *ngIf="!showError"
->
+} @if (!showError) {
+<div class="row">
   <h2>View Policy v2</h2>
   <p>
     This component displays the active policy for the supplied
-    client/organisation id
+    client/organisation id.
   </p>
-
+  <p>
+    The documentation for this component can be found at
+    <a
+      target="_blank"
+      [href]="
+        environment.docsUrl +
+        '/via-web-components/insurance-elements/view-policy'
+      "
+      >{{
+        environment.docsUrl +
+          "/via-web-components/insurance-elements/view-policy"
+      }}</a
+    >
+  </p>
+  <div class="alert alert-light col-12">
+    Please note that you will need to be logged in to view the policy. If the
+    account has a quote and not a policy you will need to go to the quotes list
+    component.
+  </div>
+  @if (loaded) {
   <certua-insurance-view-policy
-    *ngIf="loaded"
     [config]="config"
     (makeAClaim)="goToMakeAClaim($event)"
     (goToQuoteAndBuy)="goToQuoteAndBuy($event)"
   >
   </certua-insurance-view-policy>
+  }
 </div>
+}
 <div>
   <h4>Example code</h4>
   <pre><code>
     &lt;certua-insurance-view-policy
     *ngIf="loaded"
-     [config]="config"
-     (makeAClaim)="goToMakeAClaim($event)"
-     (goToQuoteAndBuy)="goToQuoteAndBuy($event)"
+    [config]="config"
+    (makeAClaim)="goToMakeAClaim($event)"
+    (goToQuoteAndBuy)="goToQuoteAndBuy($event)"
     &lt;/certua-insurance-view-policy &gt;
-    </code>
-  </pre>
+  </code>
+</pre>
   <h4>Output events</h4>
   <table class="table">
     <thead>

@@ -1,5 +1,6 @@
+import { environment } from 'src/environments/environment';
 import { Router, RouterLink } from '@angular/router';
-import { JsonPipe, NgIf } from '@angular/common';
+import { JsonPipe } from '@angular/common';
 import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
@@ -17,7 +18,7 @@ import { InsuranceCommonInputsComponent } from '../insurance-common-inputs/commo
   templateUrl: './claims.component.html',
   styleUrls: ['./claims.component.scss'],
   standalone: true,
-  imports: [NgIf, RouterLink, JsonPipe, InsuranceCommonInputsComponent],
+  imports: [RouterLink, JsonPipe, InsuranceCommonInputsComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class ClaimsComponent implements OnInit {
@@ -26,22 +27,13 @@ export class ClaimsComponent implements OnInit {
   showError = false;
   router = inject(Router);
   loaded = false;
-
+  public environment = environment;
   ngOnInit() {
-    if (!localStorage.getItem('elementType')) {
-      this.router.navigate(['/home']);
-    } else if (localStorage.getItem('elementType') == 'open-banking') {
-      this.router.navigate(['/components/connect']);
-    }
-
     let configJson = localStorage.getItem('insuranceConfig');
 
     if (!!configJson) {
       this.config = JSON.parse(configJson);
+      this.loaded = true;
     }
-
-    this.accessToken = localStorage.getItem('certua-accessToken');
-
-    this.loaded = true;
   }
 }
