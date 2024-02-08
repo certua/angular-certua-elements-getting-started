@@ -118,6 +118,7 @@ export class AppComponent implements OnInit {
         JSON.stringify({
           referrerId: this.referrerCode,
           basePath: 'angular/insurance/components/quote-and-buy',
+          displayQuickQuote: false,
         })
       );
     }
