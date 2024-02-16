@@ -1,5 +1,5 @@
 import { Router, RouterLink } from '@angular/router';
-import { JsonPipe, NgIf } from '@angular/common';
+import { JsonPipe } from '@angular/common';
 import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
@@ -18,7 +18,7 @@ import { OAuthService } from 'angular-oauth2-oidc';
   templateUrl: './policies-list.component.html',
   styleUrls: ['./policies-list.component.scss'],
   standalone: true,
-  imports: [NgIf, RouterLink, JsonPipe, InsuranceCommonInputsComponent],
+  imports: [RouterLink, JsonPipe, InsuranceCommonInputsComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class PoliciesListComponent implements OnInit {
@@ -35,7 +35,7 @@ export class PoliciesListComponent implements OnInit {
     if (!localStorage.getItem('elementType')) {
       this.router.navigate(['/home']);
     } else if (localStorage.getItem('elementType') == 'open-banking') {
-      this.router.navigate(['/components/connect']);
+      this.router.navigate(['/open-banking/components/connect']);
     }
 
     let configJson = localStorage.getItem('insuranceConfig');

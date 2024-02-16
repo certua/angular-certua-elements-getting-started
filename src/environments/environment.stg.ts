@@ -31,4 +31,5 @@ export const environment = {
   },
   environmentName: 'stg',
   uxAPIUrl: 'https://ux-api-stg.certua.io/api',
+  docsUrl: 'https://docsstg.certua.io/docs',
 };

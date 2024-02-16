@@ -8,7 +8,7 @@ import {
   RouterLinkActive,
 } from '@angular/router';
 import { Component, OnInit, inject, ViewChild } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { SelectMultipleControlValueAccessor } from '@angular/forms';
 import { filter, map, tap } from 'rxjs';
 import { CommonInputsComponent } from '../open-banking/common-inputs/common-inputs.component';
@@ -22,13 +22,12 @@ export enum SiteSection {
   selector: 'app-layout',
   standalone: true,
   imports: [
-    CommonModule,
     RouterOutlet,
     RouterLink,
     RouterLinkActive,
     CommonInputsComponent,
-    TabArrowsComponent,
-  ],
+    TabArrowsComponent
+],
   templateUrl: './layout.component.html',
   styleUrls: ['./layout.component.scss'],
 })
@@ -46,9 +45,9 @@ export class LayoutComponent implements OnInit {
 
   section = SiteSection.Home;
   ngOnInit() {
-    window.addEventListener('selected-index', (event: any) => {
-      this.selectedIndex = event.detail.index;
-    });
+    // window.addEventListener('selected-index', (event: any) => {
+    //   this.selectedIndex = event.detail.index;
+    // });
 
     this.router.events
       .pipe(
@@ -77,7 +76,12 @@ export class LayoutComponent implements OnInit {
 
           let type: string = localStorage.getItem('elementType') ?? '';
           this.elementType = type;
-          let page = event['url'].replace('/components/', '');
+          let page = '';
+          if (this.elementType === 'insurance') {
+            page = event['url'].replace('/insurance/components/', '');
+          } else if (this.elementType === 'open-banking') {
+            page = event['url'].replace('/open-banking/components/', '');
+          }
           this.checkSelected(page);
         })
       )
@@ -87,7 +91,12 @@ export class LayoutComponent implements OnInit {
     this.showNavigation = !home;
     let type: string = localStorage.getItem('elementType') ?? '';
     this.elementType = type;
-    let page = location.pathname.replace('/angular/components/', '');
+    let page = '';
+    if (this.elementType === 'insurance') {
+      page = location.pathname.replace('/angular/insurance/components/', '');
+    } else if (this.elementType === 'open-banking') {
+      page = location.pathname.replace('/angular/open-banking/components/', '');
+    }
     this.checkSelected(page);
 
     addEventListener('show-navigation', (event: any) => {
@@ -103,10 +112,11 @@ export class LayoutComponent implements OnInit {
   }
 
   backToGettingStarted() {
-    this.router.navigate(['components/claims']);
+    this.fullScreen = false;
   }
   selectItem(i: number, route: string, section?: string) {
     this.tabArrows.selectItem(i);
+    this.selectedIndex = i;
 
     if (!section) {
       this.router.navigate([route]);
@@ -124,7 +134,6 @@ export class LayoutComponent implements OnInit {
     console.log('route', page);
     switch (page) {
       case 'connect':
-
       case 'insurance-overview':
       case 'overview': {
         this.selectedIndex = 0;
@@ -155,24 +164,14 @@ export class LayoutComponent implements OnInit {
         this.selectedIndex = 5;
         break;
       }
-
-      case 'quotes-list': {
-        this.selectedIndex = 6;
-        break;
-      }
-
-      case 'policies-list': {
-        this.selectedIndex = 7;
-        break;
-      }
       case 'view-policy':
       case 'manage-policy': {
-        this.selectedIndex = 8;
+        this.selectedIndex = 6;
         break;
       }
     }
     if (page.includes('view-policy')) {
-      this.selectedIndex = 8;
+      this.selectedIndex = 6;
     }
 
     if (

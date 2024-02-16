@@ -27,4 +27,5 @@ export const environment = {
   },
   environmentName: 'local',
   uxAPIUrl: 'http://localhost:32213/api',
+  docsUrl: 'https://localhost:3000/docs',
 };

@@ -1,5 +1,6 @@
+import { environment } from 'src/environments/environment';
 import { Router, RouterLink } from '@angular/router';
-import { JsonPipe, NgIf } from '@angular/common';
+import { JsonPipe } from '@angular/common';
 import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
@@ -17,7 +18,7 @@ import { InsuranceCommonInputsComponent } from '../insurance-common-inputs/commo
   templateUrl: './fnol.component.html',
   styleUrls: ['./fnol.component.scss'],
   standalone: true,
-  imports: [NgIf, RouterLink, JsonPipe, InsuranceCommonInputsComponent],
+  imports: [RouterLink, JsonPipe, InsuranceCommonInputsComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class FnolComponent implements OnInit {
@@ -27,6 +28,7 @@ export class FnolComponent implements OnInit {
   router = inject(Router);
   loaded = false;
   prefill: any;
+  public environment = environment;
   makeAClaimJson = {
     address: {
       addressLine1: '9 Anchor House',
@@ -46,7 +48,7 @@ export class FnolComponent implements OnInit {
     if (!localStorage.getItem('elementType')) {
       this.router.navigate(['/home']);
     } else if (localStorage.getItem('elementType') == 'open-banking') {
-      this.router.navigate(['/components/connect']);
+      this.router.navigate(['/open-banking/components/connect']);
     }
 
     let configJson = localStorage.getItem('insuranceConfig');

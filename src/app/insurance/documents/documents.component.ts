@@ -1,33 +1,28 @@
 import { Router, RouterLink } from '@angular/router';
-import { JsonPipe } from '@angular/common';
+import { JsonPipe, NgIf } from '@angular/common';
 import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
-  Inject,
   inject,
-  NgZone,
   OnInit,
 } from '@angular/core';
-import { add, parseISO } from 'date-fns';
-import { InjectSetupWrapper } from '@angular/core/testing';
+
 import { InsuranceCommonInputsComponent } from '../insurance-common-inputs/common-inputs.component';
 import { environment } from '../../../environments/environment';
-
 @Component({
-  selector: 'app-quick-quote',
-  templateUrl: './quick-quote.component.html',
-  styleUrls: ['./quick-quote.component.scss'],
+  selector: 'app-documents',
+  templateUrl: './documents.component.html',
+  styleUrls: ['./documents.component.scss'],
   standalone: true,
-  imports: [RouterLink, JsonPipe, InsuranceCommonInputsComponent],
+  imports: [NgIf, RouterLink, JsonPipe, InsuranceCommonInputsComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class QuickQuoteComponent implements OnInit {
-  accessToken: any;
+export class DocumentsComponent implements OnInit {
   config: any;
-  showError = false;
   router = inject(Router);
   loaded = false;
-  quickQuoteJson = '';
+  productCode = '';
+  trigger = 'BenefitSelection';
   public environment = environment;
   ngOnInit() {
     if (!localStorage.getItem('elementType')) {
@@ -42,13 +37,6 @@ export class QuickQuoteComponent implements OnInit {
       this.config = JSON.parse(configJson);
     }
 
-    this.accessToken = localStorage.getItem('certua-accessToken');
-
     this.loaded = true;
-  }
-
-  updateQuote(quote: any) {
-    console.log('quote emitted', quote);
-    this.quickQuoteJson = quote.detail;
   }
 }

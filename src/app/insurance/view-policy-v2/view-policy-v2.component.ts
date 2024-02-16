@@ -1,5 +1,5 @@
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { JsonPipe, NgIf } from '@angular/common';
+import { JsonPipe } from '@angular/common';
 import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
@@ -12,13 +12,13 @@ import {
 import { add, parseISO } from 'date-fns';
 import { InjectSetupWrapper } from '@angular/core/testing';
 import { InsuranceCommonInputsComponent } from '../insurance-common-inputs/common-inputs.component';
-
+import { environment } from '../../../environments/environment';
 @Component({
   selector: 'app-view-policy-v2',
   templateUrl: './view-policy-v2.component.html',
   styleUrls: ['./view-policy-v2.component.scss'],
   standalone: true,
-  imports: [NgIf, RouterLink, JsonPipe, InsuranceCommonInputsComponent],
+  imports: [RouterLink, JsonPipe, InsuranceCommonInputsComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class ViewPolicyV2Component implements OnInit {
@@ -30,7 +30,7 @@ export class ViewPolicyV2Component implements OnInit {
   loaded = false;
   clientId: string = '';
   organisationId: string = '';
-
+  public environment = environment;
   makeAClaimJson = {
     address: {
       addressLine1: '9 Anchor House',
@@ -56,7 +56,7 @@ export class ViewPolicyV2Component implements OnInit {
     if (!localStorage.getItem('elementType')) {
       this.router.navigate(['/home']);
     } else if (localStorage.getItem('elementType') == 'open-banking') {
-      this.router.navigate(['/components/connect']);
+      this.router.navigate(['/open-banking/components/connect']);
     }
 
     let configJson = localStorage.getItem('insuranceConfig');
@@ -76,12 +76,14 @@ export class ViewPolicyV2Component implements OnInit {
 
   goToQuoteAndBuy(value: any) {
     console.log('goToQuoteAndBuy event', value);
-    this.router.navigate(['/components/quote-and-buy'], { state: { value } });
+    this.router.navigate(['/insurance/components/quote-and-buy'], {
+      state: { value },
+    });
   }
 
   goToMakeAClaim(value: any) {
     console.log('makeAClaim event', value);
-    this.router.navigate(['/components/fnol'], {
+    this.router.navigate(['/insurance/components/fnol'], {
       state: { data: value.detail },
     });
   }

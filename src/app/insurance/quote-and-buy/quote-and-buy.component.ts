@@ -1,5 +1,5 @@
 import { Router, RouterLink } from '@angular/router';
-import { JsonPipe, NgIf } from '@angular/common';
+import { JsonPipe } from '@angular/common';
 import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
@@ -11,13 +11,14 @@ import {
 import { add, parseISO } from 'date-fns';
 import { InjectSetupWrapper } from '@angular/core/testing';
 import { InsuranceCommonInputsComponent } from '../insurance-common-inputs/common-inputs.component';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-quote-and-buy',
   templateUrl: './quote-and-buy.component.html',
   styleUrls: ['./quote-and-buy.component.scss'],
   standalone: true,
-  imports: [NgIf, RouterLink, JsonPipe, InsuranceCommonInputsComponent],
+  imports: [RouterLink, JsonPipe, InsuranceCommonInputsComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class QuoteAndBuyComponent implements OnInit {
@@ -27,11 +28,12 @@ export class QuoteAndBuyComponent implements OnInit {
   router = inject(Router);
   loaded = false;
 
+  public environment = environment;
   ngOnInit() {
     if (!localStorage.getItem('elementType')) {
       this.router.navigate(['/home']);
     } else if (localStorage.getItem('elementType') == 'open-banking') {
-      this.router.navigate(['/components/connect']);
+      this.router.navigate(['/open-banking/components/connect']);
     }
 
     let configJson = localStorage.getItem('insuranceConfig');
@@ -41,5 +43,20 @@ export class QuoteAndBuyComponent implements OnInit {
     }
 
     this.loaded = true;
+
+    addEventListener('saveQuote', (event: any) => {
+      console.log('save quote received');
+      window.location.href = '/angular/insurance/components/login';
+    });
+    window.addEventListener('signup', (event: any) => {
+      console.log('sign up event received');
+
+      if (!event.detail.autoSignUp) {
+        window.location.href = '/angular/insurance/components/login';
+      } else {
+        console.log('dispatch success');
+        window.location.href = '/angular/insurance/components/login';
+      }
+    });
   }
 }

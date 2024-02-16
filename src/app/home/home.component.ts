@@ -1,4 +1,4 @@
-import { NgIf } from '@angular/common';
+
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Component, inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -14,7 +14,7 @@ import { ObSetupComponent } from '../open-banking/ob-setup/ob-setup.component';
   styleUrls: ['./home.component.scss'],
   standalone: true,
   providers: [],
-  imports: [NgIf, FormsModule, RouterModule, ObSetupComponent],
+  imports: [FormsModule, RouterModule, ObSetupComponent],
 })
 export class HomeComponent implements OnInit {
   elementType: string = '';
@@ -23,16 +23,7 @@ export class HomeComponent implements OnInit {
   quoteAndBuyUrl = environment.insurance.quoteAndBuyURL + '/main.js';
   insuranceElementsUrl = environment.insurance.elementsURL + '/main.js';
   router = inject(Router);
-  ngOnInit() {
-    let type = localStorage.getItem('elementType');
-    if (!!type) {
-      this.elementType = type;
-
-      if (this.elementType == 'insurance') {
-        this.router.navigate(['overview-insurance']);
-      }
-    }
-  }
+  ngOnInit() {}
   setType(type: string) {
     localStorage.setItem('elementType', type);
     this.elementType = type;

@@ -1,5 +1,5 @@
 import { Router, RouterLink } from '@angular/router';
-import { JsonPipe, NgIf } from '@angular/common';
+import { JsonPipe } from '@angular/common';
 import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
@@ -14,13 +14,7 @@ import { NoTokenErrorComponent } from '../no-token-error/no-token-error.componen
   selector: 'app-connect',
   templateUrl: './connect.component.html',
   styleUrls: ['./connect.component.scss'],
-  imports: [
-    NgIf,
-    RouterLink,
-    JsonPipe,
-    CommonInputsComponent,
-    NoTokenErrorComponent,
-  ],
+  imports: [RouterLink, JsonPipe, CommonInputsComponent, NoTokenErrorComponent],
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
@@ -30,10 +24,10 @@ export class ConnectComponent implements OnInit {
   redirectionConfig = {
     successUrl:
       window.location.origin +
-      '/angular/components/connect?accountConnection=success',
+      '/angular/open-banking/components/connect?accountConnection=success',
     failureUrl:
       window.location.origin +
-      '/angular/components/connect?accountConnection=failure',
+      '/angular/open-banking/components/connect?accountConnection=failure',
     popup: false,
   };
   loaded = false;
@@ -68,7 +62,9 @@ export class ConnectComponent implements OnInit {
 
   ngOnInit() {
     if (localStorage.getItem('elementType') == 'insurance') {
-      this.router.navigate(['/components/introduction']);
+      this.router.navigate(['/insurance/components/introduction']);
+    } else if (localStorage.getItem('elementType') == 'open-banking') {
+      this.router.navigate(['/open-banking/components']);
     } else if (!localStorage.getItem('elementType')) {
       this.router.navigate(['/home']);
     }
@@ -103,5 +99,9 @@ export class ConnectComponent implements OnInit {
       let secondary = localStorage.getItem('--secondary');
       root.style.setProperty('--secondary', secondary);
     }
+  }
+
+  connectionSuccess() {
+    console.log('connection success');
   }
 }
