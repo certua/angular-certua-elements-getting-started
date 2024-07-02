@@ -121,3 +121,136 @@ i {
   margin-left: auto;
   margin-right: auto;
 }
+
+.btn {
+  border-radius: var(--certua-border-radius) !important;
+  padding: 10px;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 500;
+  min-width: 138px;
+  height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  &.btn-xsmall {
+    font-size: 12px;
+    line-height: 18px;
+    height: 32px;
+    min-width: 106px;
+  }
+  &.btn-small {
+    font-size: 14px;
+    line-height: 21px;
+    min-width: 114px;
+    height: 40px;
+  }
+
+  &.btn-medium {
+    font-size: 16px;
+    line-height: 24px;
+    min-width: 198px;
+    height: 48px;
+  }
+
+  &.btn-large {
+    font-size: 18px;
+    line-height: 27px;
+    min-width: 138px;
+    height: 48px;
+
+    @include media-breakpoint-up(md) {
+      font-size: 18px !important;
+      min-width: 168px !important;
+      height: 56px;
+    }
+  }
+
+  &.btn-primary {
+    background-color: var(--certua-brand-primary, var(--generic-theme-brand-primary));
+    border: none;
+
+    &.disabled,
+    &:disabled {
+      background-color: var(--certua-brand-primary, var(--generic-theme-brand-primary)) !important;
+      color: white;
+      opacity: 35%;
+    }
+    &:hover {
+      background-color: var(--certua-brand-primary-dark, var(--generic-theme-brand-primary));
+    }
+    &:active {
+      background-color: var(--certua-brand-primary-dark-2, var(--generic-theme-brand-primary)) !important;
+    }
+    &:focus,
+    &:focus-visible {
+      background-color: var(--certua-brand-primary-light-2, var(--generic-theme-brand-primary)) !important;
+      color: var(--certua-brand-primary-dark-2, var(--generic-theme-brand-primary));
+      outline: none;
+      box-shadow: none;
+    }
+  }
+
+  &.btn-outline-primary {
+    border: 2px solid var(--certua-brand-primary, var(--generic-theme-brand-primary));
+    color: var(--certua-brand-primar, var(--generic-theme-brand-primary));
+
+    &.disabled,
+    &:disabled {
+      border: 2px solid var(--certua-brand-primary, var(--generic-theme-brand-primary)) !important;
+      color: var(--certua-brand-primary, var(--generic-theme-brand-primary)) !important;
+      opacity: 35%;
+    }
+
+    &:hover:not(:disabled) {
+      background-color: var(--certua-brand-primary-dark, var(--generic-theme-brand-primary));
+      color: white;
+    }
+    &:focus,
+    &:focus-visible {
+      background-color: var(--certua-brand-primary-light-2, var(--generic-theme-brand-primary)) !important;
+      color: var(--certua-brand-primary-dark, var(--generic-theme-brand-primary)) !important;
+      border: 2px solid var(--certua-brand-primary-light-2, var(--generic-theme-brand-primary)) !important;
+      outline: none;
+      box-shadow: none;
+    }
+    &:active {
+      background-color: var(--certua-brand-primary-dark-2, var(--generic-theme-brand-primary)) !important;
+      color: white !important;
+      border: 2px solid var(--certua-brand-primary-dark-2, var(--generic-theme-brand-primary)) !important;
+    }
+  }
+
+
+  &.btn-link {
+    border: none;
+    color: var(--certua-brand-primary, var(--generic-theme-brand-primary));
+    text-decoration: underline;
+    min-width: 80px;
+
+    &.disabled,
+    &:disabled {
+      color: var(--certua-brand-primary, var(--generic-theme-brand-primary));
+      text-decoration: none;
+      opacity: 50%;
+    }
+
+    &:hover:not(:disabled) {
+      color: var(--certua-brand-primary-dark, var(--generic-theme-brand-primary));
+    }
+
+    &:active {
+      color: var(--certua-brand-primary-dark-2, var(--generic-theme-brand-primary));
+    }
+
+    &:focus,
+    &:focus-visible {
+      color: var(--certua-brand-primary-dark-2, var(--generic-theme-brand-primary));
+      font-weight: 700;
+      outline: none;
+      box-shadow: none;
+    }
+  }
+}
+
