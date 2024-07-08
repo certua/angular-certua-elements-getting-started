@@ -83,8 +83,6 @@ export class ViewPolicyV2Component implements OnInit {
 
   goToMakeAClaim(value: any) {
     console.log('makeAClaim event', value);
-    this.router.navigate(['/insurance/components/fnol'], {
-      state: { data: value.detail },
-    });
+    window.open(`https://${localStorage.getItem('certua-referrerUrl')}/claim`, '_blank')
   }
 }
