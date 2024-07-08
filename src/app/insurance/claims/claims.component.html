@@ -29,18 +29,20 @@
       @if (!!loaded) {
         <certua-insurance-claims-information
           [referrerSiteCode]="config?.referrerId"
+          [showClaimButton]="true"
+          (makeAClaim)="goToClaim()"
         ></certua-insurance-claims-information>
       }
     </div>
   }
 
-  <div>
+  <div class="mt-3">
     <h4>Example code</h4>
     <pre><code>
-      &lt;certua-insurance-claims
+      &lt;certua-insurance-claims-information
       [referrerSiteCode]="config?.referrerId"
-
-      &lt;/certua-insurance-claims &gt;
+      [showClaimButton]="true"
+      &lt;/certua-insurance-claims-information &gt;
     </code>
   </pre>
   <h4>Component specific inputs</h4>

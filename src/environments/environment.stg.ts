@@ -19,9 +19,9 @@ export const environment = {
   },
   insurance: {
     quoteAndBuyURL:
-      'https://cdn.certua.io/ux-micro-frontends/quote-and-buy/stg/v1.1.21-pre',
+      'https://cdn.certua.io/ux-micro-frontends/quote-and-buy/stg/v2.0.1-pre',
     elementsURL:
-      'https://cdn.certua.io/ux-micro-frontends/insurance-elements/stg/v1.0.12-pre',
+      'https://cdn.certua.io/ux-micro-frontends/insurance-elements/stg/v2.0.1-pre',
     demoSiteCode: '4ebf9577-dca0-4ad4-abd1-b4f48327a85a',
     demoSidebarCode: '95839381-9414-494c-a822-814725c4f60e',
   },
