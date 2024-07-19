@@ -15,7 +15,7 @@ export const environment = {
       subTenantReference: '12499',
     },
     elementsURL:
-      'https://cdn.certua.io/ux-micro-frontends/open-banking-elements/stg/v1.0.16-pre',
+      'https://cdn.certua.io/ux-micro-frontends/open-banking-elements/stg/v1.0.18-pre',
   },
   insurance: {
     quoteAndBuyURL:
