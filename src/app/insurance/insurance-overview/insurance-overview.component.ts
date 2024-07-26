@@ -15,6 +15,7 @@ import { Title } from '@angular/platform-browser';
 export interface ReferrerCodeCheck {
   name: string;
   isSidebar: boolean;
+  url:string;
 }
 @Component({
   selector: 'app-insurance-overview',
@@ -47,6 +48,7 @@ export class InsuranceOverviewComponent implements OnInit, AfterViewInit {
   titleService = inject(Title);
   referrerSet = false;
   referrerName = '';
+  referrerUrl = '';
   isSidebar = false;
   offset = 100;
   public introductionOffset: number = 0;
@@ -114,6 +116,7 @@ export class InsuranceOverviewComponent implements OnInit, AfterViewInit {
     } else {
       this.referrerSet = true;
       this.referrerName = localStorage.getItem('certua-referrerName') ?? '';
+      this.referrerUrl = localStorage.getItem('certua-referrerUrl') ?? '';
     }
 
     this.titleService.setTitle('Insurance Elements Overview | Certua');
@@ -139,6 +142,7 @@ export class InsuranceOverviewComponent implements OnInit, AfterViewInit {
     );
     this.referrerSet = false;
     this.referrerName = '';
+    this.referrerUrl = '';
     this.isSidebar = false;
   }
   setReferrer(value?: string) {
@@ -149,6 +153,7 @@ export class InsuranceOverviewComponent implements OnInit, AfterViewInit {
     sessionStorage.clear();
 
     localStorage.setItem('certua-referrerName', this.referrerName);
+    localStorage.setItem('certua-referrerUrl', this.referrerUrl);
     localStorage.setItem('elementType', 'insurance');
 
     localStorage.setItem(
@@ -165,6 +170,7 @@ export class InsuranceOverviewComponent implements OnInit, AfterViewInit {
 
     localStorage.setItem('certua-sidebar', this.isSidebar.toString());
     localStorage.setItem('certua-referrerName', this.referrerName);
+    localStorage.setItem('certua-referrerUrl', this.referrerUrl);
 
     this.referrerSet = true;
   }
@@ -178,6 +184,7 @@ export class InsuranceOverviewComponent implements OnInit, AfterViewInit {
         console.log('data', data);
 
         this.referrerName = data.name;
+        this.referrerUrl = data.url;
         this.isSidebar = data.isSidebar;
 
         if (set) {

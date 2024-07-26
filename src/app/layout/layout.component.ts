@@ -141,37 +141,38 @@ export class LayoutComponent implements OnInit {
       }
       case 'manage-connections':
       case 'quote-and-buy':
-      case 'claims': {
         this.selectedIndex = 1;
         break;
-      }
-      case 'account-summary': {
+      
+      case 'claims':
+      case 'account-summary': 
         this.selectedIndex = 2;
         break;
-      }
-      case 'transactions':
-      case 'fnol': {
+      
+      // case 'fnol': 
+      case 'login':
+      case 'transactions': 
         this.selectedIndex = 3;
         break;
-      }
-      case 'cashflow':
-      case 'quick-quote': {
+      
+      // case 'quick-quote': 
+      case 'manage-policy': 
+      case 'view-policy':
+      case 'cashflow': 
         this.selectedIndex = 4;
         break;
-      }
+      
 
-      case 'login': {
+      case 'quotes-list': 
         this.selectedIndex = 5;
         break;
-      }
-      case 'view-policy':
-      case 'manage-policy': {
+      case 'documents':
         this.selectedIndex = 6;
         break;
-      }
+      
     }
     if (page.includes('view-policy')) {
-      this.selectedIndex = 6;
+      this.selectedIndex = 4;
     }
 
     if (

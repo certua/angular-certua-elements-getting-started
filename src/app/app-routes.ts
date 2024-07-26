@@ -85,18 +85,18 @@ export const routes: Routes = [
             path: 'quote-and-buy',
             component: QuoteAndBuyComponent,
           },
-          {
-            path: 'fnol',
-            component: FnolComponent,
-          },
+          // {
+          //   path: 'fnol',
+          //   component: FnolComponent,
+          // },
           {
             path: 'claims',
             component: ClaimsComponent,
           },
-          {
-            path: 'quick-quote',
-            component: QuickQuoteComponent,
-          },
+          // {
+          //   path: 'quick-quote',
+          //   component: QuickQuoteComponent,
+          // },
           {
             path: 'login',
             component: LoginComponent,

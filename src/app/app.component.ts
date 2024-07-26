@@ -39,6 +39,7 @@ export class AppComponent implements OnInit {
   private loggingOut = false;
 
   referrerName = '';
+  referrerUrl = '';
   referrerCode = '';
   elementType: string = '';
   openBankingUrl = environment.openBanking.elementsURL + '/main.js';
@@ -139,7 +140,9 @@ export class AppComponent implements OnInit {
         console.log('data', data);
 
         this.referrerName = data.name;
+        this.referrerUrl = data.url;
         localStorage.setItem('certua-referrerName', this.referrerName);
+        localStorage.setItem('certua-referrerUrl', this.referrerUrl);
       });
   }
 }

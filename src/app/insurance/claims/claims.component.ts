@@ -36,4 +36,8 @@ export class ClaimsComponent implements OnInit {
       this.loaded = true;
     }
   }
+
+  goToClaim() {
+    window.open(`https://${localStorage.getItem('certua-referrerUrl')}/claim`, '_blank')
+  }
 }
