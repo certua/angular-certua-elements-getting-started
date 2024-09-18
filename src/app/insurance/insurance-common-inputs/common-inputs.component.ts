@@ -21,6 +21,7 @@ export class InsuranceCommonInputsComponent implements OnInit {
   config = {
     referrerId: 'xxxxx-xxxx-xxxx',
     basePath: 'angular/insurance/components/quote-and-buy',
+    displayQuickQuote: true,
   };
   ngOnInit() {}
 }
