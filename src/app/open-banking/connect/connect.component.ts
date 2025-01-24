@@ -1,4 +1,4 @@
-import { Router, RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 import { JsonPipe } from '@angular/common';
 import {
   Component,
@@ -7,14 +7,14 @@ import {
   OnInit,
 } from '@angular/core';
 import { add, parse, parseISO } from 'date-fns';
-import { CommonInputsComponent } from '../common-inputs/common-inputs.component';
+
 import { NoTokenErrorComponent } from '../no-token-error/no-token-error.component';
 
 @Component({
     selector: 'app-connect',
     templateUrl: './connect.component.html',
     styleUrls: ['./connect.component.scss'],
-    imports: [RouterLink, JsonPipe, CommonInputsComponent, NoTokenErrorComponent],
+    imports: [JsonPipe, NoTokenErrorComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class ConnectComponent implements OnInit {

@@ -1,6 +1,6 @@
 import { InsuranceCommonInputsComponent } from './../insurance-common-inputs/common-inputs.component';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { JsonPipe } from '@angular/common';
+
 import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
@@ -17,7 +17,7 @@ import { environment } from '../../../environments/environment';
     selector: 'app-login',
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.scss'],
-    imports: [RouterLink, JsonPipe, InsuranceCommonInputsComponent],
+    imports: [RouterLink, InsuranceCommonInputsComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class LoginComponent implements OnInit {

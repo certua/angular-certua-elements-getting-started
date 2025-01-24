@@ -1,5 +1,5 @@
 import { Router, RouterLink } from '@angular/router';
-import { JsonPipe } from '@angular/common';
+
 import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
@@ -17,7 +17,7 @@ import { environment } from '../../../environments/environment';
     selector: 'app-quote-and-buy',
     templateUrl: './quote-and-buy.component.html',
     styleUrls: ['./quote-and-buy.component.scss'],
-    imports: [RouterLink, JsonPipe, InsuranceCommonInputsComponent],
+    imports: [RouterLink, InsuranceCommonInputsComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class QuoteAndBuyComponent implements OnInit {

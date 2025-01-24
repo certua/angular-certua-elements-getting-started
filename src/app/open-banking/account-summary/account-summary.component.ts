@@ -1,4 +1,4 @@
-import { RouterLink } from '@angular/router';
+
 import { JsonPipe } from '@angular/common';
 import {
   Component,
@@ -8,7 +8,7 @@ import {
   OnInit,
 } from '@angular/core';
 import { add, parseISO } from 'date-fns';
-import { CommonInputsComponent } from '../common-inputs/common-inputs.component';
+
 import { NoTokenErrorComponent } from '../no-token-error/no-token-error.component';
 
 @Component({
@@ -16,11 +16,9 @@ import { NoTokenErrorComponent } from '../no-token-error/no-token-error.componen
     templateUrl: './account-summary.component.html',
     styleUrls: ['./account-summary.component.scss'],
     imports: [
-        RouterLink,
-        CommonInputsComponent,
-        JsonPipe,
-        NoTokenErrorComponent
-    ],
+    JsonPipe,
+    NoTokenErrorComponent
+],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AccountSummaryComponent implements OnInit {

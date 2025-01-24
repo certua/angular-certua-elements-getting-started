@@ -3,8 +3,7 @@ import {
   ActivatedRoute,
   NavigationEnd,
   Router,
-  RouterLink,
-  RouterOutlet,
+  RouterOutlet
 } from '@angular/router';
 import { ViewportScroller } from '@angular/common';
 import { environment } from 'src/environments/environment';
@@ -19,7 +18,7 @@ import { LayoutComponent } from './layout/layout.component';
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
-    imports: [RouterOutlet, RouterLink]
+    imports: [RouterOutlet]
 })
 export class AppComponent implements OnInit {
   @HostListener('window:resize', ['$event'])

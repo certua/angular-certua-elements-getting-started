@@ -1,4 +1,4 @@
-import { RouterLink } from '@angular/router';
+
 
 import {
   Component,
@@ -13,7 +13,7 @@ import { JsonPipe } from '@angular/common';
   selector: 'app-insurance-common-inputs',
   templateUrl: './common-inputs.component.html',
   styleUrls: ['./common-inputs.component.scss'],
-  imports: [RouterLink, JsonPipe],
+  imports: [JsonPipe],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class InsuranceCommonInputsComponent implements OnInit {

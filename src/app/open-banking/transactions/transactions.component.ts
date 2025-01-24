@@ -1,17 +1,15 @@
-import { RouterLink } from '@angular/router';
+
 import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 
 import { add, parseISO } from 'date-fns';
-import { CommonInputsComponent } from '../common-inputs/common-inputs.component';
+
 import { NoTokenErrorComponent } from '../no-token-error/no-token-error.component';
 
 @Component({
     selector: 'app-transactions',
     imports: [
-        RouterLink,
-        CommonInputsComponent,
-        NoTokenErrorComponent
-    ],
+    NoTokenErrorComponent
+],
     templateUrl: './transactions.component.html',
     styleUrls: ['./transactions.component.scss'],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]

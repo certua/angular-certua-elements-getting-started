@@ -1,4 +1,4 @@
-import { RouterLink } from '@angular/router';
+
 import { CommonModule } from '@angular/common';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { add, parseISO } from 'date-fns';
@@ -7,7 +7,7 @@ import { add, parseISO } from 'date-fns';
     selector: 'app-common-inputs',
     templateUrl: './common-inputs.component.html',
     styleUrls: ['./common-inputs.component.scss'],
-    imports: [CommonModule, RouterLink],
+    imports: [CommonModule],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class CommonInputsComponent implements OnInit {
