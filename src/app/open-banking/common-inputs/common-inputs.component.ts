@@ -4,12 +4,11 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { add, parseISO } from 'date-fns';
 
 @Component({
-  selector: 'app-common-inputs',
-  templateUrl: './common-inputs.component.html',
-  styleUrls: ['./common-inputs.component.scss'],
-  standalone: true,
-  imports: [CommonModule, RouterLink],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    selector: 'app-common-inputs',
+    templateUrl: './common-inputs.component.html',
+    styleUrls: ['./common-inputs.component.scss'],
+    imports: [CommonModule, RouterLink],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class CommonInputsComponent implements OnInit {
   notificationSettings = {

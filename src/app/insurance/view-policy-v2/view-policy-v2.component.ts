@@ -14,12 +14,11 @@ import { InjectSetupWrapper } from '@angular/core/testing';
 import { InsuranceCommonInputsComponent } from '../insurance-common-inputs/common-inputs.component';
 import { environment } from '../../../environments/environment';
 @Component({
-  selector: 'app-view-policy-v2',
-  templateUrl: './view-policy-v2.component.html',
-  styleUrls: ['./view-policy-v2.component.scss'],
-  standalone: true,
-  imports: [RouterLink, JsonPipe, InsuranceCommonInputsComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    selector: 'app-view-policy-v2',
+    templateUrl: './view-policy-v2.component.html',
+    styleUrls: ['./view-policy-v2.component.scss'],
+    imports: [RouterLink, JsonPipe, InsuranceCommonInputsComponent],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class ViewPolicyV2Component implements OnInit {
   accessToken: any;

@@ -10,12 +10,11 @@ import {
 import { InsuranceCommonInputsComponent } from '../insurance-common-inputs/common-inputs.component';
 import { environment } from '../../../environments/environment';
 @Component({
-  selector: 'app-documents',
-  templateUrl: './documents.component.html',
-  styleUrls: ['./documents.component.scss'],
-  standalone: true,
-  imports: [NgIf, RouterLink, JsonPipe, InsuranceCommonInputsComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    selector: 'app-documents',
+    templateUrl: './documents.component.html',
+    styleUrls: ['./documents.component.scss'],
+    imports: [NgIf, RouterLink, JsonPipe, InsuranceCommonInputsComponent],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class DocumentsComponent implements OnInit {
   config: any;

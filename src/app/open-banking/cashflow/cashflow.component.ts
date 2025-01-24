@@ -6,16 +6,15 @@ import { CommonInputsComponent } from '../common-inputs/common-inputs.component'
 import { NoTokenErrorComponent } from '../no-token-error/no-token-error.component';
 
 @Component({
-  selector: 'app-cashflow',
-  standalone: true,
-  imports: [
-    RouterLink,
-    CommonInputsComponent,
-    NoTokenErrorComponent
-],
-  templateUrl: './cashflow.component.html',
-  styleUrls: ['./cashflow.component.scss'],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    selector: 'app-cashflow',
+    imports: [
+        RouterLink,
+        CommonInputsComponent,
+        NoTokenErrorComponent
+    ],
+    templateUrl: './cashflow.component.html',
+    styleUrls: ['./cashflow.component.scss'],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class CashflowComponent implements OnInit {
   showError = false;

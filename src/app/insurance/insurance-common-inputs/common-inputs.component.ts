@@ -9,12 +9,11 @@ import {
 import { add, parseISO } from 'date-fns';
 
 @Component({
-  selector: 'app-insurance-common-inputs',
-  templateUrl: './common-inputs.component.html',
-  styleUrls: ['./common-inputs.component.scss'],
-  standalone: true,
-  imports: [CommonModule, RouterLink],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    selector: 'app-insurance-common-inputs',
+    templateUrl: './common-inputs.component.html',
+    styleUrls: ['./common-inputs.component.scss'],
+    imports: [CommonModule, RouterLink],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class InsuranceCommonInputsComponent implements OnInit {
   @Input() quoteAndBuy = false;

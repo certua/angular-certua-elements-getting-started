@@ -11,12 +11,11 @@ import { CommonInputsComponent } from '../common-inputs/common-inputs.component'
 import { NoTokenErrorComponent } from '../no-token-error/no-token-error.component';
 
 @Component({
-  selector: 'app-connect',
-  templateUrl: './connect.component.html',
-  styleUrls: ['./connect.component.scss'],
-  imports: [RouterLink, JsonPipe, CommonInputsComponent, NoTokenErrorComponent],
-  standalone: true,
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    selector: 'app-connect',
+    templateUrl: './connect.component.html',
+    styleUrls: ['./connect.component.scss'],
+    imports: [RouterLink, JsonPipe, CommonInputsComponent, NoTokenErrorComponent],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class ConnectComponent implements OnInit {
   router = inject(Router);

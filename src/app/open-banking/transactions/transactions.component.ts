@@ -6,16 +6,15 @@ import { CommonInputsComponent } from '../common-inputs/common-inputs.component'
 import { NoTokenErrorComponent } from '../no-token-error/no-token-error.component';
 
 @Component({
-  selector: 'app-transactions',
-  standalone: true,
-  imports: [
-    RouterLink,
-    CommonInputsComponent,
-    NoTokenErrorComponent
-],
-  templateUrl: './transactions.component.html',
-  styleUrls: ['./transactions.component.scss'],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    selector: 'app-transactions',
+    imports: [
+        RouterLink,
+        CommonInputsComponent,
+        NoTokenErrorComponent
+    ],
+    templateUrl: './transactions.component.html',
+    styleUrls: ['./transactions.component.scss'],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class TransactionsComponent implements OnInit {
   showError = false;

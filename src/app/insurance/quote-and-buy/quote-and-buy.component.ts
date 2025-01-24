@@ -14,12 +14,11 @@ import { InsuranceCommonInputsComponent } from '../insurance-common-inputs/commo
 import { environment } from '../../../environments/environment';
 
 @Component({
-  selector: 'app-quote-and-buy',
-  templateUrl: './quote-and-buy.component.html',
-  styleUrls: ['./quote-and-buy.component.scss'],
-  standalone: true,
-  imports: [RouterLink, JsonPipe, InsuranceCommonInputsComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    selector: 'app-quote-and-buy',
+    templateUrl: './quote-and-buy.component.html',
+    styleUrls: ['./quote-and-buy.component.scss'],
+    imports: [RouterLink, JsonPipe, InsuranceCommonInputsComponent],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class QuoteAndBuyComponent implements OnInit {
   accessToken: any;

@@ -18,11 +18,10 @@ export interface ReferrerCodeCheck {
   url:string;
 }
 @Component({
-  selector: 'app-insurance-overview',
-  standalone: true,
-  imports: [FormsModule],
-  templateUrl: './insurance-overview.component.html',
-  styleUrls: ['./insurance-overview.component.scss'],
+    selector: 'app-insurance-overview',
+    imports: [FormsModule],
+    templateUrl: './insurance-overview.component.html',
+    styleUrls: ['./insurance-overview.component.scss']
 })
 export class InsuranceOverviewComponent implements OnInit, AfterViewInit {
   @ViewChild('introduction')

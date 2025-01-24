@@ -21,11 +21,10 @@ import { ReferrerCodeCheck } from './insurance/insurance-overview/insurance-over
 import { LayoutComponent } from './layout/layout.component';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
-  standalone: true,
-  imports: [RouterOutlet, RouterLink],
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.scss'],
+    imports: [RouterOutlet, RouterLink]
 })
 export class AppComponent implements OnInit {
   @HostListener('window:resize', ['$event'])

@@ -14,12 +14,11 @@ import { InsuranceCommonInputsComponent } from '../insurance-common-inputs/commo
 import { OAuthService } from 'angular-oauth2-oidc';
 
 @Component({
-  selector: 'app-policies-list',
-  templateUrl: './policies-list.component.html',
-  styleUrls: ['./policies-list.component.scss'],
-  standalone: true,
-  imports: [RouterLink, JsonPipe, InsuranceCommonInputsComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    selector: 'app-policies-list',
+    templateUrl: './policies-list.component.html',
+    styleUrls: ['./policies-list.component.scss'],
+    imports: [RouterLink, JsonPipe, InsuranceCommonInputsComponent],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class PoliciesListComponent implements OnInit {
   accessToken: any;

@@ -6,17 +6,16 @@ import { CommonInputsComponent } from '../common-inputs/common-inputs.component'
 import { NoTokenErrorComponent } from '../no-token-error/no-token-error.component';
 
 @Component({
-  selector: 'app-manage-connections',
-  templateUrl: './manage-connections.component.html',
-  styleUrls: ['./manage-connections.component.scss'],
-  standalone: true,
-  imports: [
-    RouterLink,
-    CommonModule,
-    CommonInputsComponent,
-    NoTokenErrorComponent,
-  ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    selector: 'app-manage-connections',
+    templateUrl: './manage-connections.component.html',
+    styleUrls: ['./manage-connections.component.scss'],
+    imports: [
+        RouterLink,
+        CommonModule,
+        CommonInputsComponent,
+        NoTokenErrorComponent,
+    ],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class ManageConnectionsComponent implements OnInit {
   showError = false;

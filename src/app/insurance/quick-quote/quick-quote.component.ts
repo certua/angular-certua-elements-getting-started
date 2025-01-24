@@ -14,12 +14,11 @@ import { InsuranceCommonInputsComponent } from '../insurance-common-inputs/commo
 import { environment } from '../../../environments/environment';
 
 @Component({
-  selector: 'app-quick-quote',
-  templateUrl: './quick-quote.component.html',
-  styleUrls: ['./quick-quote.component.scss'],
-  standalone: true,
-  imports: [RouterLink, JsonPipe, InsuranceCommonInputsComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    selector: 'app-quick-quote',
+    templateUrl: './quick-quote.component.html',
+    styleUrls: ['./quick-quote.component.scss'],
+    imports: [RouterLink, JsonPipe, InsuranceCommonInputsComponent],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class QuickQuoteComponent implements OnInit {
   accessToken: any;
