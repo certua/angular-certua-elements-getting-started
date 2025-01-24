@@ -3,8 +3,8 @@ import { RouterLink } from '@angular/router';
 import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
-  Input,
   OnInit,
+  input
 } from '@angular/core';
 import { add, parseISO } from 'date-fns';
 import { JsonPipe } from '@angular/common';
@@ -17,7 +17,7 @@ import { JsonPipe } from '@angular/common';
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class InsuranceCommonInputsComponent implements OnInit {
-  @Input() quoteAndBuy = false;
+  readonly quoteAndBuy = input(false);
   config = {
     referrerId: 'xxxxx-xxxx-xxxx',
     basePath: 'angular/insurance/components/quote-and-buy',

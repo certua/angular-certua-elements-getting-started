@@ -5,9 +5,9 @@ import {
   CUSTOM_ELEMENTS_SCHEMA,
   Inject,
   inject,
-  Input,
   NgZone,
   OnInit,
+  input
 } from '@angular/core';
 import { add, parseISO } from 'date-fns';
 import { InjectSetupWrapper } from '@angular/core/testing';
@@ -28,7 +28,7 @@ export class ViewPolicyComponent implements OnInit {
   route = inject(ActivatedRoute);
   loaded = false;
   //this is bound from the route param
-  @Input('id') policyId = '';
+  readonly policyId = input('', { alias: "id" });
 
   makeAClaimJson = {
     address: {
