@@ -7,13 +7,14 @@ import {
   OnInit,
 } from '@angular/core';
 import { add, parseISO } from 'date-fns';
+import { JsonPipe } from '@angular/common';
 
 @Component({
-    selector: 'app-insurance-common-inputs',
-    templateUrl: './common-inputs.component.html',
-    styleUrls: ['./common-inputs.component.scss'],
-    imports: [RouterLink],
-    schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  selector: 'app-insurance-common-inputs',
+  templateUrl: './common-inputs.component.html',
+  styleUrls: ['./common-inputs.component.scss'],
+  imports: [RouterLink, JsonPipe],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class InsuranceCommonInputsComponent implements OnInit {
   @Input() quoteAndBuy = false;
