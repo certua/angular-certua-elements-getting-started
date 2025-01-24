@@ -6,12 +6,7 @@ import {
   RouterLink,
   RouterOutlet,
 } from '@angular/router';
-import {
-  NgSwitch,
-  NgSwitchDefault,
-  NgSwitchCase,
-  ViewportScroller,
-} from '@angular/common';
+import { ViewportScroller } from '@angular/common';
 import { environment } from 'src/environments/environment';
 import { OAuthService, OAuthSuccessEvent } from 'angular-oauth2-oidc';
 import { filter, tap } from 'rxjs';

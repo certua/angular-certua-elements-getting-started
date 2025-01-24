@@ -1,5 +1,5 @@
 import { Router, RouterLink } from '@angular/router';
-import { JsonPipe, NgIf } from '@angular/common';
+import { JsonPipe } from '@angular/common';
 import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
@@ -13,7 +13,7 @@ import { environment } from '../../../environments/environment';
     selector: 'app-documents',
     templateUrl: './documents.component.html',
     styleUrls: ['./documents.component.scss'],
-    imports: [NgIf, RouterLink, JsonPipe, InsuranceCommonInputsComponent],
+    imports: [RouterLink, JsonPipe, InsuranceCommonInputsComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class DocumentsComponent implements OnInit {

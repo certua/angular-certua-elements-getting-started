@@ -1,5 +1,5 @@
 import { RouterLink } from '@angular/router';
-import { CommonModule } from '@angular/common';
+
 import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
@@ -12,7 +12,7 @@ import { add, parseISO } from 'date-fns';
     selector: 'app-insurance-common-inputs',
     templateUrl: './common-inputs.component.html',
     styleUrls: ['./common-inputs.component.scss'],
-    imports: [CommonModule, RouterLink],
+    imports: [RouterLink],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class InsuranceCommonInputsComponent implements OnInit {
