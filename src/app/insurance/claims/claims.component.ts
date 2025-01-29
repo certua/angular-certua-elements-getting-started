@@ -1,6 +1,6 @@
 import { environment } from 'src/environments/environment';
 import { Router, RouterLink } from '@angular/router';
-import { JsonPipe } from '@angular/common';
+
 import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
@@ -14,12 +14,11 @@ import { InjectSetupWrapper } from '@angular/core/testing';
 import { InsuranceCommonInputsComponent } from '../insurance-common-inputs/common-inputs.component';
 
 @Component({
-  selector: 'app-claims',
-  templateUrl: './claims.component.html',
-  styleUrls: ['./claims.component.scss'],
-  standalone: true,
-  imports: [RouterLink, JsonPipe, InsuranceCommonInputsComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    selector: 'app-claims',
+    templateUrl: './claims.component.html',
+    styleUrls: ['./claims.component.scss'],
+    imports: [RouterLink, InsuranceCommonInputsComponent],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class ClaimsComponent implements OnInit {
   accessToken: any;

@@ -10,7 +10,7 @@
   <div class="row">
     <h2>View Policy</h2>
     <p>This component displays a Policy for the supplied policy id</p>
-    @if (!policyId) {
+    @if (!policyId()) {
       <div class="col-md-12">
         <div class="alert alert-warning">
           You need to go to Policies list and click 'View' on the policy you wish to
@@ -21,11 +21,11 @@
         </div>
       </div>
     }
-    @if (loaded && !!policyId) {
+    @if (loaded && !!policyId()) {
       <certua-insurance-policy-confirmation
         [config]="config"
         [accesstoken]="accessToken"
-        [policyId]="policyId"
+        [policyId]="policyId()"
         [standalone]="true"
         (backToCovers)="goToMyPolicies()"
         (makeAClaim)="goToMakeAClaim($event)"

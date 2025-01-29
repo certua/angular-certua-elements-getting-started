@@ -5,21 +5,20 @@ import {
   CUSTOM_ELEMENTS_SCHEMA,
   Inject,
   inject,
-  Input,
   NgZone,
   OnInit,
+  input
 } from '@angular/core';
 import { add, parseISO } from 'date-fns';
 import { InjectSetupWrapper } from '@angular/core/testing';
 import { InsuranceCommonInputsComponent } from '../insurance-common-inputs/common-inputs.component';
 
 @Component({
-  selector: 'app-view-policy',
-  templateUrl: './view-policy.component.html',
-  styleUrls: ['./view-policy.component.scss'],
-  standalone: true,
-  imports: [RouterLink, JsonPipe, InsuranceCommonInputsComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    selector: 'app-view-policy',
+    templateUrl: './view-policy.component.html',
+    styleUrls: ['./view-policy.component.scss'],
+    imports: [RouterLink, JsonPipe, InsuranceCommonInputsComponent],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class ViewPolicyComponent implements OnInit {
   accessToken: any;
@@ -29,7 +28,7 @@ export class ViewPolicyComponent implements OnInit {
   route = inject(ActivatedRoute);
   loaded = false;
   //this is bound from the route param
-  @Input('id') policyId = '';
+  readonly policyId = input('', { alias: "id" });
 
   makeAClaimJson = {
     address: {

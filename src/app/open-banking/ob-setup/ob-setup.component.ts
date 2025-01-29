@@ -16,12 +16,11 @@ export enum Step {
 }
 
 @Component({
-  selector: 'app-ob-setup',
-  templateUrl: './ob-setup.component.html',
-  styleUrls: ['./ob-setup.component.scss'],
-  standalone: true,
-  providers: [],
-  imports: [FormsModule, RouterModule],
+    selector: 'app-ob-setup',
+    templateUrl: './ob-setup.component.html',
+    styleUrls: ['./ob-setup.component.scss'],
+    providers: [],
+    imports: [FormsModule, RouterModule]
 })
 export class ObSetupComponent {
   Step = Step;

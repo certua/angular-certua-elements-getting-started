@@ -16,11 +16,10 @@ import {
 import { OutputFileType } from 'typescript';
 
 @Component({
-  selector: 'app-tab-arrows',
-  templateUrl: './tab-arrows.component.html',
-  styleUrls: ['./tab-arrows.component.scss'],
-  standalone: true,
-  imports: [],
+    selector: 'app-tab-arrows',
+    templateUrl: './tab-arrows.component.html',
+    styleUrls: ['./tab-arrows.component.scss'],
+    imports: []
 })
 export class TabArrowsComponent implements AfterViewInit {
   showArrowLeft = false;

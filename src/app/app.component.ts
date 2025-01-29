@@ -3,15 +3,9 @@ import {
   ActivatedRoute,
   NavigationEnd,
   Router,
-  RouterLink,
-  RouterOutlet,
+  RouterOutlet
 } from '@angular/router';
-import {
-  NgSwitch,
-  NgSwitchDefault,
-  NgSwitchCase,
-  ViewportScroller,
-} from '@angular/common';
+import { ViewportScroller } from '@angular/common';
 import { environment } from 'src/environments/environment';
 import { OAuthService, OAuthSuccessEvent } from 'angular-oauth2-oidc';
 import { filter, tap } from 'rxjs';
@@ -21,11 +15,10 @@ import { ReferrerCodeCheck } from './insurance/insurance-overview/insurance-over
 import { LayoutComponent } from './layout/layout.component';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
-  standalone: true,
-  imports: [RouterOutlet, RouterLink],
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.scss'],
+    imports: [RouterOutlet]
 })
 export class AppComponent implements OnInit {
   @HostListener('window:resize', ['$event'])

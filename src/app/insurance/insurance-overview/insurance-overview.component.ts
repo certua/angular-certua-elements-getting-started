@@ -7,7 +7,7 @@ import {
   HostListener,
   inject,
   OnInit,
-  ViewChild,
+  viewChild
 } from '@angular/core';
 
 import { HttpClient } from '@angular/common/http';
@@ -18,23 +18,20 @@ export interface ReferrerCodeCheck {
   url:string;
 }
 @Component({
-  selector: 'app-insurance-overview',
-  standalone: true,
-  imports: [FormsModule],
-  templateUrl: './insurance-overview.component.html',
-  styleUrls: ['./insurance-overview.component.scss'],
+    selector: 'app-insurance-overview',
+    imports: [FormsModule],
+    templateUrl: './insurance-overview.component.html',
+    styleUrls: ['./insurance-overview.component.scss']
 })
 export class InsuranceOverviewComponent implements OnInit, AfterViewInit {
-  @ViewChild('introduction')
-  introductionElement!: ElementRef;
-  @ViewChild('getStarted')
-  getStartedElement!: ElementRef;
-  @ViewChild('siteCode') siteCodeElement!: ElementRef;
-  @ViewChild('theming') themingElement!: ElementRef;
+  readonly introductionElement = viewChild.required<ElementRef>('introduction');
+  readonly getStartedElement = viewChild.required<ElementRef>('getStarted');
+  readonly siteCodeElement = viewChild.required<ElementRef>('siteCode');
+  readonly themingElement = viewChild.required<ElementRef>('theming');
 
-  @ViewChild('security') securityElement!: ElementRef;
-  @ViewChild('clientLibraries') clientLibrariesElement!: ElementRef;
-  @ViewChild('components') componentsElement!: ElementRef;
+  readonly securityElement = viewChild.required<ElementRef>('security');
+  readonly clientLibrariesElement = viewChild.required<ElementRef>('clientLibraries');
+  readonly componentsElement = viewChild.required<ElementRef>('components');
 
   qnbLink: string = environment.insurance.quoteAndBuyURL + '/main.js';
   insuranceElementsLink: string =
@@ -123,14 +120,14 @@ export class InsuranceOverviewComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.getStartedOffset = this.getStartedElement.nativeElement.offsetTop;
-    this.siteCodeOffset = this.siteCodeElement.nativeElement.offsetTop;
-    this.themingOffset = this.themingElement.nativeElement.offsetTop;
+    this.getStartedOffset = this.getStartedElement().nativeElement.offsetTop;
+    this.siteCodeOffset = this.siteCodeElement().nativeElement.offsetTop;
+    this.themingOffset = this.themingElement().nativeElement.offsetTop;
 
-    this.securityOffset = this.securityElement.nativeElement.offsetTop;
+    this.securityOffset = this.securityElement().nativeElement.offsetTop;
     this.clientLibrariesOffset =
-      this.clientLibrariesElement.nativeElement.offsetTop;
-    this.componentsOffset = this.componentsElement.nativeElement.offsetTop;
+      this.clientLibrariesElement().nativeElement.offsetTop;
+    this.componentsOffset = this.componentsElement().nativeElement.offsetTop;
   }
 
   reset() {

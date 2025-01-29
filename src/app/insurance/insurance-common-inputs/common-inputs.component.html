@@ -7,7 +7,7 @@
       <th>Description</th>
     </thead>
     <tbody>
-      @if (quoteAndBuy) {
+      @if (quoteAndBuy()) {
         <tr>
           <td><code>config</code></td>
           <td>Yes</td>
@@ -18,7 +18,7 @@
         </tr>
       }
 
-      @if (!quoteAndBuy) {
+      @if (!quoteAndBuy()) {
         <tr>
           <td><code>referrerSiteCode</code></td>
           <td>Yes</td>

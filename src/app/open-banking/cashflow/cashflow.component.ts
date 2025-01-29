@@ -2,20 +2,18 @@ import { RouterLink } from '@angular/router';
 import { Component, OnInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { add, parseISO } from 'date-fns';
-import { CommonInputsComponent } from '../common-inputs/common-inputs.component';
+
 import { NoTokenErrorComponent } from '../no-token-error/no-token-error.component';
 
 @Component({
-  selector: 'app-cashflow',
-  standalone: true,
-  imports: [
+    selector: 'app-cashflow',
+    imports: [
     RouterLink,
-    CommonInputsComponent,
     NoTokenErrorComponent
 ],
-  templateUrl: './cashflow.component.html',
-  styleUrls: ['./cashflow.component.scss'],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    templateUrl: './cashflow.component.html',
+    styleUrls: ['./cashflow.component.scss'],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class CashflowComponent implements OnInit {
   showError = false;

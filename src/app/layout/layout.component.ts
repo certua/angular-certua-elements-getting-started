@@ -7,7 +7,7 @@ import {
   NavigationStart,
   RouterLinkActive,
 } from '@angular/router';
-import { Component, OnInit, inject, ViewChild } from '@angular/core';
+import { Component, OnInit, inject, viewChild } from '@angular/core';
 
 import { SelectMultipleControlValueAccessor } from '@angular/forms';
 import { filter, map, tap } from 'rxjs';
@@ -19,17 +19,16 @@ export enum SiteSection {
   Components,
 }
 @Component({
-  selector: 'app-layout',
-  standalone: true,
-  imports: [
-    RouterOutlet,
-    RouterLink,
-    RouterLinkActive,
-    CommonInputsComponent,
-    TabArrowsComponent
-],
-  templateUrl: './layout.component.html',
-  styleUrls: ['./layout.component.scss'],
+    selector: 'app-layout',
+    imports: [
+        RouterOutlet,
+        RouterLink,
+        RouterLinkActive,
+        CommonInputsComponent,
+        TabArrowsComponent
+    ],
+    templateUrl: './layout.component.html',
+    styleUrls: ['./layout.component.scss']
 })
 export class LayoutComponent implements OnInit {
   showNavigation = false;
@@ -38,8 +37,7 @@ export class LayoutComponent implements OnInit {
   private activatedRoute = inject(ActivatedRoute);
   private router = inject(Router);
   selectedIndex = 0;
-  @ViewChild('tabArrows')
-  tabArrows!: TabArrowsComponent;
+  readonly tabArrows = viewChild.required<TabArrowsComponent>('tabArrows');
   fullScreen = false;
   SiteSection = SiteSection;
 
@@ -115,7 +113,7 @@ export class LayoutComponent implements OnInit {
     this.fullScreen = false;
   }
   selectItem(i: number, route: string, section?: string) {
-    this.tabArrows.selectItem(i);
+    this.tabArrows().selectItem(i);
     this.selectedIndex = i;
 
     if (!section) {

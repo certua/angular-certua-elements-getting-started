@@ -15,12 +15,13 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser-esbuild",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
             "baseHref": "/angular/",
-            "outputPath": "dist/angular-certua-elements-getting-started",
+            "outputPath": {
+              "base": "dist/angular-certua-elements-getting-started"
+            },
             "index": "src/index.html",
-            "main": "src/main.ts",
             "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
@@ -29,7 +30,10 @@
               "./node_modules/bootstrap/scss/bootstrap.scss",
               "src/styles.scss"
             ],
-            "scripts": ["./node_modules/bootstrap/dist/js/bootstrap.min.js"]
+            "scripts": [
+              "./node_modules/bootstrap/dist/js/bootstrap.min.js"
+            ],
+            "browser": "src/main.ts"
           },
           "configurations": {
             "production": {
@@ -75,7 +79,6 @@
               ]
             },
             "development": {
-              "buildOptimizer": false,
               "optimization": false,
               "extractLicenses": false,
               "sourceMap": true,
@@ -87,7 +90,6 @@
               ]
             },
             "local": {
-              "buildOptimizer": false,
               "optimization": false,
               "extractLicenses": false,
               "sourceMap": true,
@@ -99,9 +101,7 @@
               ]
             },
             "qa": {
-              "buildOptimizer": false,
               "optimization": false,
-              "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": true,

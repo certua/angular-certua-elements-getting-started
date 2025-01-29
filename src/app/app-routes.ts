@@ -1,28 +1,9 @@
-import { InsuranceOverviewComponent } from './insurance/insurance-overview/insurance-overview.component';
-import { QuoteListComponent } from './insurance/quote-list/quote-list.component';
-import { LoginComponent } from './insurance/login/login.component';
-import { ViewPolicyComponent } from './insurance/view-policy/view-policy.component';
-import { LayoutComponent } from './layout/layout.component';
-import { CashflowComponent } from './open-banking/cashflow/cashflow.component';
-import { TransactionsComponent } from './open-banking/transactions/transactions.component';
-import { ManageConnectionsComponent } from './open-banking/manage-connections/manage-connections.component';
-import { ConnectComponent } from './open-banking/connect/connect.component';
-import { HomeComponent } from './home/home.component';
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { AccountSummaryComponent } from './open-banking/account-summary/account-summary.component';
-import { QuoteAndBuyComponent } from './insurance/quote-and-buy/quote-and-buy.component';
-import { FnolComponent } from './insurance/fnol/fnol.component';
-import { ClaimsComponent } from './insurance/claims/claims.component';
-import { QuickQuoteComponent } from './insurance/quick-quote/quick-quote.component';
-import { PoliciesListComponent } from './insurance/policies-list/policies-list.component';
-import { ViewPolicyV2Component } from './insurance/view-policy-v2/view-policy-v2.component';
-import { OverviewComponent } from './insurance/overview/overview.component';
-import { DocumentsComponent } from './insurance/documents/documents.component';
+import { Routes } from '@angular/router';
 
 export const routes: Routes = [
   {
-    component: LayoutComponent,
+    loadComponent: () =>
+      import('./layout/layout.component').then((m) => m.LayoutComponent),
     path: '',
     children: [
       {
@@ -32,12 +13,16 @@ export const routes: Routes = [
       },
       {
         path: 'home',
-        component: HomeComponent,
+        loadComponent: () =>
+          import('./home/home.component').then((m) => m.HomeComponent),
       },
 
       {
         path: 'overview-insurance',
-        component: InsuranceOverviewComponent,
+        loadComponent: () =>
+          import(
+            './insurance/insurance-overview/insurance-overview.component'
+          ).then((m) => m.InsuranceOverviewComponent),
       },
       {
         path: 'open-banking/components',
@@ -49,23 +34,38 @@ export const routes: Routes = [
           },
           {
             path: 'connect',
-            component: ConnectComponent,
+            loadComponent: () =>
+              import('./open-banking/connect/connect.component').then(
+                (m) => m.ConnectComponent
+              ),
           },
           {
             path: 'manage-connections',
-            component: ManageConnectionsComponent,
+            loadComponent: () =>
+              import(
+                './open-banking/manage-connections/manage-connections.component'
+              ).then((m) => m.ManageConnectionsComponent),
           },
           {
             path: 'transactions',
-            component: TransactionsComponent,
+            loadComponent: () =>
+              import('./open-banking/transactions/transactions.component').then(
+                (m) => m.TransactionsComponent
+              ),
           },
           {
             path: 'cashflow',
-            component: CashflowComponent,
+            loadComponent: () =>
+              import('./open-banking/cashflow/cashflow.component').then(
+                (m) => m.CashflowComponent
+              ),
           },
           {
             path: 'account-summary',
-            component: AccountSummaryComponent,
+            loadComponent: () =>
+              import(
+                './open-banking/account-summary/account-summary.component'
+              ).then((m) => m.AccountSummaryComponent),
           },
         ],
       },
@@ -79,11 +79,17 @@ export const routes: Routes = [
           },
           {
             path: 'introduction',
-            component: OverviewComponent,
+            loadComponent: () =>
+              import('./insurance/overview/overview.component').then(
+                (m) => m.OverviewComponent
+              ),
           },
           {
             path: 'quote-and-buy',
-            component: QuoteAndBuyComponent,
+            loadComponent: () =>
+              import('./insurance/quote-and-buy/quote-and-buy.component').then(
+                (m) => m.QuoteAndBuyComponent
+              ),
           },
           // {
           //   path: 'fnol',
@@ -91,7 +97,10 @@ export const routes: Routes = [
           // },
           {
             path: 'claims',
-            component: ClaimsComponent,
+            loadComponent: () =>
+              import('./insurance/claims/claims.component').then(
+                (m) => m.ClaimsComponent
+              ),
           },
           // {
           //   path: 'quick-quote',
@@ -99,30 +108,48 @@ export const routes: Routes = [
           // },
           {
             path: 'login',
-            component: LoginComponent,
+            loadComponent: () =>
+              import('./insurance/login/login.component').then(
+                (m) => m.LoginComponent
+              ),
           },
           {
             path: 'quotes-list',
-            component: QuoteListComponent,
+            loadComponent: () =>
+              import('./insurance/quote-list/quote-list.component').then(
+                (m) => m.QuoteListComponent
+              ),
           },
           {
             path: 'documents',
-            component: DocumentsComponent,
+            loadComponent: () =>
+              import('./insurance/documents/documents.component').then(
+                (m) => m.DocumentsComponent
+              ),
           },
           {
             path: 'policies-list',
-            component: PoliciesListComponent,
+            loadComponent: () =>
+              import('./insurance/policies-list/policies-list.component').then(
+                (m) => m.PoliciesListComponent
+              ),
           },
           {
             path: 'view-policy',
             children: [
               {
                 path: '',
-                component: ViewPolicyComponent,
+                loadComponent: () =>
+                  import('./insurance/view-policy/view-policy.component').then(
+                    (m) => m.ViewPolicyComponent
+                  ),
               },
               {
                 path: ':id',
-                component: ViewPolicyComponent,
+                loadComponent: () =>
+                  import('./insurance/view-policy/view-policy.component').then(
+                    (m) => m.ViewPolicyComponent
+                  ),
               },
             ],
           },
@@ -131,21 +158,33 @@ export const routes: Routes = [
             children: [
               {
                 path: '',
-                component: ViewPolicyV2Component,
+                loadComponent: () =>
+                  import(
+                    './insurance/view-policy-v2/view-policy-v2.component'
+                  ).then((m) => m.ViewPolicyV2Component),
               },
               {
                 path: ':id',
-                component: ViewPolicyV2Component,
+                loadComponent: () =>
+                  import(
+                    './insurance/view-policy-v2/view-policy-v2.component'
+                  ).then((m) => m.ViewPolicyV2Component),
               },
             ],
           },
           {
             path: 'manage-policy',
-            component: ViewPolicyV2Component,
+            loadComponent: () =>
+              import(
+                './insurance/view-policy-v2/view-policy-v2.component'
+              ).then((m) => m.ViewPolicyV2Component),
           },
           {
             path: 'component-overview',
-            component: OverviewComponent,
+            loadComponent: () =>
+              import('./insurance/overview/overview.component').then(
+                (m) => m.OverviewComponent
+              ),
           },
         ],
       },

@@ -9,12 +9,11 @@ import { environment } from 'src/environments/environment';
 import { ObSetupComponent } from '../open-banking/ob-setup/ob-setup.component';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss'],
-  standalone: true,
-  providers: [],
-  imports: [FormsModule, RouterModule, ObSetupComponent],
+    selector: 'app-home',
+    templateUrl: './home.component.html',
+    styleUrls: ['./home.component.scss'],
+    providers: [],
+    imports: [FormsModule, RouterModule, ObSetupComponent]
 })
 export class HomeComponent implements OnInit {
   elementType: string = '';

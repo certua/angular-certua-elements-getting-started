@@ -10,15 +10,14 @@ import {
 } from '@angular/core';
 import { add, parseISO } from 'date-fns';
 import { InjectSetupWrapper } from '@angular/core/testing';
-import { InsuranceCommonInputsComponent } from '../insurance-common-inputs/common-inputs.component';
+
 import { environment } from '../../../environments/environment';
 @Component({
-  selector: 'app-quote-list',
-  templateUrl: './quote-list.component.html',
-  styleUrls: ['./quote-list.component.scss'],
-  standalone: true,
-  imports: [RouterLink, JsonPipe, InsuranceCommonInputsComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    selector: 'app-quote-list',
+    templateUrl: './quote-list.component.html',
+    styleUrls: ['./quote-list.component.scss'],
+    imports: [RouterLink, JsonPipe],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class QuoteListComponent implements OnInit {
   accessToken: any;

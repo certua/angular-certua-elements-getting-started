@@ -1,21 +1,18 @@
-import { RouterLink } from '@angular/router';
+
 import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 
 import { add, parseISO } from 'date-fns';
-import { CommonInputsComponent } from '../common-inputs/common-inputs.component';
+
 import { NoTokenErrorComponent } from '../no-token-error/no-token-error.component';
 
 @Component({
-  selector: 'app-transactions',
-  standalone: true,
-  imports: [
-    RouterLink,
-    CommonInputsComponent,
+    selector: 'app-transactions',
+    imports: [
     NoTokenErrorComponent
 ],
-  templateUrl: './transactions.component.html',
-  styleUrls: ['./transactions.component.scss'],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    templateUrl: './transactions.component.html',
+    styleUrls: ['./transactions.component.scss'],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class TransactionsComponent implements OnInit {
   showError = false;

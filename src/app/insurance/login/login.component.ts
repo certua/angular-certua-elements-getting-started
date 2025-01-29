@@ -1,6 +1,6 @@
 import { InsuranceCommonInputsComponent } from './../insurance-common-inputs/common-inputs.component';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { JsonPipe } from '@angular/common';
+
 import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
@@ -14,12 +14,11 @@ import { CommonInputsComponent } from '../../open-banking/common-inputs/common-i
 import { environment } from '../../../environments/environment';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
-  standalone: true,
-  imports: [RouterLink, JsonPipe, InsuranceCommonInputsComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    selector: 'app-login',
+    templateUrl: './login.component.html',
+    styleUrls: ['./login.component.scss'],
+    imports: [RouterLink, InsuranceCommonInputsComponent],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class LoginComponent implements OnInit {
   accessToken: any;
